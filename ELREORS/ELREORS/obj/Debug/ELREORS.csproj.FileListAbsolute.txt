@@ -1,0 +1,15 @@
+C:\Users\ACER\source\repos\ELREORS\ELREORS\bin\Debug\ELREORS.exe.config
+C:\Users\ACER\source\repos\ELREORS\ELREORS\bin\Debug\ELREORS.exe
+C:\Users\ACER\source\repos\ELREORS\ELREORS\bin\Debug\ELREORS.pdb
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\ELREORS.csprojAssemblyReference.cache
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\MainWindow.g.cs
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\App.g.cs
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\ELREORS_MarkupCompile.cache
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\ELREORS_MarkupCompile.lref
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\MainWindow.baml
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\ELREORS.g.resources
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\ELREORS.Properties.Resources.resources
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\ELREORS.csproj.GenerateResource.cache
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\ELREORS.csproj.CoreCompileInputs.cache
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\ELREORS.exe
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\ELREORS.pdb
