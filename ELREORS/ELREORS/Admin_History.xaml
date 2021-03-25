@@ -33,7 +33,7 @@
             <Button x:Name="btn_print" Content="Print" Grid.Column="3" Margin="5" FontSize="16"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1">
-            <DataGrid x:Name="dataGrid" Margin="5" FontSize="16"/>
+            <DataGrid x:Name="dataGrid" Margin="5" ColumnWidth="*" FontSize="16" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2">
             <TextBlock Text="Jumlah Nota : 0" Margin="10" FontSize="16" />

@@ -14,7 +14,8 @@ namespace ELREORS
     public partial class App : Application
     {
         public static OracleConnection conn =
-        //ganti pny kalian, add reference oracle.dataAccess nya juga beda directory
+
+            //ini masukin user oracle , mending bikin user baru sih menurutku
 
         //new OracleConnection("Data Source =  ; User Id = bryant ; Password = ");
 

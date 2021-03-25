@@ -22,9 +22,10 @@ namespace ELREORS
         public Kasir()
         {
             InitializeComponent();
+            labelTanggal.Content = "Tanggal : "+ DateTime.Now.ToString().Substring(0,10);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btn1_Click(object sender, RoutedEventArgs e)
         {
             mejudul.Content = "MEJA 1";
         }
