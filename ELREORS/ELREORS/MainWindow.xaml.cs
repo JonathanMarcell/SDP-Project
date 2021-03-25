@@ -24,5 +24,26 @@ namespace ELREORS
         {
             InitializeComponent();
         }
+
+        private void btn_login_Click(object sender, RoutedEventArgs e)
+        {
+            if (tb_username.Text=="admin")
+            {
+                Admin a = new Admin();
+                a.Show();
+                Close();
+            }
+            else if (tb_username.Text=="meja")
+            {
+
+            }else if (tb_username.Text=="kasir")
+            {
+
+            }else if (tb_username.Text=="list")
+            {
+
+            }
+            
+        }
     }
 }

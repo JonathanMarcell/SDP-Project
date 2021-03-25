@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ELREORS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Login" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -31,14 +31,14 @@
         <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <TextBlock Text="LOGIN" FontSize="30" TextAlignment="Center"/>
         </StackPanel>
-        
+
         <StackPanel Grid.Row="4" Grid.Column="1">
             <TextBlock Text="Username : " FontSize="25" HorizontalAlignment="Right"/>
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.Column="2">
             <TextBox x:Name="tb_username" FontSize="25" Margin="2" Width="250" HorizontalAlignment="Left"/>
         </StackPanel>
-        
+
         <StackPanel Grid.Row="6" Grid.Column="1">
             <TextBlock Text="Password : " FontSize="25" HorizontalAlignment="Right"/>
         </StackPanel>
@@ -47,6 +47,6 @@
         </StackPanel>
 
         <Button Grid.Column="1" Grid.Row="8" Width="200" Grid.ColumnSpan="2"
-                x:Name="btn_login" Content="Login" FontSize="24"/>
+                x:Name="btn_login" Content="Login" FontSize="24" Click="btn_login_Click"/>
     </Grid>
 </Window>

@@ -13,3 +13,11 @@ C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\ELREORS.csproj.GenerateReso
 C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\ELREORS.csproj.CoreCompileInputs.cache
 C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\ELREORS.exe
 C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\ELREORS.pdb
+C:\Users\ACER\source\repos\ELREORS\ELREORS\bin\Debug\Oracle.DataAccess.dll
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\Admin-History.g.cs
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\Admin-History.baml
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\ELREORS.csproj.CopyComplete
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\Admin.g.cs
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\Admin.baml
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\Login.g.cs
+C:\Users\ACER\source\repos\ELREORS\ELREORS\obj\Debug\Login.baml
