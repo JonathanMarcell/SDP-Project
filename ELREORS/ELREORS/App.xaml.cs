@@ -19,11 +19,11 @@ namespace ELREORS
 
         //new OracleConnection("Data Source =  ; User Id = bryant ; Password = ");
 
-        //new OracleConnection("Data Source =  ; User Id = davin ; Password = ");
+        new OracleConnection("Data Source =  ; User Id = sdp ; Password = sdp");
 
         //new OracleConnection("Data Source =  ; User Id = fernando ; Password = ");
 
-        new OracleConnection("Data Source = orcl ; User Id = jo2 ; Password = jo2");
+        //new OracleConnection("Data Source = orcl ; User Id = jo2 ; Password = jo2");
 
         public static void openconn()
         {

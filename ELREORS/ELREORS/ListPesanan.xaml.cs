@@ -22,6 +22,23 @@ namespace ELREORS
         public ListPesanan()
         {
             InitializeComponent();
+            DataGridTextColumn c1 = new DataGridTextColumn();
+            c1.Header = "Nama Pesanan";
+            c1.Binding = new Binding("Nama Pesananan");
+            c1.Width = 320;
+            dataGridView1.Columns.Add(c1);
+            DataGridTextColumn c2 = new DataGridTextColumn();
+            c2.Header = "Jumlah";
+            c2.Width = 200;
+            c2.Binding = new Binding("Jumlah");
+            dataGridView1.Columns.Add(c2);
+            DataGridTextColumn c3 = new DataGridTextColumn();
+            c3.Header = "Meja";
+            c3.Width = 200;
+            c3.Binding = new Binding("Meja");
+            dataGridView1.Columns.Add(c3);
         }
+        
+        
     }
 }
