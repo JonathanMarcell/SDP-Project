@@ -16,13 +16,13 @@ namespace ELREORS
         public static OracleConnection conn =
         //ganti pny kalian, add reference oracle.dataAccess nya juga beda directory
 
-        //new OracleConnection("Data Source =  ; User Id =  ; Password = ");
+        //new OracleConnection("Data Source =  ; User Id = bryant ; Password = ");
 
-        //new OracleConnection("Data Source =  ; User Id =  ; Password = ");
+        //new OracleConnection("Data Source =  ; User Id = davin ; Password = ");
 
-        //new OracleConnection("Data Source =  ; User Id =  ; Password = ");
+        //new OracleConnection("Data Source =  ; User Id = fernando ; Password = ");
 
-        new OracleConnection("Data Source = orcl ; User Id = jonathan ; Password = jonathan");
+        new OracleConnection("Data Source = orcl ; User Id = jo2 ; Password = jo2");
 
         public static void openconn()
         {

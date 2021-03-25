@@ -35,13 +35,21 @@ namespace ELREORS
             }
             else if (tb_username.Text=="meja")
             {
-
-            }else if (tb_username.Text=="kasir")
+                Meja a = new Meja();
+                a.Show();
+                Close();
+            }
+            else if (tb_username.Text=="kasir")
             {
-
-            }else if (tb_username.Text=="list")
+                Kasir a = new Kasir();
+                a.Show();
+                Close();
+            }
+            else if (tb_username.Text=="list")
             {
-
+                ListPesanan a = new ListPesanan();
+                a.Show();
+                Close();
             }
             
         }

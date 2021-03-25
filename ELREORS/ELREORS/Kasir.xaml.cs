@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace ELREORS
 {
     /// <summary>
-    /// Interaction logic for Admin.xaml
+    /// Interaction logic for Kasir.xaml
     /// </summary>
-    public partial class Admin : Window
+    public partial class Kasir : Window
     {
-        public Admin()
+        public Kasir()
         {
             InitializeComponent();
         }

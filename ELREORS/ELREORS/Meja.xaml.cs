@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ELREORS
 {
     /// <summary>
-    /// Interaction logic for Admin_History.xaml
+    /// Interaction logic for Meja.xaml
     /// </summary>
-    public partial class Admin_History : Page
+    public partial class Meja : Window
     {
-        public Admin_History()
+        public Meja()
         {
             InitializeComponent();
         }

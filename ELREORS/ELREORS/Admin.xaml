@@ -7,6 +7,23 @@
         mc:Ignorable="d"
         Title="Admin" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btn_history" Grid.Column="0" Content="History" Width="100" Height="26" HorizontalAlignment="Left" Margin="10,2,5,2" Click="btn_history_Click"/>
+            <Button x:Name="btn_Menu" Grid.Column="1" Content="Menu" Width="100" Height="26" HorizontalAlignment="Left" Margin="10,2,5,2" Click="btn_Menu_Click"/>
+            <Button x:Name="btn_Stock" Grid.Column="2" Content="Stock" Width="100" Height="26" HorizontalAlignment="Left" Margin="5,2,5,2" Click="btn_Stock_Click"/>
+            <Button x:Name="btn_Setting" Grid.Column="3" Content="Setting" Width="100" Height="26" HorizontalAlignment="Left" Margin="5,2,5,2" Click="btn_Setting_Click"/>
+        </Grid>
         
+        <Frame Grid.Row="1" x:Name="Main"/>
     </Grid>
 </Window>
