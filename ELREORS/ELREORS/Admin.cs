@@ -45,5 +45,6 @@ namespace ELREORS
         {
             Main.Content = new Admin_Setting();
         }
+
     }
 }

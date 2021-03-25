@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="ListPesanan" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="dataGridView1" HorizontalAlignment="Left" Height="400" Margin="32,0,0,0" VerticalAlignment="Top" Width="720" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" VerticalScrollBarVisibility="Visible"/>
+
     </Grid>
 </Window>
