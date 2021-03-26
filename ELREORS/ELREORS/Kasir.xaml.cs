@@ -23,26 +23,6 @@ namespace ELREORS
         {
             InitializeComponent();
             labelTanggal.Content = "Tanggal : "+ DateTime.Now.ToString().Substring(0,10);
-            DataGridTextColumn dtKasir1 = new DataGridTextColumn();
-            dtKasir1.Header = "Nama Menu";
-            dtKasir1.Binding = new Binding("Nama Menu");
-            dtKasir1.Width = 650;
-            dataGrid.Columns.Add(dtKasir1);
-            DataGridTextColumn dtKasir2 = new DataGridTextColumn();
-            dtKasir2.Header = "Jumlah";
-            dtKasir2.Width = 250;
-            dtKasir2.Binding = new Binding("Jumlah");
-            dataGrid.Columns.Add(dtKasir2);
-            DataGridTextColumn dtKasir3 = new DataGridTextColumn();
-            dtKasir3.Header = "Harga";
-            dtKasir3.Width = 390;
-            dtKasir3.Binding = new Binding("Harga");
-            dataGrid.Columns.Add(dtKasir3);
-            DataGridTextColumn dtKasir4 = new DataGridTextColumn();
-            dtKasir4.Header = "Subtotal";
-            dtKasir4.Width = 390;
-            dtKasir4.Binding = new Binding("Subtotal");
-            dataGrid.Columns.Add(dtKasir4);
         }
 
         private void btn1_Click(object sender, RoutedEventArgs e)
