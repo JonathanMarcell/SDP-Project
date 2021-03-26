@@ -19,9 +19,20 @@ namespace ELREORS
     /// </summary>
     public partial class Meja : Window
     {
-        public Meja()
+        string no;
+        string temp;
+        public Meja(string n)
         {
             InitializeComponent();
+            no =  n.Substring(0,1).ToUpper() + n.Substring(1, 3) + " " + n.Substring(4);
+            temp = n;
+            lbNama.Content = no;
+        }
+        private void btnPesan_Click(object sender, RoutedEventArgs e)
+        {
+            tunggu t = new tunggu(temp);
+            t.Show();
+            Close();
         }
     }
 }

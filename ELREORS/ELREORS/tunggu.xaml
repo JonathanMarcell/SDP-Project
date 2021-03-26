@@ -1,0 +1,38 @@
+﻿<Window x:Class="ELREORS.tunggu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ELREORS"
+        mc:Ignorable="d"
+        Title="tunggu" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lbNama" Grid.Column="0" Margin="10,0,0,0">
+            <Label.Content>Meja 1</Label.Content>
+            <Label.FontSize>60</Label.FontSize>
+            <Label.Width>auto</Label.Width>
+            <Label.Height>auto</Label.Height>
+            <Label.HorizontalAlignment>left</Label.HorizontalAlignment>
+            <Label.VerticalAlignment>top</Label.VerticalAlignment>
+        </Label>
+        <Label x:Name="meunggu" Margin="0,70,0,0">
+            <Label.Content>Silahkan Menunggu</Label.Content>
+            <Label.FontSize>45</Label.FontSize>
+            <Label.Width>auto</Label.Width>
+            <Label.Height>auto</Label.Height>
+            <Label.HorizontalAlignment>center</Label.HorizontalAlignment>
+        </Label>
+        <Label x:Name="bayar" Margin="10,120,0,10">
+            <Label.Content>Untuk pembayaran, silahkan menuju ke kasir dan menyebutkan nomor meja</Label.Content>
+            <Label.FontSize>30</Label.FontSize>
+            <Label.Width>auto</Label.Width>
+            <Label.Height>auto</Label.Height>
+            <Label.HorizontalAlignment>center</Label.HorizontalAlignment>
+        </Label>
+
+        <Button Grid.Column="0" x:Name="btnSelesai" Width="100" Height="30" Content="Selesai" VerticalAlignment="Bottom" Margin="0,0,0,10" Click="btnSelesai_Click"/>
+    </Grid>
+</Window>
