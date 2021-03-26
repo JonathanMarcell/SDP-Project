@@ -23,14 +23,16 @@
             <Label.FontSize>40</Label.FontSize>
             <Label.Width>auto</Label.Width>
             <Label.Height>auto</Label.Height>
+            <Label.VerticalAlignment>top</Label.VerticalAlignment>
             <Label.HorizontalAlignment>center</Label.HorizontalAlignment>
         </Label>
         <Label x:Name="bayar" Margin="10,120,0,10">
             <Label.Content>Untuk pembayaran, silahkan menuju ke kasir dan menyebutkan nomor meja</Label.Content>
-            <Label.FontSize>20</Label.FontSize>
+            <Label.FontSize>22</Label.FontSize>
             <Label.Width>auto</Label.Width>
             <Label.Height>auto</Label.Height>
             <Label.HorizontalAlignment>center</Label.HorizontalAlignment>
+            <Label.VerticalAlignment>top</Label.VerticalAlignment>
         </Label>
 
         <Button Grid.Column="0" x:Name="btnSelesai" Width="100" Height="30" Content="Selesai" VerticalAlignment="Bottom" Margin="0,0,0,10" Click="btnSelesai_Click"/>

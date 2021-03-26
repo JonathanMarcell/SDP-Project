@@ -33,7 +33,11 @@ namespace ELREORS
 
         public void loaddata()
         {
-            OracleDataAdapter da = new OracleDataAdapter("select * from hjual", conn);
+            OracleDataAdapter da = new OracleDataAdapter("select h.ID as ID, m.nama as NAMA, count(h.total_harga) as Jumlah ,sum(h.total_harga) as Total " +
+                            "from hjual h " +
+                            "join djual d on d.ID_header = h.ID " +
+                            "join menu m on d.id_menu = m.id " +
+                            "group by m.nama, h.id", conn);
             dt = new DataTable();
             da.Fill(dt);
             dataGrid.ItemsSource = dt.DefaultView;
