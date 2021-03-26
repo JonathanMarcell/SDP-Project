@@ -20,14 +20,14 @@
         </Label>
         <Label x:Name="meunggu" Margin="0,70,0,0">
             <Label.Content>Silahkan Menunggu</Label.Content>
-            <Label.FontSize>45</Label.FontSize>
+            <Label.FontSize>40</Label.FontSize>
             <Label.Width>auto</Label.Width>
             <Label.Height>auto</Label.Height>
             <Label.HorizontalAlignment>center</Label.HorizontalAlignment>
         </Label>
         <Label x:Name="bayar" Margin="10,120,0,10">
             <Label.Content>Untuk pembayaran, silahkan menuju ke kasir dan menyebutkan nomor meja</Label.Content>
-            <Label.FontSize>30</Label.FontSize>
+            <Label.FontSize>20</Label.FontSize>
             <Label.Width>auto</Label.Width>
             <Label.Height>auto</Label.Height>
             <Label.HorizontalAlignment>center</Label.HorizontalAlignment>

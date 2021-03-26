@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="lbNama" Grid.Column="0" Margin="10,0,0,0">
             <Label.Content>Meja 1</Label.Content>
-            <Label.FontSize>60</Label.FontSize>
+            <Label.FontSize>50</Label.FontSize>
             <Label.Width>auto</Label.Width>
             <Label.Height>auto</Label.Height>
             <Label.HorizontalAlignment>left</Label.HorizontalAlignment>
@@ -21,24 +21,24 @@
         </Label>
         <Label Name="oList" Grid.Column="0" Margin="10,90,0,0">
             <Label.Content>Order List</Label.Content>
-            <Label.FontSize>30</Label.FontSize>
+            <Label.FontSize>15</Label.FontSize>
             <Label.Width>auto</Label.Width>
             <Label.Height>auto</Label.Height>
             <Label.HorizontalAlignment>left</Label.HorizontalAlignment>
         </Label>
-        <DataGrid Name="dataOrder" Height="auto" Margin="10,150,20,50"/>
+        <DataGrid Name="dataOrder" Height="auto" Margin="10,120,20,50"/>
         <Label Name="Menu" Grid.Column="1">
             <Label.Content>Menu</Label.Content>
-            <Label.FontSize>50</Label.FontSize>
+            <Label.FontSize>30</Label.FontSize>
             <Label.Width>auto</Label.Width>
             <Label.Height>auto</Label.Height>
             <Label.HorizontalAlignment>center</Label.HorizontalAlignment>
         </Label>
         <Button Name="btnBersih" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,10,0,10" Content="Bersihkan"/>
         <Button Name="btnPesan" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="120,10,0,10" Content="Pesan" Click="btnPesan_Click"/>
-        <Label Name="Food" Grid.Column="1" Margin="60">
+        <Label Name="Food" Grid.Column="1" Margin="0,30,0,0">
             <Label.Content>Food</Label.Content>
-            <Label.FontSize>40</Label.FontSize>
+            <Label.FontSize>20</Label.FontSize>
             <Label.Width>auto</Label.Width>
             <Label.Height>auto</Label.Height>
             <Label.HorizontalAlignment>center</Label.HorizontalAlignment>
