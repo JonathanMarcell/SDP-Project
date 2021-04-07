@@ -24,6 +24,9 @@ namespace ELREORS
         public tunggu(string na)
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
+            //this.WindowStyle = WindowStyle.None;
+
             nam = na;
             nama = na.Substring(0, 1).ToUpper() + na.Substring(1, 3) + " " + na.Substring(4); ;
             lbNama.Content = nama;

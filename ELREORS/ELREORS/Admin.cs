@@ -22,7 +22,9 @@ namespace ELREORS
         public Admin()
         {
             InitializeComponent(); 
-            App.openconn();
+            App.openconn(); 
+            this.WindowState = WindowState.Maximized;
+            //this.WindowStyle = WindowStyle.None;
             Main.Content = new Admin_History();
         }
 

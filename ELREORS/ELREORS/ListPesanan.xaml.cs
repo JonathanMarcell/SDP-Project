@@ -22,6 +22,9 @@ namespace ELREORS
         public ListPesanan()
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
+            //this.WindowStyle = WindowStyle.None;
+
             DataGridTextColumn c1 = new DataGridTextColumn();
             c1.Header = "Nama Pesanan";
             c1.Binding = new Binding("Nama Pesananan");

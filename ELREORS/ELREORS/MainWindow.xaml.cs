@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,10 @@ namespace ELREORS
         public MainWindow()
         {
             InitializeComponent();
+
+            //fullscreen & no window control, nanti kasi ini ke semua wpf
+            this.WindowState= WindowState.Maximized;
+            //this.WindowStyle = WindowStyle.None;
         }
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
@@ -54,5 +59,39 @@ namespace ELREORS
             }
             
         }
+
+        //nyoba bisa manggil keyboard tp masi ga bisa
+        private Process _p = null;
+        private void cmdToggle_Click(object sender, RoutedEventArgs e)
+        {
+            if (_p == null)
+            {
+                ProcessStartInfo p = new ProcessStartInfo(((Environment.GetFolderPath(Environment.SpecialFolder.System) + @"\osk.exe")));
+                try
+                {
+                    _p = Process.Start("osk");
+                }
+                catch (Exception)
+                {
+                    try
+                    {
+                        p.UseShellExecute = true;
+                        _p = Process.Start(p);
+                    }
+                    catch (Exception)
+                    {
+                        //MessageBox.Show("Failed to open on screen keyboard");
+                        Console.WriteLine("Failed to open on screen keyboard");
+                    }
+                }
+            }
+            else
+            {
+                _p.Kill();
+                _p.Dispose();
+                _p = null;
+            }
+        }
+
     }
 }

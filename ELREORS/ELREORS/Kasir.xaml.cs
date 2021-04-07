@@ -22,6 +22,9 @@ namespace ELREORS
         public Kasir()
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
+            //this.WindowStyle = WindowStyle.None;
+
             labelTanggal.Content = "Tanggal : "+ DateTime.Now.ToString().Substring(0,10);
             //DataGridTextColumn dtKasir1 = new DataGridTextColumn();
             //dtKasir1.Header = "Nama Menu";
@@ -43,6 +46,7 @@ namespace ELREORS
             //dtKasir4.Width = 390;
             //dtKasir4.Binding = new Binding("Subtotal");
             //dataGrid.Columns.Add(dtKasir4);
+
         }
 
         private void btn1_Click(object sender, RoutedEventArgs e)

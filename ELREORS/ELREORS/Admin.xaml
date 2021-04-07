@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ELREORS"
         mc:Ignorable="d"
-        Title="Admin" Height="450" Width="800">
+        Title="Admin" Height="768" Width="1366">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -24,6 +25,6 @@
             <Button x:Name="btn_Setting" Grid.Column="3" Content="Setting" Width="100" Height="26" HorizontalAlignment="Left" Margin="5,2,5,2" Click="btn_Setting_Click"/>
         </Grid>
         
-        <Frame Grid.Row="1" x:Name="Main"/>
+        <Frame Grid.Row="1" NavigationUIVisibility="Hidden" x:Name="Main"/>
     </Grid>
 </Window>

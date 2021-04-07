@@ -128,3 +128,5 @@ E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\ELREORS.exe
 E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\ELREORS.pdb
 E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\tunggu.g.cs
 E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\tunggu.baml
+D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\tunggu.g.cs
+D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\tunggu.baml

@@ -24,6 +24,9 @@ namespace ELREORS
         public Meja(string n)
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
+            //this.WindowStyle = WindowStyle.None;
+
             no =  n.Substring(0,1).ToUpper() + n.Substring(1, 3) + " " + n.Substring(4);
             temp = n;
             lbNama.Content = no;
