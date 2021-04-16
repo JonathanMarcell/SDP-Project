@@ -57,6 +57,10 @@ namespace ELREORS
                 a.Show();
                 Close();
             }
+            else
+            {
+                MessageBox.Show("Failed to Login");
+            }
             
         }
 

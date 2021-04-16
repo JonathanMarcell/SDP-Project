@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,12 @@ namespace ELREORS
     /// </summary>
     public partial class Admin_Menu_Insert : Window
     {
+        string newId;
+        OracleConnection conn;
         public Admin_Menu_Insert()
         {
             InitializeComponent();
+            conn = App.conn;
         }
 
         private void btn_insert_Click(object sender, RoutedEventArgs e)
