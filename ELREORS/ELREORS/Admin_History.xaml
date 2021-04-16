@@ -31,7 +31,7 @@
             <TextBlock Text="Filter : " Margin="10" FontSize="16" />
             <ComboBox x:Name="cb_filter" Grid.Column="1" Margin="5,5,30,5" FontSize="16"/>
             <ComboBox x:Name="cb_tanggal" Grid.Column="2" Margin="5" FontSize="16" />
-            <Button x:Name="btn_print" Content="Print" Grid.Column="3" Margin="5" FontSize="16"/>
+            <Button x:Name="btn_print" Content="Print" Grid.Column="3" Margin="5" FontSize="16" Click="btn_print_Click"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1">
             <DataGrid x:Name="dataGrid" Margin="5" ColumnWidth="*" FontSize="16" CanUserReorderColumns="False" CanUserResizeColumns="False"/>

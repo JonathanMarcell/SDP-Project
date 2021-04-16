@@ -130,3 +130,7 @@ E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\tunggu.g.cs
 E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\tunggu.baml
 D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\tunggu.g.cs
 D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\tunggu.baml
+E:\Kuliah\Sem4\SDP\Project\SDP-Project\ELREORS\ELREORS\obj\Debug\tunggu.g.cs
+E:\Kuliah\Sem4\SDP\Project\SDP-Project\ELREORS\ELREORS\obj\Debug\tunggu.baml
+E:\Kuliah\Sem4\SDP\Project\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Menu_Insert.g.cs
+E:\Kuliah\Sem4\SDP\Project\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Menu_Insert.baml

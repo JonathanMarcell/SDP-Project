@@ -10,6 +10,13 @@
       ShowsNavigationUI="False">
 
     <Grid>
-        
+        <TextBlock Margin="21,22,1295,691" FontSize="18" ><Run Text="Filter : "/></TextBlock>
+        <TextBox x:Name="tb_search" HorizontalAlignment="Left" Height="49" Margin="137,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="429" VerticalContentAlignment="Center"/>
+        <Button x:Name="btn_search" Content="Search" HorizontalAlignment="Left" Margin="582,10,0,0" VerticalAlignment="Top" Width="112" Height="49" FontSize="18"/>
+        <DataGrid x:Name="dg_Menu" HorizontalAlignment="Left" Height="508" Margin="10,64,0,0" VerticalAlignment="Top" Width="1346"/>
+        <Button x:Name="btn_insert" Content="INSERT" HorizontalAlignment="Left" Margin="40,622,0,0" VerticalAlignment="Top" Width="163" Height="66" FontSize="18" Click="btn_insert_Click"/>
+        <Button x:Name="btn_update" Content="UPDATE" HorizontalAlignment="Left" Margin="250,622,0,0" VerticalAlignment="Top" Width="163" Height="66" FontSize="18"/>
+        <Button x:Name="btn_print" Content="PRINT" HorizontalAlignment="Left" Margin="1134,622,0,0" VerticalAlignment="Top" Width="163" Height="66" FontSize="18"/>
+
     </Grid>
 </Page>

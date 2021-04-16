@@ -10,25 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ELREORS
 {
     /// <summary>
-    /// Interaction logic for Admin_Menu.xaml
+    /// Interaction logic for Admin_Menu_Insert.xaml
     /// </summary>
-    public partial class Admin_Menu : Page
+    public partial class Admin_Menu_Insert : Window
     {
-        public Admin_Menu()
+        public Admin_Menu_Insert()
         {
             InitializeComponent();
         }
 
         private void btn_insert_Click(object sender, RoutedEventArgs e)
         {
-            Admin_Menu_Insert a = new Admin_Menu_Insert();
-            a.ShowDialog();
+            this.Close();
+
         }
     }
 }

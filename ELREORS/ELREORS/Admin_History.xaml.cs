@@ -43,5 +43,9 @@ namespace ELREORS
             dataGrid.ItemsSource = dt.DefaultView;
         }
 
+        private void btn_print_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
