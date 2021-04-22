@@ -140,3 +140,7 @@ E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Menu_Ins
 E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Menu_Insert.baml
 D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Menu_Update.g.cs
 D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Menu_Update.baml
+D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Stock_Insert.g.cs
+D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Stock_Update.g.cs
+D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Stock_Insert.baml
+D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Stock_Update.baml
