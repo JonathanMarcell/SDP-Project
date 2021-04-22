@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\
+D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\
 ELREORS
 none
 false
 DEBUG;TRACE
-E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\App.xaml
-11-1295094643
+D:\Github\SDP-Project\ELREORS\ELREORS\App.xaml
+141192367562
 
-171253344315
-141443024088
-Admin.xaml;Admin_History.xaml;Admin_Menu.xaml;Admin_Menu_Insert.xaml;Admin_Setting.xaml;Admin_Stock.xaml;Kasir.xaml;ListPesanan.xaml;MainWindow.xaml;Meja.xaml;tunggu.xaml;
+20-1538960105
+14-696654261
+Admin.xaml;Admin_History.xaml;Admin_Menu.xaml;Admin_Menu_Insert.xaml;Admin_Menu_Update.xaml;Admin_Setting.xaml;Admin_Stock.xaml;Admin_Stock_Insert.xaml;Admin_Stock_Update.xaml;Kasir.xaml;ListPesanan.xaml;MainWindow.xaml;Meja.xaml;tunggu.xaml;
 
 True
 

@@ -33,5 +33,15 @@ namespace ELREORS
             this.Close();
 
         }
+
+        private void btn_pilihBahan_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_browse_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

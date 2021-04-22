@@ -16,29 +16,31 @@
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="4*"/>
                 <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Filter : " Margin="10" FontSize="18" />
-            <ComboBox x:Name="cb_filter" Grid.Column="1" Margin="5,5,30,5" FontSize="18"/>
-            <ComboBox x:Name="cb_tanggal" Grid.Column="2" Margin="5" FontSize="18" />
-            <Button x:Name="btn_print" Content="Print" Grid.Column="3" Margin="5" FontSize="18" Click="btn_print_Click"/>
+            <DatePicker x:Name="dp_filter1" Grid.Column="1" Margin="5,5,30,5" FontSize="18" VerticalAlignment="Center" SelectedDateChanged="DateChange"  />
+            <TextBlock Text="hingga" Grid.Column="2" Margin="5" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <DatePicker x:Name="dp_filter2" Grid.Column="3" Margin="5" FontSize="18" VerticalAlignment="Center" SelectedDateChanged="DateChange" />
+            <Button x:Name="btn_print" Content="Print" Grid.Column="4" Margin="5" FontSize="18" Click="btn_print_Click"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1">
             <DataGrid x:Name="dataGrid" Margin="5" ColumnWidth="*" FontSize="24" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2">
-            <TextBlock Text="Jumlah Nota : 0" Margin="10" FontSize="18" />
-            <TextBlock Text="Total : Rp -" Margin="10" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBlock x:Name="textJumlahNota" Text="Jumlah Nota : 0" Margin="10" FontSize="18" HorizontalAlignment="Left" />
+            <TextBlock x:Name="textTotal" Text="Total : Rp -" Margin="10" FontSize="18" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
 </Page>

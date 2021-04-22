@@ -41,7 +41,7 @@ namespace ELREORS
             if (tb_search.Text=="")
             {
                 OracleDataAdapter da = new OracleDataAdapter(
-                    "select  * from bahan", conn);
+                    "select  KODE_BAHAN AS ID, NAMA , Stok , Satuan from bahan", conn);
                 dt = new DataTable();
                 da.Fill(dt);
                 dg_Stock.ItemsSource = dt.DefaultView;
@@ -50,7 +50,7 @@ namespace ELREORS
             {
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = conn;
-                cmd.CommandText = "select* from bahan where lower(nama) like :param ";
+                cmd.CommandText = "select KODE_BAHAN AS ID, NAMA , Stok , Satuan from bahan where lower(nama) like :param ";
                 cmd.Parameters.Add(":param", '%' + tb_search.Text.ToLower() + '%');
                 OracleDataAdapter da = new OracleDataAdapter(cmd);
                 dt = new DataTable();

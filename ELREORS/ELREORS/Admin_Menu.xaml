@@ -11,13 +11,14 @@
       Margin="0">
 
     <Grid>
-        <TextBox x:Name="tb_search" FontSize="32" HorizontalAlignment="Left" Height="49" Margin="137,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="429" VerticalContentAlignment="Center"/>
-        <Button x:Name="btn_search" Content="Search" HorizontalAlignment="Left" Margin="582,10,0,0" VerticalAlignment="Top" Width="112" Height="49" FontSize="18" Click="btn_search_Click"/>
-        <DataGrid x:Name="dg_Menu" FontSize="24" HorizontalAlignment="Left" Height="508" Margin="40,64,0,0" VerticalAlignment="Top" Width="1257"/>
+        <TextBox x:Name="tb_search" FontSize="32" HorizontalAlignment="Left" Height="49" Margin="737,-2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="429" VerticalContentAlignment="Center"/>
+        <Button x:Name="btn_search" Content="Search" HorizontalAlignment="Left" Margin="1182,-2,0,0" VerticalAlignment="Top" Width="112" Height="49" FontSize="18" Click="btn_search_Click"/>
+        <DataGrid x:Name="dg_Menu" FontSize="24" HorizontalAlignment="Left" Height="508" Width="1257" Margin="40,64,0,0" VerticalAlignment="Top" />
         <Button x:Name="btn_insert" Content="INSERT" HorizontalAlignment="Left" Margin="40,596,0,0" VerticalAlignment="Top" Width="163" Height="66" FontSize="18" Click="btn_insert_Click"/>
-        <Button x:Name="btn_update" Content="UPDATE" HorizontalAlignment="Left" Margin="250,596,0,0" VerticalAlignment="Top" Width="163" Height="66" FontSize="18"/>
+        <Button x:Name="btn_update" Content="UPDATE" HorizontalAlignment="Left" Margin="250,596,0,0" VerticalAlignment="Top" Width="163" Height="66" FontSize="18" Click="btn_update_Click"/>
         <Button x:Name="btn_print" Content="PRINT" HorizontalAlignment="Left" Margin="1134,596,0,0" VerticalAlignment="Top" Width="163" Height="66" FontSize="18"/>
-        <TextBlock Margin="40,22,1276,691" FontSize="18" ><Run Text="Filter : "/></TextBlock>
+        <TextBlock Margin="640,10,676,686" FontSize="18" ><Run Text="Filter : "/></TextBlock>
+        <Label Content="Menu Makanan" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32" FontWeight="Bold"/>
 
     </Grid>
 </Page>

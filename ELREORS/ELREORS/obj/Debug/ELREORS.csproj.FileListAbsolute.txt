@@ -138,3 +138,5 @@ D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\ELREORS.pdb
 D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\ELREORS.csprojAssemblyReference.cache
 E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Menu_Insert.g.cs
 E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Menu_Insert.baml
+D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Menu_Update.g.cs
+D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Menu_Update.baml

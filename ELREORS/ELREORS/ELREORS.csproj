@@ -78,6 +78,15 @@
     <Compile Include="Admin_Menu_Insert.xaml.cs">
       <DependentUpon>Admin_Menu_Insert.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Admin_Menu_Update.xaml.cs">
+      <DependentUpon>Admin_Menu_Update.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Stock_Insert.xaml.cs">
+      <DependentUpon>Admin_Stock_Insert.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Stock_Update.xaml.cs">
+      <DependentUpon>Admin_Stock_Update.xaml</DependentUpon>
+    </Compile>
     <Compile Include="menu.cs" />
     <Compile Include="tunggu.xaml.cs">
       <DependentUpon>tunggu.xaml</DependentUpon>
@@ -98,11 +107,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Admin_Menu_Update.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Admin_Setting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Admin_Stock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_Stock_Insert.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_Stock_Update.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

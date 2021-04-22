@@ -37,6 +37,11 @@ namespace ELREORS
             Admin_Menu_Insert a = new Admin_Menu_Insert();
             a.ShowDialog();
         }
+        private void btn_update_Click(object sender, RoutedEventArgs e)
+        {
+            Admin_Menu_Insert a = new Admin_Menu_Insert();
+            a.ShowDialog();
+        }
 
         private void btn_search_Click(object sender, RoutedEventArgs e)
         {
@@ -48,7 +53,7 @@ namespace ELREORS
             if (tb_search.Text == "")
             {
                 OracleDataAdapter da = new OracleDataAdapter(
-                    "select * from menu", conn);
+                    "select KODE_MENU as ID , NAMA , CASE when STATUS = 1 then 'Aktif' ELSE 'NonAktif' END as STATUS , HARGA from menu", conn);
                 dt = new DataTable();
                 da.Fill(dt);
                 dg_Menu.ItemsSource = dt.DefaultView;
@@ -57,7 +62,7 @@ namespace ELREORS
             {
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = conn;
-                cmd.CommandText = "select* from menu where lower(nama) like :param ";
+                cmd.CommandText = "select KODE_MENU as ID , NAMA , CASE when STATUS = 1 then 'Aktif' ELSE 'NonAktif' END as STATUS , HARGA from menu where lower(nama) like :param ";
                 cmd.Parameters.Add(":param", '%'+ tb_search.Text.ToLower() + '%');
                 OracleDataAdapter da = new OracleDataAdapter(cmd);
                 dt = new DataTable();
@@ -65,5 +70,7 @@ namespace ELREORS
                 dg_Menu.ItemsSource = dt.DefaultView;
             }
         }
+
+
     }
 }
