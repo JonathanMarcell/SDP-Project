@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,79 +21,83 @@ namespace ELREORS
     /// </summary>
     public partial class Kasir : Window
     {
-        public Kasir()
+        private OracleConnection conn;
+        DataTable dt;
+        int nomeja;
+        public Kasir(OracleConnection conn)
         {
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
-            //this.WindowStyle = WindowStyle.None;
+            this.conn = conn;
 
             labelTanggal.Content = "Tanggal : "+ DateTime.Now.ToString().Substring(0,10);
-            //DataGridTextColumn dtKasir1 = new DataGridTextColumn();
-            //dtKasir1.Header = "Nama Menu";
-            //dtKasir1.Binding = new Binding("Nama Menu");
-            //dtKasir1.Width = 650;
-            //dataGrid.Columns.Add(dtKasir1);
-            //DataGridTextColumn dtKasir2 = new DataGridTextColumn();
-            //dtKasir2.Header = "Jumlah";
-            //dtKasir2.Width = 250;
-            //dtKasir2.Binding = new Binding("Jumlah");
-            //dataGrid.Columns.Add(dtKasir2);
-            //DataGridTextColumn dtKasir3 = new DataGridTextColumn();
-            //dtKasir3.Header = "Harga";
-            //dtKasir3.Width = 390;
-            //dtKasir3.Binding = new Binding("Harga");
-            //dataGrid.Columns.Add(dtKasir3);
-            //DataGridTextColumn dtKasir4 = new DataGridTextColumn();
-            //dtKasir4.Header = "Subtotal";
-            //dtKasir4.Width = 390;
-            //dtKasir4.Binding = new Binding("Subtotal");
-            //dataGrid.Columns.Add(dtKasir4);
+            loadData();
+        }
 
+        void loadData()
+        {
+            string query = "select distinct hj.ID as \"No\", hj.KODE_HJUAL as \"Kode HJUAL\", to_char(hj.TANGGAL, 'dd/MM/yyyy') as \"Tanggal\", mn.NAMA as \"Menu\", pg.NAMA as \"Pegawai\", case when hj.STATUS>1 then 'Sudah Dikonfirmasi' else 'Belum Dikonfirmasi' end as \"Status\" from HJUAL hj, PEGAWAI pg, DJUAL dj, MENU mn where hj.ID_PEGAWAI = pg.ID and hj.ID = dj.ID_HEADER and mn.ID = dj.ID_MENU and nomor_meja = " + nomeja;
+            OracleDataAdapter da = new OracleDataAdapter(query, conn);
+            dt = new DataTable();
+            da.Fill(dt);
+
+            dgKasir.ItemsSource = dt.DefaultView;
         }
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
             mejudul.Content = "MEJA 1";
+            nomeja = 1;
+            loadData();
         }
 
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
             mejudul.Content = "MEJA 2";
+            nomeja = 2;
+            loadData();
         }
 
         private void btn3_Click_1(object sender, RoutedEventArgs e)
         {
             mejudul.Content = "MEJA 3";
+            nomeja = 3;
+            loadData();
         }
 
         private void btn4_Click_1(object sender, RoutedEventArgs e)
         {
             mejudul.Content = "MEJA 4";
+            nomeja = 4;
+            loadData();
         }
 
         private void btn5_Click_1(object sender, RoutedEventArgs e)
         {
             mejudul.Content = "MEJA 5";
+            nomeja = 5;
+            loadData();
         }
 
         private void btn6_Click_1(object sender, RoutedEventArgs e)
         {
             mejudul.Content = "MEJA 6";
+            nomeja = 6;
+            loadData();
         }
 
         private void btn7_Click_1(object sender, RoutedEventArgs e)
         {
             mejudul.Content = "MEJA 7";
+            nomeja = 7;
+            loadData();
         }
 
         private void btn8_Click_1(object sender, RoutedEventArgs e)
         {
             mejudul.Content = "MEJA 8";
-        }
-
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            nomeja = 8;
+            loadData();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

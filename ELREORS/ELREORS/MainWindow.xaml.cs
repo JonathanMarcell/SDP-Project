@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,7 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.IO;
 
 namespace ELREORS
 {
@@ -29,31 +29,12 @@ namespace ELREORS
             //fullscreen & no window control, nanti kasi ini ke semua wpf
             this.WindowState= WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
-
-            //misc
-            try
-            {
-                //nambah gambar di Background (pake brush) / Image (pake ImageSource)
-                Uri uri = new Uri("Resource/bg1.jpg", UriKind.Relative);
-                BitmapImage img = new BitmapImage(uri);
-                ImageBrush b = new ImageBrush(img);
-                //mode 
-                b.Opacity = 1 ; //default 1
-                b.TileMode = TileMode.Tile; //default None
-                b.Stretch = Stretch.Fill; //default Fill
-
-                win.Background = b; // win ini x:Name nya Window
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString());
-            }
-            //cara ngakses objek dari suatu parent , harus diTypeCast
-            //MessageBox.Show(    ((TextBlock)win.FindName("Title")).Text    );
         }
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
+            var connectionString = "Data Source = orcl; User ID= coba; Password= 1";
+            OracleConnection conn1 = new OracleConnection(connectionString);
             if (tb_username.Text=="admin")
             {
                 Admin a = new Admin();
@@ -69,9 +50,18 @@ namespace ELREORS
             }
             else if (tb_username.Text=="kasir")
             {
-                Kasir a = new Kasir();
-                a.Show();
-                Close();
+                try
+                {
+                    conn1.Open();
+                    conn1.Close();
+                    Kasir mm = new Kasir(conn1);
+                    mm.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    conn1.Close();
+                }
             }
             else if (tb_username.Text=="list")
             {
