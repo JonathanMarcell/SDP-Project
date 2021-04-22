@@ -33,7 +33,10 @@ namespace ELREORS
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
-            var connectionString = "Data Source = orcl; User ID= coba; Password= 1";
+            var connectionString = "Data Source = orcl; User ID= coba; Password= 1"; //nando
+            //var connectionString = "Data Source = orcl; User ID= ; Password= ";
+            //var connectionString = "Data Source = orcl; User ID= ; Password= ";
+            //var connectionString = "Data Source = orcl; User ID= ; Password= ";
             OracleConnection conn1 = new OracleConnection(connectionString);
             if (tb_username.Text=="admin")
             {
