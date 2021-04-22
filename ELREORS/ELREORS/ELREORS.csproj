@@ -78,6 +78,7 @@
     <Compile Include="Admin_Menu_Insert.xaml.cs">
       <DependentUpon>Admin_Menu_Insert.xaml</DependentUpon>
     </Compile>
+    <Compile Include="menu.cs" />
     <Compile Include="tunggu.xaml.cs">
       <DependentUpon>tunggu.xaml</DependentUpon>
     </Compile>
