@@ -1,6 +1,7 @@
 ﻿using Oracle.DataAccess.Client;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,17 +28,27 @@ namespace ELREORS
         int max = 0;
         int halaman = 0;
         int jumlah = 3;
+        DataTable daO;
+        int indexing = 0;
         public Meja(string n)
         {
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
-            no =  n.Substring(0,1).ToUpper() + n.Substring(1, 3) + " " + n.Substring(4);
+            no = n.Substring(0, 1).ToUpper() + n.Substring(1, 3) + " " + n.Substring(4);
             temp = n;
             lbNama.Content = no;
             conn = App.conn;
             refresh();
             tampil();
+            awal();
+        }
+        void awal()
+        {
+            daO = new DataTable();
+            daO.Columns.Add("Nama");
+            daO.Columns.Add("Jumlah");
+            daO.Columns.Add("Harga");
         }
         void refresh()
         {
@@ -65,7 +76,7 @@ namespace ELREORS
                 else max = max / 3;
                 conn.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 conn.Close();
@@ -73,7 +84,7 @@ namespace ELREORS
         }
         void tampil()
         {
-            int i1=0, i2=1, i3=2, iT = 3;
+            int i1 = 0, i2 = 1, i3 = 2, iT = 3;
             try
             {
                 if (halaman == 0)
@@ -110,7 +121,7 @@ namespace ELREORS
                         Rp1.Visibility = Visibility.Hidden;
                     }
 
-                    if ((iT * halaman) + i2 >= 0 && (iT * halaman) + i2 < m.Count() )
+                    if ((iT * halaman) + i2 >= 0 && (iT * halaman) + i2 < m.Count())
                     {
                         lbN2.Content = m[(iT * halaman) + i2].getNama();
                         lbK2.Content = m[(iT * halaman) + i2].getKeterangan();
@@ -181,6 +192,194 @@ namespace ELREORS
             btnPlus3.Visibility = Visibility.Visible;
             Rp3.Visibility = Visibility.Visible;
         }
+        void gantiJ()
+        {
+            lbJ1.Content = "0";
+            lbJ2.Content = "0";
+            lbJ3.Content = "0";
+        }
+        void cekJ()
+        {
+            for (int i = 0; i < daO.Rows.Count; i++)
+            {
+                if (daO.Rows[i]["Nama"] == lbN1.Content)
+                {
+                    lbJ1.Content = daO.Rows[i]["Jumlah"];
+                }
+                else if (daO.Rows[i]["Nama"] == lbN2.Content)
+                {
+                    lbJ2.Content = daO.Rows[i]["Jumlah"];
+                }
+                else if (daO.Rows[i]["Nama"] == lbN3.Content)
+                {
+                    lbJ3.Content = daO.Rows[i]["Jumlah"];
+                }
+            }
+        }
+        void tambah()
+        {
+            if (indexing == 1)
+            {
+                MessageBox.Show("masuk1");
+                bool gak = true;
+                int ctr = 0;
+                if (daO.Rows.Count > 0)
+                {
+                    for (int i = 0; i < daO.Rows.Count; i++)
+                    {
+                        if (daO.Rows[i]["Nama"] == lbN1.Content)
+                        {
+                            daO.Rows[i]["Jumlah"] = Convert.ToInt32(daO.Rows[i]["Jumlah"]) + 1;
+                            lbJ1.Content = Convert.ToInt32(lbJ1.Content) + 1;
+                            daO.Rows[i]["Harga"] = Convert.ToInt32(lbJ1.Content) * Convert.ToInt32(lbH1.Content);
+                            ctr++;
+                        }
+                    }
+                    if (ctr == 0) gak = false;
+                }
+                else gak = false;
+                if (!gak)
+                {
+                    lbJ1.Content = Convert.ToInt32(lbJ1.Content) + 1;
+                    DataRow dr = daO.NewRow();
+                    dr[0] = lbN1.Content;
+                    dr[1] = lbJ1.Content;
+                    dr[2] = Convert.ToInt32(lbH1.Content) * Convert.ToInt32(lbJ1.Content);
+                    daO.Rows.Add(dr);
+                }
+                dataOrder.ItemsSource = daO.DefaultView;
+            }
+            else if (indexing == 2)
+            {
+                bool gak = true;
+                int ctr = 0;
+                if (daO.Rows.Count > 0)
+                {
+                    for (int i = 0; i < daO.Rows.Count; i++)
+                    {
+                        if (daO.Rows[i]["Nama"] == lbN2.Content)
+                        {
+                            daO.Rows[i]["Jumlah"] = Convert.ToInt32(daO.Rows[i]["Jumlah"]) + 1;
+                            lbJ2.Content = Convert.ToInt32(lbJ2.Content) + 1;
+                            daO.Rows[i]["Harga"] = Convert.ToInt32(lbJ2.Content) * Convert.ToInt32(lbH2.Content);
+                            ctr++;
+                        }
+
+                    }
+                    if (ctr == 0) gak = false;
+                }
+                else gak = false;
+                if (!gak)
+                {
+                    lbJ2.Content = Convert.ToInt32(lbJ2.Content) + 1;
+                    DataRow dr = daO.NewRow();
+                    dr[0] = lbN2.Content;
+                    dr[1] = lbJ2.Content;
+                    dr[2] = Convert.ToInt32(lbH2.Content) * Convert.ToInt32(lbJ2.Content);
+                    daO.Rows.Add(dr);
+                }
+                dataOrder.ItemsSource = daO.DefaultView;
+            }
+            else
+            {
+                bool gak = true;
+                int ctr = 0;
+                if (daO.Rows.Count > 0)
+                {
+                    for (int i = 0; i < daO.Rows.Count; i++)
+                    {
+                        if (daO.Rows[i]["Nama"] == lbN3.Content)
+                        {
+                            daO.Rows[i]["Jumlah"] = Convert.ToInt32(daO.Rows[i]["Jumlah"]) + 1;
+                            lbJ3.Content = Convert.ToInt32(lbJ3.Content) + 1;
+                            daO.Rows[i]["Harga"] = Convert.ToInt32(lbJ3.Content) * Convert.ToInt32(lbH3.Content);
+                            ctr++;
+                        }
+                    }
+                    if (ctr == 0) gak = false;
+                }
+                else gak = false;
+                if (!gak)
+                {
+                    lbJ3.Content = Convert.ToInt32(lbJ3.Content) + 1;
+                    DataRow dr = daO.NewRow();
+                    dr[0] = lbN3.Content;
+                    dr[1] = lbJ3.Content;
+                    dr[2] = Convert.ToInt32(lbH3.Content) * Convert.ToInt32(lbJ3.Content);
+                    daO.Rows.Add(dr);
+                }
+                dataOrder.ItemsSource = daO.DefaultView;
+            }
+        }
+        void kurang()
+        {
+            if (indexing == 1)
+            {
+                if (Convert.ToInt32(lbJ1.Content) > 0)
+                {
+                    if (daO.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < daO.Rows.Count; i++)
+                        {
+                            if (daO.Rows[i]["Nama"] == lbN1.Content)
+                            {
+                                daO.Rows[i]["Jumlah"] = Convert.ToInt32(daO.Rows[i]["Jumlah"]) - 1;
+                                lbJ1.Content = Convert.ToInt32(lbJ1.Content) - 1;
+                                daO.Rows[i]["Harga"] = Convert.ToInt32(lbJ1.Content) * Convert.ToInt32(lbH1.Content);
+                            }
+                            if (Convert.ToInt32(daO.Rows[i]["Jumlah"]) == 0)
+                            {
+                                daO.Rows.RemoveAt(i);
+                            }
+                        }
+                    }
+                }
+            }
+            else if (indexing == 2)
+            {
+                if (Convert.ToInt32(lbJ2.Content) > 0)
+                {
+                    if (daO.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < daO.Rows.Count; i++)
+                        {
+                            if (daO.Rows[i]["Nama"] == lbN2.Content)
+                            {
+                                daO.Rows[i]["Jumlah"] = Convert.ToInt32(daO.Rows[i]["Jumlah"]) - 1;
+                                lbJ2.Content = Convert.ToInt32(lbJ2.Content) - 1;
+                                daO.Rows[i]["Harga"] = Convert.ToInt32(lbJ2.Content) * Convert.ToInt32(lbH2.Content);
+                            }
+                            if (Convert.ToInt32(daO.Rows[i]["Jumlah"]) == 0)
+                            {
+                                daO.Rows.RemoveAt(i);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (Convert.ToInt32(lbJ3.Content) > 0)
+                {
+                    if (daO.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < daO.Rows.Count; i++)
+                        {
+                            if (daO.Rows[i]["Nama"] == lbN3.Content)
+                            {
+                                daO.Rows[i]["Jumlah"] = Convert.ToInt32(daO.Rows[i]["Jumlah"]) - 1;
+                                lbJ3.Content = Convert.ToInt32(lbJ3.Content) - 1;
+                                daO.Rows[i]["Harga"] = Convert.ToInt32(lbJ3.Content) * Convert.ToInt32(lbH3.Content);
+                            }
+                            if (Convert.ToInt32(daO.Rows[i]["Jumlah"]) == 0)
+                            {
+                                daO.Rows.RemoveAt(i);
+                            }
+                        }
+                    }
+                }
+            }
+        }
         private void btnPesan_Click(object sender, RoutedEventArgs e)
         {
             tunggu t = new tunggu(temp);
@@ -189,22 +388,61 @@ namespace ELREORS
         }
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
-            if (halaman<max-1)
+            gantiJ();
+            if (halaman < max - 1)
             {
                 tampilLb();
                 halaman = halaman + 1;
                 tampil();
+                cekJ();
             }
-            
         }
         private void btnPrev_Click(object sender, RoutedEventArgs e)
         {
-            if (halaman>0)
+            gantiJ();
+            if (halaman > 0)
             {
                 tampilLb();
                 halaman = halaman - 1;
                 tampil();
+                cekJ();
             }
+        }
+        private void btnMin1_Click(object sender, RoutedEventArgs e)
+        {
+            indexing = 1;
+            kurang();
+        }
+        private void btnPlus1_Click(object sender, RoutedEventArgs e)
+        {
+            indexing = 1;
+            tambah();
+        }
+        private void btnMin2_Click(object sender, RoutedEventArgs e)
+        {
+            indexing = 2;
+            kurang();
+        }
+        private void btnPlus2_Click(object sender, RoutedEventArgs e)
+        {
+            indexing = 2;
+            tambah();
+        }
+        private void btnMin3_Click(object sender, RoutedEventArgs e)
+        {
+            indexing = 3;
+            kurang();
+        }
+        private void btnPlus3_Click(object sender, RoutedEventArgs e)
+        {
+            indexing = 3;
+            tambah();
+        }
+        private void btnBersih_Click(object sender, RoutedEventArgs e)
+        {
+            daO.Clear();
+            dataOrder.ItemsSource = daO.DefaultView;
+            gantiJ();
         }
     }
 }

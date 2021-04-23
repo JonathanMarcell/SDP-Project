@@ -187,3 +187,9 @@ D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ELREORS.Properties.Resour
 D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ELREORS.csproj.GenerateResource.cache
 D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ELREORS.csproj.CoreCompileInputs.cache
 D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ELREORS.csproj.CopyComplete
+E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Menu_Update.g.cs
+E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Stock_Insert.g.cs
+E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Stock_Update.g.cs
+E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Menu_Update.baml
+E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Stock_Insert.baml
+E:\Documents\Semester_4\SDP\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Stock_Update.baml
