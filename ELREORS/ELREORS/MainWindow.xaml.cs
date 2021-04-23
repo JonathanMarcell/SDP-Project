@@ -29,6 +29,26 @@ namespace ELREORS
             //fullscreen & no window control, nanti kasi ini ke semua wpf
             this.WindowState= WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
+            //misc
+            try
+            {
+                //nambah gambar di Background (pake brush) / Image (pake ImageSource)
+                Uri uri = new Uri("Resource/bg1.jpg", UriKind.Relative);
+                BitmapImage img = new BitmapImage(uri);
+                ImageBrush b = new ImageBrush(img);
+                //mode 
+                b.Opacity = 1; //default 1
+                b.TileMode = TileMode.Tile; //default None
+                b.Stretch = Stretch.Fill; //default Fill
+
+                win.Background = b; // win ini x:Name nya Window
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            //cara ngakses objek dari suatu parent , harus diTypeCast
+            //MessageBox.Show(    ((TextBlock)win.FindName("Title")).Text    );
         }
 
         private void btn_login_Click(object sender, RoutedEventArgs e)

@@ -144,3 +144,46 @@ D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Stock_Insert.g.cs
 D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Stock_Update.g.cs
 D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Stock_Insert.baml
 D:\Github\SDP-Project\ELREORS\ELREORS\obj\Debug\Admin_Stock_Update.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ELREORS.csprojAssemblyReference.cache
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_History.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_Menu.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_Menu_Insert.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_Menu_Update.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_Setting.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_Stock.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_Stock_Insert.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_Stock_Update.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Kasir.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ListPesanan.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\MainWindow.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Meja.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\tunggu.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\App.g.cs
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ELREORS_MarkupCompile.cache
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ELREORS_MarkupCompile.lref
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ELREORS.exe
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ELREORS.pdb
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\bin\Debug\ELREORS.exe.config
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\bin\Debug\ELREORS.exe
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\bin\Debug\ELREORS.pdb
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\bin\Debug\Oracle.DataAccess.dll
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_History.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_Menu.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_Menu_Insert.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_Menu_Update.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_Setting.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_Stock.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_Stock_Insert.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Admin_Stock_Update.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Kasir.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ListPesanan.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\MainWindow.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\Meja.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\tunggu.baml
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ELREORS.g.resources
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ELREORS.Properties.Resources.resources
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ELREORS.csproj.GenerateResource.cache
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ELREORS.csproj.CoreCompileInputs.cache
+D:\Github\SDP-Project - Copy\ELREORS\ELREORS\obj\Debug\ELREORS.csproj.CopyComplete
