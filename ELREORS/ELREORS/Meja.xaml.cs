@@ -22,26 +22,23 @@ namespace ELREORS
     public partial class Meja : Window
     {
         OracleConnection conn;
-        string no;
-        string temp;
         List<menu> m = new List<menu>();
         int max = 0;
         int halaman = 0;
         int jumlah = 3;
         DataTable daO;
         int indexing = 0;
-        public Meja(string n)
+        public Meja()
         {
             InitializeComponent();
+            btnPrev.IsEnabled = false;
             this.WindowState = WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
-            no = n.Substring(0, 1).ToUpper() + n.Substring(1, 3) + " " + n.Substring(4);
-            temp = n;
-            lbNama.Content = no;
             conn = App.conn;
             refresh();
             tampil();
             awal();
+            MessageBox.Show(""+max);
         }
         void awal()
         {
@@ -58,18 +55,19 @@ namespace ELREORS
                 conn.Open();
                 max = 0;
                 OracleCommand cmd = new OracleCommand();
-                string qry = "select nama as \"nama\", harga as \"harga\" , status as \"status\", keterangan as \"keterangan\" from menu where status = 1";
+                string qry = "select id as \"id\",nama as \"nama\", harga as \"harga\" , status as \"status\", keterangan as \"keterangan\" from menu where status = 1";
                 cmd = new OracleCommand(qry, conn);
                 cmd.ExecuteReader();
                 OracleDataReader dr = cmd.ExecuteReader();
                 m.Clear();
                 while (dr.Read())
                 {
-                    m.Add(new menu(dr[0].ToString(), Convert.ToInt32(dr[1]), Convert.ToInt32(dr[2]), dr[3].ToString()));
+                    m.Add(new menu(Convert.ToInt32(dr[0]), dr[1].ToString(), Convert.ToInt32(dr[2]), Convert.ToInt32(dr[3]), dr[4].ToString()));
                 }
                 for (int i = 0; i < m.Count(); i++)
                 {
                     max++;
+                    jumlah++;
                 }
                 hasil = max % 3;
                 if (hasil != 0) max = (max / 3) + 1;
@@ -220,7 +218,6 @@ namespace ELREORS
         {
             if (indexing == 1)
             {
-                MessageBox.Show("masuk1");
                 bool gak = true;
                 int ctr = 0;
                 if (daO.Rows.Count > 0)
@@ -382,13 +379,43 @@ namespace ELREORS
         }
         private void btnPesan_Click(object sender, RoutedEventArgs e)
         {
-            tunggu t = new tunggu(temp);
-            t.Show();
-            Close();
+            if (dataOrder.Items.Count<=1)
+            {
+                MessageBox.Show("Silahkan memesan makanan terlebih dahulu");
+            }
+            else
+            {
+                try
+                {
+                    conn.Open();
+                    int ctr = 0;
+                    OracleTransaction trans;
+                    trans = conn.BeginTransaction();
+                    try
+                    {
+                        string qry = "";
+                        tunggu t = new tunggu();
+                        t.Show();
+                        this.Close();
+                        conn.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        conn.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
+            }
         }
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             gantiJ();
+            btnPrev.IsEnabled = true;
             if (halaman < max - 1)
             {
                 tampilLb();
@@ -396,16 +423,25 @@ namespace ELREORS
                 tampil();
                 cekJ();
             }
+            if (halaman == max - 1)
+            {
+                btnNext.IsEnabled = false;
+            }
         }
         private void btnPrev_Click(object sender, RoutedEventArgs e)
         {
             gantiJ();
+            btnNext.IsEnabled = true;
             if (halaman > 0)
             {
                 tampilLb();
                 halaman = halaman - 1;
                 tampil();
                 cekJ();
+            }
+            if (halaman == 0)
+            {
+                btnPrev.IsEnabled = false;
             }
         }
         private void btnMin1_Click(object sender, RoutedEventArgs e)
@@ -443,6 +479,25 @@ namespace ELREORS
             daO.Clear();
             dataOrder.ItemsSource = daO.DefaultView;
             gantiJ();
+        }
+        private void lbNama_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            tbM.Visibility = Visibility.Visible;
+            tbM.Text = "Silahkan masukan no meja";
+        }
+        private void lbM_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            tbM.Visibility = Visibility.Visible;
+            tbM.Text = "Silahkan masukan no meja";
+        }
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+            if (e.Key == Key.Enter)
+            {
+                lbM.Content = tbM.Text;
+                tbM.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

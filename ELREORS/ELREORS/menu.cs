@@ -8,19 +8,28 @@ namespace ELREORS
 {
     class menu
     {
+
+        public int id;
         public string nama;
         public int harga;
         public int status;
         public string keterangan;
-
-        public menu(string nama, int harga, int status, string keterangan)
+        public menu(int id, string nama, int harga, int status, string keterangan)
         {
+            this.id = id;
             this.nama = nama;
             this.harga = harga;
             this.status = status;
             this.keterangan = keterangan;
         }
-
+        public void setId(int id)
+        {
+            this.id = id;
+        }
+        public int getId()
+        {
+            return id;
+        }
         public void setNama(string nama)
         {
             this.nama = nama;

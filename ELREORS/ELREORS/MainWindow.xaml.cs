@@ -64,10 +64,9 @@ namespace ELREORS
                 a.Show();
                 Close();
             }
-            else if (tb_username.Text=="meja1" || tb_username.Text == "meja2" || tb_username.Text == "meja3" || tb_username.Text == "meja4" || tb_username.Text == "meja5" ||
-                tb_username.Text == "meja6" || tb_username.Text == "meja7" || tb_username.Text == "meja8" || tb_username.Text == "meja9" || tb_username.Text == "meja10")
+            else if (tb_username.Text=="meja")
             {
-                Meja a = new Meja(tb_username.Text);
+                Meja a = new Meja();
                 a.Show();
                 Close();
             }

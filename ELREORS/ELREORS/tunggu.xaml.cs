@@ -20,25 +20,17 @@ namespace ELREORS
     /// </summary>
     public partial class tunggu : Window
     {
-        string nama;
-        public tunggu(string na)
+        public tunggu()
         {
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
-
-            nam = na;
-            nama = na.Substring(0, 1).ToUpper() + na.Substring(1, 3) + " " + na.Substring(4); ;
-            lbNama.Content = nama;
         }
         string nam;
-        int time;
+        int time,timer;
         DispatcherTimer dt = new DispatcherTimer();
         private void btnSelesai_Click(object sender, RoutedEventArgs e)
         {
-            dt.Interval = TimeSpan.FromSeconds(1);
-            dt.Tick += dtTicker;
-            dt.Start();
             meunggu.Content =  "Terima kasih";
             bayar.Visibility = Visibility.Hidden;
         }
@@ -46,18 +38,31 @@ namespace ELREORS
         private void dtTicker(object sender, EventArgs e)
         {
             time++;
-            if (time>3)
+            if (time>6)
+            {
+                meunggu.Content = "Terima kasih";
+                bayar.Visibility = Visibility.Hidden;
+            }
+            if (time>10)
             {
                 dt.Stop();
-                Meja a = new Meja(nam);
+                Meja a = new Meja();
                 a.Show();
                 Close();
+            }
+            if (timer>3)
+            {
+
             }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             time = 0;
+            timer = 0;
+            dt.Interval = TimeSpan.FromSeconds(1);
+            dt.Tick += dtTicker;
+            dt.Start();
         }
     }
 }
