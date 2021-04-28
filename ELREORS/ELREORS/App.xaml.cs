@@ -17,13 +17,13 @@ namespace ELREORS
 
             //ini masukin user oracle , mending bikin user baru sih menurutku
 
-        new OracleConnection("Data Source =orcl; User Id = bryant ; Password =bryant ");
+        //new OracleConnection("Data Source =orcl; User Id = bryant ; Password =bryant ");
 
         //new OracleConnection("Data Source =  orcl; User Id = sdp ; Password = sdp");
 
         //new OracleConnection("Data Source = orcl ; User Id = coba ; Password = 1");
 
-        //new OracleConnection("Data Source = orcl ; User Id = jo2 ; Password = jo2");
+        new OracleConnection("Data Source = orcl ; User Id = jo2 ; Password = jo2");
 
         public static void openconn()
         {
@@ -35,6 +35,20 @@ namespace ELREORS
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+        public static int getJumlahMeja()
+        {
+            try
+            {
+                OracleCommand cmd = new OracleCommand("select * from jumlahmeja", conn);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            return 0;
         }
     }
 }
