@@ -13,7 +13,7 @@
     <Grid>
         <TextBox x:Name="tb_search" FontSize="32" HorizontalAlignment="Left" Height="49" Margin="737,-2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="429" VerticalContentAlignment="Center"/>
         <Button x:Name="btn_search" Content="Search" HorizontalAlignment="Left" Margin="1182,-2,0,0" VerticalAlignment="Top" Width="112" Height="49" FontSize="18" Click="btn_search_Click"/>
-        <DataGrid x:Name="dg_Menu" FontSize="24" HorizontalAlignment="Left" Height="508" Width="1257" Margin="40,64,0,0" VerticalAlignment="Top" />
+        <DataGrid x:Name="dg_Menu" FontSize="24" IsReadOnly="true" HorizontalAlignment="Left" Height="508" Width="1257" Margin="40,64,0,0" VerticalAlignment="Top" />
         <Button x:Name="btn_insert" Content="INSERT" HorizontalAlignment="Left" Margin="40,596,0,0" VerticalAlignment="Top" Width="163" Height="66" FontSize="18" Click="btn_insert_Click"/>
         <Button x:Name="btn_update" Content="UPDATE" HorizontalAlignment="Left" Margin="250,596,0,0" VerticalAlignment="Top" Width="163" Height="66" FontSize="18" Click="btn_update_Click"/>
         <Button x:Name="btn_print" Content="PRINT" HorizontalAlignment="Left" Margin="1134,596,0,0" VerticalAlignment="Top" Width="163" Height="66" FontSize="18"/>

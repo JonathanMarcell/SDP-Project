@@ -30,17 +30,18 @@
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Filter : " Margin="10" FontSize="18" />
-            <DatePicker x:Name="dp_filter1" Grid.Column="1" Margin="5,5,30,5" FontSize="18" VerticalAlignment="Center" SelectedDateChanged="DateChange"  />
+            <DatePicker x:Name="dp_filter1" Grid.Column="1" Margin="5,5,30,5" FontSize="18" VerticalAlignment="Center" SelectedDateChanged="DateChange" />
             <TextBlock Text="hingga" Grid.Column="2" Margin="5" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <DatePicker x:Name="dp_filter2" Grid.Column="3" Margin="5" FontSize="18" VerticalAlignment="Center" SelectedDateChanged="DateChange" />
             <Button x:Name="btn_print" Content="Print" Grid.Column="4" Margin="5" FontSize="18" Click="btn_print_Click"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1">
-            <DataGrid x:Name="dataGrid" Margin="5" ColumnWidth="*" FontSize="24" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
+            <DataGrid x:Name="dataGrid" Margin="5" ColumnWidth="*" FontSize="24" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True" MouseDoubleClick="dataGrid_MouseDoubleClick"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2">
-            <TextBlock x:Name="textJumlahNota" Text="Jumlah Nota : 0" Margin="10" FontSize="18" HorizontalAlignment="Left" />
             <TextBlock x:Name="textTotal" Text="Total : Rp -" Margin="10" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBlock x:Name="textJumlahNota" Text="Jumlah Nota : 0" Margin="10,10,250,10" FontSize="18" HorizontalAlignment="Right" />
+            <Button x:Name="btnShowChart" Content="Chart" HorizontalAlignment="Left" Margin="36,13,0,0" VerticalAlignment="Top" FontSize="18" Width="75" Click="btnShowChart_Click"/>
         </Grid>
     </Grid>
 </Page>

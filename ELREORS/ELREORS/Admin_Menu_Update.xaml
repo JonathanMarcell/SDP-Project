@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ELREORS"
         mc:Ignorable="d"
-        Title="Admin_Menu_Update" Height="429.344" Width="493.115">
+        Title="Admin_Menu_Update" Height="429.344" Width="493.115"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBox x:Name="tb_nama" FontSize="18" HorizontalAlignment="Left" Height="22" Margin="34,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369"/>
         <TextBox x:Name="tb_harga" FontSize="18" HorizontalAlignment="Left" Height="24" Margin="34,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>

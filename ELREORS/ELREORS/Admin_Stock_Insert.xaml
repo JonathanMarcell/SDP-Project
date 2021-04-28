@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ELREORS"
         mc:Ignorable="d"
-        Title="Admin_Stock_Insert" Height="430" Width="500">
+        Title="Admin_Stock_Insert" Height="430" Width="500"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Button x:Name="btn_insert" Content="INSERT" HorizontalAlignment="Left" Margin="178,316,0,0" VerticalAlignment="Top" Width="140" Height="42" FontSize="18"/>
         <TextBox x:Name="tb_nama" FontSize="18" HorizontalAlignment="Left" Height="42" Margin="66,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="366" VerticalContentAlignment="Center"/>

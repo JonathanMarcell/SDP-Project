@@ -36,11 +36,24 @@ namespace ELREORS
         {
             Admin_Menu_Insert a = new Admin_Menu_Insert();
             a.ShowDialog();
+            loaddata();
         }
         private void btn_update_Click(object sender, RoutedEventArgs e)
         {
-            Admin_Menu_Insert a = new Admin_Menu_Insert();
+            int idx = dg_Menu.SelectedIndex;
+            if (idx<0)
+            {
+                return;
+            }
+            string id  = dt.Rows[idx]["ID"].ToString();
+            string kode = dt.Rows[idx]["KODE"].ToString();
+            string nm  = dt.Rows[idx]["NAMA"].ToString();
+            string stat  = dt.Rows[idx]["STATUS"].ToString();
+            string hrg  = dt.Rows[idx]["HARGA"].ToString();
+            string ketr  = dt.Rows[idx]["KETERANGAN"].ToString();
+            Admin_Menu_Update a = new Admin_Menu_Update(id,kode,nm,stat,hrg,ketr);
             a.ShowDialog();
+            loaddata();
         }
 
         private void btn_search_Click(object sender, RoutedEventArgs e)
@@ -53,7 +66,7 @@ namespace ELREORS
             if (tb_search.Text == "")
             {
                 OracleDataAdapter da = new OracleDataAdapter(
-                    "select KODE_MENU as ID , NAMA , CASE when STATUS = 1 then 'Aktif' ELSE 'NonAktif' END as STATUS , HARGA from menu", conn);
+                    "select ID, KODE_MENU as KODE , NAMA , CASE when STATUS = 1 then 'Aktif' ELSE 'NonAktif' END as STATUS , HARGA , KETERANGAN from menu", conn);
                 dt = new DataTable();
                 da.Fill(dt);
                 dg_Menu.ItemsSource = dt.DefaultView;
@@ -62,7 +75,7 @@ namespace ELREORS
             {
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = conn;
-                cmd.CommandText = "select KODE_MENU as ID , NAMA , CASE when STATUS = 1 then 'Aktif' ELSE 'NonAktif' END as STATUS , HARGA from menu where lower(nama) like :param ";
+                cmd.CommandText = "select ID, KODE_MENU as KODE , NAMA , CASE when STATUS = 1 then 'Aktif' ELSE 'NonAktif' END as STATUS , HARGA , KETERANGAN from menu where lower(nama) like :param ";
                 cmd.Parameters.Add(":param", '%'+ tb_search.Text.ToLower() + '%');
                 OracleDataAdapter da = new OracleDataAdapter(cmd);
                 dt = new DataTable();
