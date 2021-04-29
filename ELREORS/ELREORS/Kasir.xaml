@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ELREORS"
         mc:Ignorable="d"
-        Title="Kasir" Height="768" Width="1366">
+        Title="Kasir" Height="779" Width="1366">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -27,9 +27,9 @@
         <Label x:Name="labelTanggal"  Content="Tanggal: dd/mm/yyyy" Grid.Column="2" HorizontalAlignment="Right" Margin="439,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="mejudul" Content="MEJA" Grid.Column="2" HorizontalAlignment="Center" Margin="253,47,223,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Width="96"/>
         <Button x:Name="btnCancel" Content="CANCEL" Grid.Column="2" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Bottom" Width="85" Height="34" Click="btnCancel_Click"/>
-        <DataGrid x:Name="dgKasir" Grid.Column="2" Margin="10,95,10,102"/>
-        <Label x:Name="pajak" Content="Pajak 10%" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,70" VerticalAlignment="Bottom" Width="195" FontSize="11"/>
-        <Label x:Name="totHarga" Content="Total Harga: Rp. " Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,49" VerticalAlignment="Bottom" FontWeight="Bold" Width="231"/>
+        <DataGrid x:Name="dgKasir" Grid.Column="2" Margin="10,95,10,146" FontSize="16"/>
+        <Label x:Name="pajak" Content="Pajak 10%" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,98" VerticalAlignment="Bottom" Width="195" FontSize="16"/>
+        <Label x:Name="totHarga" Content="Total Harga: Rp. " Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,62" VerticalAlignment="Bottom" FontWeight="Bold" Width="231" FontSize="16"/>
         <Button x:Name="btnPrint" Content="PRINT NOTA" Grid.Column="2" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Width="100" Height="34"/>
 
     </Grid>
