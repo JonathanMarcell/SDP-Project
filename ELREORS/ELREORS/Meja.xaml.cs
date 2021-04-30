@@ -471,7 +471,7 @@ namespace ELREORS
                             if (daO.Rows[i]["Nama"] == m[j].getNama())
                             {
                                 id = m[j].getId();
-                                qry = "insert into djual values(null,null," + id + ",'" + daO.Rows[i]["Keterangan"].ToString() + "')";
+                                qry = "insert into djual values(null,null," + id + "," + Convert.ToInt32(lbM.Content) + ",'" + daO.Rows[i]["Keterangan"].ToString() + "')";
                                 cmd = new OracleCommand(qry, conn);
                                 cmd.ExecuteNonQuery();
                             }
