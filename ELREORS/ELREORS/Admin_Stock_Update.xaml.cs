@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,46 @@ namespace ELREORS
     /// </summary>
     public partial class Admin_Stock_Update : Window
     {
-        public Admin_Stock_Update()
+        private string id;
+        public Admin_Stock_Update(string id,string kode,string nama, string stok ,string satuan)
         {
             InitializeComponent();
+            labelid.Content += id;
+            this.id = id;
+            tb_nama.Text = nama;
+            tb_satuan.Text = satuan;
+            tb_stok.Text = stok;
+        }
+
+        private void btn_update_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string qry = $"UPDATE BAHAN SET " +
+                    "NAMA = :NAMA ,SATUAN = :SATUAN, STOK = :STOK " +
+                    "WHERE ID=:ID";
+
+                OracleCommand cmd = new OracleCommand(qry, App.conn); //tetap lakukan oracle command.
+                cmd.Parameters.Add("NAMA", tb_nama.Text);
+                cmd.Parameters.Add("SATUAN", tb_satuan.Text);
+                cmd.Parameters.Add("STOK", tb_stok.Text);
+                cmd.Parameters.Add("ID", id);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Update Berhasil");
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+
+        }
+        private void clear()
+        {
+            tb_nama.Text = "";
+            tb_satuan.Text = "";
+            tb_stok.Text = "";
         }
     }
 }

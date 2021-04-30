@@ -64,7 +64,8 @@ namespace ELREORS
                     "from hjual h " +
                     "join pegawai p on p.id = h.id_pegawai " +
                     "where h.status=1 and " +
-                    $"h.tanggal <= to_date('{tgl2}','mm/dd/yyyy') and h.tanggal >=to_date('{tgl1}','mm/dd/yyyy') " , conn);
+                    $"to_date(to_char(h.tanggal,'mm/dd/yyyy'),'mm/dd/yyyy') <= to_date('{tgl2}','mm/dd/yyyy') and " +
+                    $"to_date(to_char(h.tanggal,'mm/dd/yyyy'),'mm/dd/yyyy') >=to_date('{tgl1}','mm/dd/yyyy') " , conn);
                 /*
                 OracleDataAdapter da = new OracleDataAdapter("select h.ID as ID, m.nama as NAMA, count(h.total_harga) as Jumlah ,sum(h.total_harga) as Total " +
                             "from hjual h " +

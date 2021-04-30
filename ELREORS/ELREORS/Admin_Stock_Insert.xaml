@@ -8,7 +8,7 @@
         Title="Admin_Stock_Insert" Height="430" Width="500"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="btn_insert" Content="INSERT" HorizontalAlignment="Left" Margin="178,316,0,0" VerticalAlignment="Top" Width="140" Height="42" FontSize="18"/>
+        <Button x:Name="btn_insert" Content="INSERT" HorizontalAlignment="Left" Margin="178,316,0,0" VerticalAlignment="Top" Width="140" Height="42" FontSize="18" Click="btn_insert_Click"/>
         <TextBox x:Name="tb_nama" FontSize="18" HorizontalAlignment="Left" Height="42" Margin="66,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="366" VerticalContentAlignment="Center"/>
         <TextBox x:Name="tb_stok" FontSize="18" HorizontalAlignment="Left" Height="44" Margin="166,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" VerticalContentAlignment="Center"/>
         <TextBox x:Name="tb_satuan" FontSize="18" HorizontalAlignment="Left" Height="42" Margin="166,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" VerticalContentAlignment="Center"/>

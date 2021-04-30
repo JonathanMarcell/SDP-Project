@@ -41,7 +41,7 @@ namespace ELREORS
             if (tb_search.Text=="")
             {
                 OracleDataAdapter da = new OracleDataAdapter(
-                    "select  KODE_BAHAN AS ID, NAMA , Stok , Satuan from bahan", conn);
+                    "select ID, KODE_BAHAN AS KODE, NAMA , STOK , SATUAN from bahan", conn);
                 dt = new DataTable();
                 da.Fill(dt);
                 dg_Stock.ItemsSource = dt.DefaultView;
@@ -50,13 +50,44 @@ namespace ELREORS
             {
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = conn;
-                cmd.CommandText = "select KODE_BAHAN AS ID, NAMA , Stok , Satuan from bahan where lower(nama) like :param ";
+                cmd.CommandText = "select ID, KODE_BAHAN AS KODE, NAMA , STOK , SATUAN from bahan where lower(nama) like :param ";
                 cmd.Parameters.Add(":param", '%' + tb_search.Text.ToLower() + '%');
                 OracleDataAdapter da = new OracleDataAdapter(cmd);
                 dt = new DataTable();
                 da.Fill(dt);
                 dg_Stock.ItemsSource = dt.DefaultView;
             }
+        }
+
+        private void btn_insert_Click(object sender, RoutedEventArgs e)
+        {
+            Admin_Stock_Insert w = new Admin_Stock_Insert();
+            w.ShowDialog();
+            loaddata();
+        }
+
+        private void btn_update_Click(object sender, RoutedEventArgs e)
+        {
+            int idx = dg_Stock.SelectedIndex;
+            if (idx < 0)
+            {
+                return;
+            }
+
+            string id = dt.Rows[idx]["ID"].ToString();
+            string kode = dt.Rows[idx]["KODE"].ToString();
+            string nama = dt.Rows[idx]["NAMA"].ToString();
+            string stok = dt.Rows[idx]["STOK"].ToString();
+            string satuan = dt.Rows[idx]["SATUAN"].ToString();
+
+            Admin_Stock_Update w = new Admin_Stock_Update(id,kode,nama,stok,satuan);
+            w.ShowDialog();
+            loaddata();
+        }
+
+        private void btn_print_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

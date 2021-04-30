@@ -66,7 +66,7 @@ namespace ELREORS
             if (tb_search.Text == "")
             {
                 OracleDataAdapter da = new OracleDataAdapter(
-                    "select ID, KODE_MENU as KODE , NAMA , CASE when STATUS = 1 then 'Aktif' ELSE 'NonAktif' END as STATUS , HARGA , KETERANGAN from menu", conn);
+                    "select ID, KODE_MENU as KODE , NAMA , CASE when STATUS = 1 then 'Aktif' ELSE 'NonAktif' END as STATUS , HARGA , KETERANGAN from menu order by 1", conn);
                 dt = new DataTable();
                 da.Fill(dt);
                 dg_Menu.ItemsSource = dt.DefaultView;
@@ -75,7 +75,7 @@ namespace ELREORS
             {
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = conn;
-                cmd.CommandText = "select ID, KODE_MENU as KODE , NAMA , CASE when STATUS = 1 then 'Aktif' ELSE 'NonAktif' END as STATUS , HARGA , KETERANGAN from menu where lower(nama) like :param ";
+                cmd.CommandText = "select ID, KODE_MENU as KODE , NAMA , CASE when STATUS = 1 then 'Aktif' ELSE 'NonAktif' END as STATUS , HARGA , KETERANGAN from menu where lower(nama) like :param order by 1";
                 cmd.Parameters.Add(":param", '%'+ tb_search.Text.ToLower() + '%');
                 OracleDataAdapter da = new OracleDataAdapter(cmd);
                 dt = new DataTable();

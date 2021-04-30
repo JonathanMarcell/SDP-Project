@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,35 @@ namespace ELREORS
         public Admin_Stock_Insert()
         {
             InitializeComponent();
+        }
+
+        private void btn_insert_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string qry = $"INSERT INTO BAHAN VALUES " +
+                    $"(-1 , null , :NAMA , :STOK , :SATUAN ,default)";
+
+                OracleCommand cmd = new OracleCommand(qry, App.conn); //tetap lakukan oracle command.
+                cmd.Parameters.Add("NAMA", tb_nama.Text);
+                cmd.Parameters.Add("SATUAN", tb_satuan.Text);
+                cmd.Parameters.Add("STOK", tb_stok.Text );
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Insert Berhasil");
+                clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+
+        }
+        private void clear()
+        {
+            tb_nama.Text = "";
+            tb_satuan.Text = "";
+            tb_stok.Text = "";
         }
     }
 }

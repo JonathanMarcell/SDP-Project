@@ -42,7 +42,7 @@ namespace ELREORS
 
         private void btn_update_Click(object sender, RoutedEventArgs e)
         {
-            if (tb_harga.Text=="" || tb_keterangan.Text == "" || tb_nama.Text == "" || imagepath =="" )
+            if (tb_harga.Text=="" || tb_nama.Text == "")
             {
                 MessageBox.Show("Ada field kosong");
                 return;
@@ -50,22 +50,37 @@ namespace ELREORS
             bool success = false;
             try
             {
-                string qry =$"update menu set NAMA=:NAMA, HARGA=:HARGA , STATUS=:STATUS , KETERANGAN=:KETERANGAN , GAMBAR=:GAMBAR  where id={Id}";
-                FileStream fls;
-                fls = new FileStream(@imagepath, FileMode.Open, FileAccess.Read);
-                //a byte array to read the image 
-                byte[] blob = new byte[fls.Length];
-                fls.Read(blob, 0, System.Convert.ToInt32(fls.Length));
-                fls.Close();
+                if (imagepath !="")
+                {
+                    string qry = $"update menu set NAMA=:NAMA, HARGA=:HARGA , STATUS=:STATUS , KETERANGAN=:KETERANGAN , GAMBAR=:GAMBAR  where id={Id}";
+                    FileStream fls;
+                    fls = new FileStream(@imagepath, FileMode.Open, FileAccess.Read);
+                    //a byte array to read the image 
+                    byte[] blob = new byte[fls.Length];
+                    fls.Read(blob, 0, System.Convert.ToInt32(fls.Length));
+                    fls.Close();
 
-                OracleCommand cmd = new OracleCommand(qry, conn); //tetap lakukan oracle command.
-                cmd.Parameters.Add("NAMA", tb_nama.Text);
-                cmd.Parameters.Add("HARGA", tb_harga.Text);
-                cmd.Parameters.Add("STATUS", cb_status.IsChecked == true ? 1 : 0);
-                cmd.Parameters.Add("KETERANGAN", tb_keterangan.Text);
-                cmd.Parameters.Add("GAMBAR", OracleDbType.Blob).Value = blob;
-                cmd.ExecuteNonQuery();
-                success = true;
+                    OracleCommand cmd = new OracleCommand(qry, conn); //tetap lakukan oracle command.
+                    cmd.Parameters.Add("NAMA", tb_nama.Text);
+                    cmd.Parameters.Add("HARGA", tb_harga.Text);
+                    cmd.Parameters.Add("STATUS", cb_status.IsChecked == true ? 1 : 0);
+                    cmd.Parameters.Add("KETERANGAN", tb_keterangan.Text);
+                    cmd.Parameters.Add("GAMBAR", OracleDbType.Blob).Value = blob;
+                    cmd.ExecuteNonQuery();
+                    success = true;
+                }
+                else
+                {
+                    string qry = $"update menu set NAMA=:NAMA, HARGA=:HARGA , STATUS=:STATUS , KETERANGAN=:KETERANGAN where id={Id}";
+                    OracleCommand cmd = new OracleCommand(qry, conn); //tetap lakukan oracle command.
+                    cmd.Parameters.Add("NAMA", tb_nama.Text);
+                    cmd.Parameters.Add("HARGA", tb_harga.Text);
+                    cmd.Parameters.Add("STATUS", cb_status.IsChecked == true ? 1 : 0);
+                    cmd.Parameters.Add("KETERANGAN", tb_keterangan.Text);
+                    cmd.ExecuteNonQuery();
+                    success = true;
+                }
+                
             }
             catch (Exception ex)
             {
@@ -73,7 +88,7 @@ namespace ELREORS
             }
             if (success)
             {
-                MessageBox.Show("Insert Berhasil!");
+                MessageBox.Show("Update Berhasil!");
                 this.Close();
             }
         }

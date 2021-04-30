@@ -8,14 +8,14 @@
         Title="Admin_Stock_Update" Height="430" Width="500"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="btn_update" Content="update" HorizontalAlignment="Left" Margin="178,316,0,0" VerticalAlignment="Top" Width="140" Height="42" FontSize="18"/>
+        <Button x:Name="btn_update" Content="UPDATE" HorizontalAlignment="Left" Margin="178,316,0,0" VerticalAlignment="Top" Width="140" Height="42" FontSize="18" Click="btn_update_Click"/>
         <TextBox x:Name="tb_nama" FontSize="18" HorizontalAlignment="Left" Height="42" Margin="66,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="366" VerticalContentAlignment="Center"/>
         <TextBox x:Name="tb_stok" FontSize="18" HorizontalAlignment="Left" Height="44" Margin="166,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" VerticalContentAlignment="Center"/>
         <TextBox x:Name="tb_satuan" FontSize="18" HorizontalAlignment="Left" Height="42" Margin="166,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" VerticalContentAlignment="Center"/>
         <Label Content="Nama :" HorizontalAlignment="Left" Margin="66,70,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Stok :" HorizontalAlignment="Left" Margin="66,180,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Satuan :" HorizontalAlignment="Left" Margin="66,240,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Label x:Name="labelid"  Content="ID :" HorizontalAlignment="Left" Margin="66,32,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="labelid"  Content="ID : " HorizontalAlignment="Left" Margin="66,32,0,0" VerticalAlignment="Top" FontSize="18"/>
 
     </Grid>
 </Window>
