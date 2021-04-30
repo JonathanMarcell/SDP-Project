@@ -53,11 +53,11 @@ namespace ELREORS
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
-            var connectionString = "Data Source = orcl; User ID= coba; Password= 1"; //nando
+            //var connectionString = "Data Source = orcl; User ID= coba; Password= 1"; //nando
             //var connectionString = "Data Source = orcl; User ID= ; Password= ";
             //var connectionString = "Data Source = orcl; User ID= ; Password= ";
             //var connectionString = "Data Source = orcl; User ID= ; Password= ";
-            OracleConnection conn1 = new OracleConnection(connectionString);
+            //OracleConnection conn1 = new OracleConnection(connectionString);
             if (tb_username.Text=="admin")
             {
                 Admin a = new Admin();
@@ -70,21 +70,21 @@ namespace ELREORS
                 a.Show();
                 Close();
             }
-            else if (tb_username.Text=="kasir")
-            {
-                try
-                {
-                    conn1.Open();
-                    conn1.Close();
-                    Kasir mm = new Kasir(conn1);
-                    mm.ShowDialog();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    conn1.Close();
-                }
-            }
+            //else if (tb_username.Text=="kasir")
+            //{
+            //    try
+            //    {
+            //        conn1.Open();
+            //        conn1.Close();
+            //        Kasir mm = new Kasir(conn1);
+            //        mm.ShowDialog();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //        conn1.Close();
+            //    }
+            //}
             else if (tb_username.Text=="list")
             {
                 ListPesanan a = new ListPesanan();

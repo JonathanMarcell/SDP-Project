@@ -23,7 +23,9 @@
             <Label.VerticalAlignment>top</Label.VerticalAlignment>
             <Label.HorizontalAlignment>left</Label.HorizontalAlignment>
         </Label>
-        <DataGrid Name="dataOrder" Height="auto" Margin="10,80,20,50" Grid.ColumnSpan="2"/>
+        <DataGrid Name="dataOrder" Height="auto" Margin="10,80,20,50" Grid.ColumnSpan="2" FontSize="20" ColumnWidth="*"/>
+        <Label Content="Total Harga: Rp." FontSize="20" Height="auto" Width="auto" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,10"/>
+        <Label x:Name="lbTH" Content="" FontSize="20" Height="auto" Width="auto" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,10"/>
         <Label Name="Menu" Grid.Column="3" Margin="187.6,0,297,0">
             <Label.Content>Menu</Label.Content>
             <Label.FontSize>30</Label.FontSize>

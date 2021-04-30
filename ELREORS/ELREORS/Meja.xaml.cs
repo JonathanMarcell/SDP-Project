@@ -38,7 +38,6 @@ namespace ELREORS
             refresh();
             tampil();
             awal();
-            MessageBox.Show(""+max);
         }
         void awal()
         {
@@ -46,6 +45,7 @@ namespace ELREORS
             daO.Columns.Add("Nama");
             daO.Columns.Add("Jumlah");
             daO.Columns.Add("Harga");
+            daO.Columns.Add("Keterangan");
         }
         void refresh()
         {
@@ -87,17 +87,59 @@ namespace ELREORS
             {
                 if (halaman == 0)
                 {
-                    lbN1.Content = m[i1].getNama();
-                    lbK1.Content = m[i1].getKeterangan();
-                    lbH1.Content = m[i1].getHarga();
+                    if ((iT * halaman) + i1 >= 0 && (iT * halaman) + i1 < m.Count())
+                    {
+                        lbN1.Content = m[i1].getNama();
+                        lbK1.Content = m[i1].getKeterangan();
+                        lbH1.Content = m[i1].getHarga();
+                    }
+                    else
+                    {
+                        img1.Visibility = Visibility.Hidden;
+                        lbN1.Visibility = Visibility.Hidden;
+                        lbK1.Visibility = Visibility.Hidden;
+                        lbH1.Visibility = Visibility.Hidden;
+                        lbJ1.Visibility = Visibility.Hidden;
+                        btnMin1.Visibility = Visibility.Hidden;
+                        btnPlus1.Visibility = Visibility.Hidden;
+                        Rp1.Visibility = Visibility.Hidden;
+                    }
 
-                    lbN2.Content = m[i2].getNama();
-                    lbK2.Content = m[i2].getKeterangan();
-                    lbH2.Content = m[i2].getHarga();
+                    if ((iT * halaman) + i2 >= 0 && (iT * halaman) + i2 < m.Count())
+                    {
+                        lbN2.Content = m[i2].getNama();
+                        lbK2.Content = m[i2].getKeterangan();
+                        lbH2.Content = m[i2].getHarga();
+                    }
+                    else
+                    {
+                        img2.Visibility = Visibility.Hidden;
+                        lbN2.Visibility = Visibility.Hidden;
+                        lbK2.Visibility = Visibility.Hidden;
+                        lbH2.Visibility = Visibility.Hidden;
+                        lbJ2.Visibility = Visibility.Hidden;
+                        btnMin2.Visibility = Visibility.Hidden;
+                        btnPlus2.Visibility = Visibility.Hidden;
+                        Rp2.Visibility = Visibility.Hidden;
+                    }
 
-                    lbN3.Content = m[i3].getNama();
-                    lbK3.Content = m[i3].getKeterangan();
-                    lbH3.Content = m[i3].getHarga();
+                    if ((iT * halaman) + i3 >= 0 && (iT * halaman) + i3 < m.Count())
+                    {
+                        lbN3.Content = m[i3].getNama();
+                        lbK3.Content = m[i3].getKeterangan();
+                        lbH3.Content = m[i3].getHarga();
+                    }
+                    else
+                    {
+                        img3.Visibility = Visibility.Hidden;
+                        lbN3.Visibility = Visibility.Hidden;
+                        lbK3.Visibility = Visibility.Hidden;
+                        lbH3.Visibility = Visibility.Hidden;
+                        lbJ3.Visibility = Visibility.Hidden;
+                        btnMin3.Visibility = Visibility.Hidden;
+                        btnPlus3.Visibility = Visibility.Hidden;
+                        Rp3.Visibility = Visibility.Hidden;
+                    }
                 }
                 else
                 {
@@ -307,6 +349,13 @@ namespace ELREORS
                 }
                 dataOrder.ItemsSource = daO.DefaultView;
             }
+            int harga = 0;
+            for (int i = 0; i < daO.Rows.Count; i++)
+            {
+                harga = Convert.ToInt32(daO.Rows[i]["Harga"]) + harga;
+                lbTH.Content = harga + "";
+            }
+
         }
         void kurang()
         {
@@ -376,40 +425,71 @@ namespace ELREORS
                     }
                 }
             }
+
+            int harga = 0;
+            if (daO.Rows.Count == 0)
+            {
+                harga = 0;
+                lbTH.Content = "";
+            }
+            for (int i = 0; i < daO.Rows.Count; i++)
+            {
+                if (daO.Rows.Count <= 0)
+                {
+                    harga = 0;
+                    lbTH.Content = "";
+                }
+                else
+                {
+                    harga = Convert.ToInt32(daO.Rows[i]["Harga"]) + harga;
+                    lbTH.Content = harga + "";
+                }
+            }
         }
         private void btnPesan_Click(object sender, RoutedEventArgs e)
         {
-            if (dataOrder.Items.Count<=1)
+            if (dataOrder.Items.Count <= 1)
             {
                 MessageBox.Show("Silahkan memesan makanan terlebih dahulu");
             }
             else
             {
+                conn.Open();
+                int ctr = 0;
+                OracleTransaction trans;
+                trans = conn.BeginTransaction();
                 try
                 {
-                    conn.Open();
-                    int ctr = 0;
-                    OracleTransaction trans;
-                    trans = conn.BeginTransaction();
-                    try
+                    string qry = "insert into hjual values(null,null,null," + Convert.ToInt32(lbTH.Content) + "," + Convert.ToInt32(lbM.Content) + ",1,0) ";
+                    OracleCommand cmd = new OracleCommand(qry, conn);
+                    cmd.ExecuteNonQuery();
+                    int id = 0;
+                    for (int i = 0; i < daO.Rows.Count; i++)
                     {
-                        string qry = "";
-                        tunggu t = new tunggu();
-                        t.Show();
-                        this.Close();
-                        conn.Close();
+                        for (int j = 0; j < m.Count; j++)
+                        {
+                            if (daO.Rows[i]["Nama"] == m[j].getNama())
+                            {
+                                id = m[j].getId();
+                                qry = "insert into djual values(null,null," + id + ",'" + daO.Rows[i]["Keterangan"].ToString() + "')";
+                                cmd = new OracleCommand(qry, conn);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                        conn.Close();
-                    }
+                    trans.Commit();
+                    tunggu t = new tunggu();
+                    t.Show();
+                    this.Close();
+                    conn.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                    trans.Rollback();
+                    conn.Close();
                 }
-                
+
             }
         }
         private void btnNext_Click(object sender, RoutedEventArgs e)
@@ -492,7 +572,7 @@ namespace ELREORS
         }
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
             if (e.Key == Key.Enter)
             {
                 lbM.Content = tbM.Text;
