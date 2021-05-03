@@ -33,7 +33,8 @@ namespace ELREORS
 
             dtPesanan = new DataTable();
             dtPesanan.Columns.Add("Nama Pesanan");
-            dtPesanan.Columns.Add("Nama Meja");
+            dtPesanan.Columns.Add("Nomor Meja");
+            dtPesanan.Columns.Add("Jumlah");
             dtPesanan.Columns.Add("Keterangan");
             dtPesanan.Columns.Add("Action");
             loadData();
@@ -57,11 +58,11 @@ namespace ELREORS
             {
                 conn.Open();
                 tempData = new DataTable();
-                daPesanan = new OracleDataAdapter("select m.nama, h.nomor_meja, d.keterangan from menu m, djual d, hjual h where d.id_header=h.id and d.id_menu=m.id and h.status=0", conn);
+                daPesanan = new OracleDataAdapter("select m.nama, h.nomor_meja, d.jumlah, d.keterangan from menu m, djual d, hjual h where d.id_header=h.id and d.id_menu=m.id and h.status=0", conn);
                 daPesanan.Fill(tempData);
                 foreach (DataRow d in tempData.Rows) 
                 {
-                    dtPesanan.Rows.Add(d["nama"],d["nomor_meja"],d["keterangan"]);
+                    dtPesanan.Rows.Add(d["nama"],"Meja "+d["nomor_meja"],d["jumlah"],d["keterangan"]);
                 }
                 dgPesanan.ItemsSource = dtPesanan.DefaultView;
             }
