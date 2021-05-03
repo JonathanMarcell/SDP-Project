@@ -66,9 +66,9 @@ namespace ELREORS
             }
             else if (tb_username.Text=="meja")
             {
-                Meja a = new Meja();
-                a.Show();
-                Close();
+                NoMeja n = new NoMeja();
+                n.Show();
+                this.Close();
             }
             //else if (tb_username.Text=="kasir")
             //{

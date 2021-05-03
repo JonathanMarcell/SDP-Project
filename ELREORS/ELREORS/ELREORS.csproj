@@ -101,6 +101,9 @@
       <DependentUpon>Admin_Stock_Update.xaml</DependentUpon>
     </Compile>
     <Compile Include="menu.cs" />
+    <Compile Include="NoMeja.xaml.cs">
+      <DependentUpon>NoMeja.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Nota.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -200,6 +203,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Meja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NoMeja.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
