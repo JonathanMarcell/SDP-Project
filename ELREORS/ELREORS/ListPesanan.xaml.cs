@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Oracle.DataAccess.Client;
+using System.Data;
 
 namespace ELREORS
 {
@@ -19,27 +21,54 @@ namespace ELREORS
     /// </summary>
     public partial class ListPesanan : Window
     {
+        DataTable dtPesanan, tempData;
+        OracleDataAdapter daPesanan;
+        OracleConnection conn;
         public ListPesanan()
         {
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
+            conn = App.conn;
 
-            DataGridTextColumn c1 = new DataGridTextColumn();
-            c1.Header = "Nama Pesanan";
-            c1.Binding = new Binding("Nama Pesananan");
-            c1.Width = 320;
-            dataGridView1.Columns.Add(c1);
-            DataGridTextColumn c2 = new DataGridTextColumn();
-            c2.Header = "Jumlah";
-            c2.Width = 200;
-            c2.Binding = new Binding("Jumlah");
-            dataGridView1.Columns.Add(c2);
-            DataGridTextColumn c3 = new DataGridTextColumn();
-            c3.Header = "Meja";
-            c3.Width = 200;
-            c3.Binding = new Binding("Meja");
-            dataGridView1.Columns.Add(c3);
+            dtPesanan = new DataTable();
+            dtPesanan.Columns.Add("Nama Pesanan");
+            dtPesanan.Columns.Add("Nama Meja");
+            dtPesanan.Columns.Add("Keterangan");
+            dtPesanan.Columns.Add("Action");
+            loadData();
+
+            
+        }
+
+        private void dgPesanan_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            hapusData();
+        }
+
+        public void hapusData()
+        {
+            dtPesanan.Rows[dgPesanan.SelectedIndex].Delete();
+           
+        }
+        public void loadData()
+        {
+            try
+            {
+                conn.Open();
+                tempData = new DataTable();
+                daPesanan = new OracleDataAdapter("select m.nama, h.nomor_meja, d.keterangan from menu m, djual d, hjual h where d.id_header=h.id and d.id_menu=m.id and h.status=0", conn);
+                daPesanan.Fill(tempData);
+                foreach (DataRow d in tempData.Rows) 
+                {
+                    dtPesanan.Rows.Add(d["nama"],d["nomor_meja"],d["keterangan"]);
+                }
+                dgPesanan.ItemsSource = dtPesanan.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
         
         
