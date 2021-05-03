@@ -24,7 +24,7 @@ namespace ELREORS
         public Admin_Stock_Update(string id,string kode,string nama, string stok ,string satuan)
         {
             InitializeComponent();
-            labelid.Content += id;
+            labelid.Content += kode;
             this.id = id;
             tb_nama.Text = nama;
             tb_satuan.Text = satuan;

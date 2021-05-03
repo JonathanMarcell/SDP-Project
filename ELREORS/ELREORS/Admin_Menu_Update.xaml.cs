@@ -30,7 +30,7 @@ namespace ELREORS
             InitializeComponent();
             conn = App.conn;
             Id = id;
-            label_id.Content = kd;
+            label_id.Content += kd;
             tb_harga.Text = hrg;
             tb_keterangan.Text = keterangan;
             tb_nama.Text = nm;

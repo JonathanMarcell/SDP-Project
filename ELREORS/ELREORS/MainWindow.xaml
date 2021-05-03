@@ -18,7 +18,7 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="10"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -27,6 +27,9 @@
             <ColumnDefinition Width="1.5*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="8" >
+            <Rectangle Fill="#CCFFEBD2" Margin="100,0"/>
+        </Grid>
         <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <TextBlock x:Name="Title" Text="Welcome to ELREORS" FontSize="36" />
         </StackPanel>
@@ -48,8 +51,12 @@
             <TextBox x:Name="tb_password" FontSize="25" Margin="2" Width="250" HorizontalAlignment="Left"  GotFocus="cmdToggle_Click"/>
         </StackPanel>
 
-        <Button Grid.Column="1" Grid.Row="8" Width="200" Grid.ColumnSpan="2"
-                x:Name="btn_login" Content="Login" FontSize="24" Click="btn_login_Click"/>
+        <Button Grid.Column="1" Grid.Row="8" Width="150" Grid.ColumnSpan="2"
+                x:Name="btn_login" Content="Login" FontSize="24" Margin="10" Click="btn_login_Click" BorderBrush="{x:Null}" Foreground="#FFF1DABF">
+            <Button.Background>
+                <ImageBrush ImageSource="button square wide.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
     </Grid>
     
 </Window>

@@ -6,19 +6,19 @@
       xmlns:local="clr-namespace:ELREORS"
       mc:Ignorable="d" 
       d:DesignHeight="733" d:DesignWidth="1366"
-      Title="Admin_Menu" Background="White"
+      Title="Admin_Menu" 
       ShowsNavigationUI="False"
       Margin="0">
 
     <Grid>
-        <TextBox x:Name="tb_search" FontSize="32" HorizontalAlignment="Left" Height="49" Margin="737,-2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="429" VerticalContentAlignment="Center"/>
-        <Button x:Name="btn_search" Content="Search" HorizontalAlignment="Left" Margin="1182,-2,0,0" VerticalAlignment="Top" Width="112" Height="49" FontSize="18" Click="btn_search_Click"/>
-        <DataGrid x:Name="dg_Menu" FontSize="24" IsReadOnly="true" HorizontalAlignment="Left" Height="508" Width="1257" Margin="40,64,0,0" VerticalAlignment="Top" />
-        <Button x:Name="btn_insert" Content="INSERT" HorizontalAlignment="Left" Margin="40,596,0,0" VerticalAlignment="Top" Width="163" Height="66" FontSize="18" Click="btn_insert_Click"/>
-        <Button x:Name="btn_update" Content="UPDATE" HorizontalAlignment="Left" Margin="250,596,0,0" VerticalAlignment="Top" Width="163" Height="66" FontSize="18" Click="btn_update_Click"/>
-        <Button x:Name="btn_print" Content="PRINT" HorizontalAlignment="Left" Margin="1134,596,0,0" VerticalAlignment="Top" Width="163" Height="66" FontSize="18"/>
-        <TextBlock Margin="640,10,676,686" FontSize="18" ><Run Text="Filter : "/></TextBlock>
-        <Label Content="Menu Makanan" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32" FontWeight="Bold"/>
+        <TextBlock Margin="642,24,674,685" FontSize="18" VerticalAlignment="Center" ><Run Text="Filter : "/></TextBlock>
+        <Label Content="Menu Makanan" HorizontalAlignment="Left" Margin="40,10,0,0" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFF1DABF"/>
+        <TextBox x:Name="tb_search" FontSize="32" HorizontalAlignment="Left" Height="40" Width="430" Margin="719,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  VerticalContentAlignment="Center"/>
+        <Button x:Name="btn_search" Content="Search" HorizontalAlignment="Left" Margin="1172,16,0,0" VerticalAlignment="Top" Width="125" Height="40" FontSize="18" Click="btn_search_Click"/>
+        <DataGrid x:Name="dg_Menu" FontSize="24" IsReadOnly="true" HorizontalAlignment="Left" Height="480" Width="1280" Margin="40,90,0,0" VerticalAlignment="Top" />
+        <Button x:Name="btn_insert" Content="INSERT" HorizontalAlignment="Left" Margin="40,596,0,0" VerticalAlignment="Top" Width="125" Height="40" FontSize="18" Click="btn_insert_Click"/>
+        <Button x:Name="btn_update" Content="UPDATE" HorizontalAlignment="Left" Margin="200,596,0,0" VerticalAlignment="Top" Width="125" Height="40" FontSize="18" Click="btn_update_Click"/>
+        <Button x:Name="btn_print" Visibility="Hidden" Content="PRINT" HorizontalAlignment="Left" Margin="1134,596,0,0" VerticalAlignment="Top" Width="125" Height="40" FontSize="18"/>
 
     </Grid>
 </Page>

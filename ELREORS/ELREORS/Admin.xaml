@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ELREORS"
         mc:Ignorable="d"
-        Title="Admin" Height="768" Width="1366">
+        Title="Admin" Height="768" Width="1366"
+        x:Name="win">
     
     <Grid>
         <Grid.RowDefinitions>
@@ -14,15 +15,32 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
                 <ColumnDefinition Width="110"/>
                 <ColumnDefinition Width="110"/>
                 <ColumnDefinition Width="110"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btn_history" Grid.Column="0" Content="History" Width="100" Height="26" HorizontalAlignment="Left" Margin="5,2,5,2" Click="btn_history_Click"/>
-            <Button x:Name="btn_Menu" Grid.Column="1" Content="Menu" Width="100" Height="26" HorizontalAlignment="Left" Margin="5,2,5,2" Click="btn_Menu_Click"/>
-            <Button x:Name="btn_Stock" Grid.Column="2" Content="Stock" Width="100" Height="26" HorizontalAlignment="Left" Margin="5,2,5,2" Click="btn_Stock_Click"/>
-            <Button x:Name="btn_Setting" Grid.Column="3" Content="Setting" Width="100" Height="26" HorizontalAlignment="Left" Margin="5,2,5,2" Click="btn_Setting_Click"/>
+            <Button x:Name="btn_history" Grid.Column="1" Content="History" Width="100" Height="26" FontSize="16" HorizontalAlignment="Left" Margin="5,3,5,1" Click="btn_history_Click" Foreground="#FFF1DABF">
+                <Button.Background>
+                    <ImageBrush ImageSource="button square wide.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btn_Menu" Grid.Column="2" Content="Menu" FontSize="16" Width="100" Height="26" HorizontalAlignment="Left" Margin="5,3,5,1" Click="btn_Menu_Click" Foreground="#FFF1DABF">
+                <Button.Background>
+                    <ImageBrush ImageSource="button square wide.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btn_Stock" Grid.Column="3" Content="Stock" Width="100" FontSize="16" Height="26" HorizontalAlignment="Left" Margin="5,3,5,1" Click="btn_Stock_Click" Foreground="#FFF1DABF">
+                <Button.Background>
+                    <ImageBrush ImageSource="button square wide.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btn_Setting" Grid.Column="4" Content="Setting" Width="100" FontSize="16" Height="26" HorizontalAlignment="Left" Margin="5,3,5,1" Click="btn_Setting_Click" Foreground="#FFF1DABF">
+                <Button.Background>
+                    <ImageBrush ImageSource="button square wide.png"/>
+                </Button.Background>
+            </Button>
         </Grid>
         
         <Frame Grid.Row="1" NavigationUIVisibility="Hidden" x:Name="Main"/>

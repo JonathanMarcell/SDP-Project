@@ -33,7 +33,7 @@ namespace ELREORS
             try
             {
                 //nambah gambar di Background (pake brush) / Image (pake ImageSource)
-                Uri uri = new Uri("Resource/bg1.jpg", UriKind.Relative);
+                Uri uri = new Uri("Resource/bglogin.png", UriKind.Relative);
                 BitmapImage img = new BitmapImage(uri);
                 ImageBrush b = new ImageBrush(img);
                 //mode 
@@ -43,7 +43,7 @@ namespace ELREORS
 
                 win.Background = b; // win ini x:Name nya Window
             }
-            catch (Exception e)
+            catch (ArgumentException e)
             {
                 MessageBox.Show(e.ToString());
             }
