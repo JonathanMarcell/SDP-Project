@@ -20,13 +20,13 @@ namespace ELREORS
     /// </summary>
     public partial class tunggu : Window
     {
-        public tunggu()
+        public tunggu(string n)
         {
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
+            lbNama.Content = "Meja " + n;
         }
-        string nam;
         int time,timer;
         DispatcherTimer dt = new DispatcherTimer();
         private void btnSelesai_Click(object sender, RoutedEventArgs e)
@@ -45,8 +45,9 @@ namespace ELREORS
             }
             if (time>10)
             {
+                string temp = lbNama.Content.ToString().Substring(5,1);
                 dt.Stop();
-                Meja a = new Meja();
+                Meja a = new Meja(temp);
                 a.Show();
                 Close();
             }

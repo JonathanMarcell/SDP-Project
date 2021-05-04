@@ -28,9 +28,10 @@ namespace ELREORS
         int jumlah = 3;
         DataTable daO;
         int indexing = 0;
-        public Meja()
+        public Meja(string n)
         {
             InitializeComponent();
+            lbM.Content = n;
             btnPrev.IsEnabled = false;
             this.WindowState = WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
@@ -478,7 +479,8 @@ namespace ELREORS
                         }
                     }
                     trans.Commit();
-                    tunggu t = new tunggu();
+                    string temp = lbM.Content.ToString();
+                    tunggu t = new tunggu(temp);
                     t.Show();
                     this.Close();
                     conn.Close();
