@@ -58,34 +58,52 @@ namespace ELREORS
 
         private void btn_insert_Click(object sender, RoutedEventArgs e)
         {
+            
             string idkat;
             if (tb_harga.Text == "" || tb_nama.Text == "" || cbKategori.SelectedIndex == -1 || imagepath=="")
             {
                 MessageBox.Show("Ada field kosong");
                 return;
             }
+
             idkat = cbKategori.SelectedValue.ToString();
             bool success = false;
             try
             {
-                string qry = $"INSERT INTO MENU (ID, ID_KATEGORI ,KODE_MENU, NAMA, HARGA, STATUS, KETERANGAN ,GAMBAR) VALUES " +
+                if (imagepath != "")
+                {
+                    string qry = $"INSERT INTO MENU (ID, ID_KATEGORI ,KODE_MENU, NAMA, HARGA, STATUS, KETERANGAN ,GAMBAR) VALUES " +
                     $"(null, {idkat}, null, :NAMA, :HARGA, :STATUS, :KETERANGAN , :GAMBAR)";
 
-                FileStream fls;
-                fls = new FileStream(@imagepath, FileMode.Open, FileAccess.Read);
-                //a byte array to read the image 
-                byte[] blob = new byte[fls.Length];
-                fls.Read(blob, 0, System.Convert.ToInt32(fls.Length));
-                fls.Close();
+                    FileStream fls;
+                    fls = new FileStream(@imagepath, FileMode.Open, FileAccess.Read);
+                    //a byte array to read the image 
+                    byte[] blob = new byte[fls.Length];
+                    fls.Read(blob, 0, System.Convert.ToInt32(fls.Length));
+                    fls.Close();
 
-                OracleCommand cmd = new OracleCommand(qry, conn); 
-                cmd.Parameters.Add("NAMA",tb_nama.Text);
-                cmd.Parameters.Add("HARGA",tb_harga.Text);
-                cmd.Parameters.Add("STATUS", cb_status.IsChecked==true ? 1 : 0 );
-                cmd.Parameters.Add("KETERANGAN",tb_keterangan.Text);
-                cmd.Parameters.Add("GAMBAR",OracleDbType.Blob).Value=blob;
-                cmd.ExecuteNonQuery();
-                success = true;
+                    OracleCommand cmd = new OracleCommand(qry, conn);
+                    cmd.Parameters.Add("NAMA", tb_nama.Text);
+                    cmd.Parameters.Add("HARGA", tb_harga.Text);
+                    cmd.Parameters.Add("STATUS", cb_status.IsChecked == true ? 1 : 0);
+                    cmd.Parameters.Add("KETERANGAN", tb_keterangan.Text);
+                    cmd.Parameters.Add("GAMBAR", OracleDbType.Blob).Value = blob;
+                    cmd.ExecuteNonQuery();
+                    success = true;
+                }
+                else
+                {
+                    string qry = $"INSERT INTO MENU (ID, ID_KATEGORI ,KODE_MENU, NAMA, HARGA, STATUS, KETERANGAN) VALUES " +
+                    $"(null, {idkat}, null, :NAMA, :HARGA, :STATUS, :KETERANGAN )";
+
+                    OracleCommand cmd = new OracleCommand(qry, conn);
+                    cmd.Parameters.Add("NAMA", tb_nama.Text);
+                    cmd.Parameters.Add("HARGA", tb_harga.Text);
+                    cmd.Parameters.Add("STATUS", cb_status.IsChecked == true ? 1 : 0);
+                    cmd.Parameters.Add("KETERANGAN", tb_keterangan.Text);
+                    cmd.ExecuteNonQuery();
+                    success = true;
+                }
             }
             catch(Exception ex)
             {
