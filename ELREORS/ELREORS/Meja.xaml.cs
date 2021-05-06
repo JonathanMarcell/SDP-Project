@@ -33,7 +33,7 @@ namespace ELREORS
             InitializeComponent();
             lbM.Content = n;
             btnPrev.IsEnabled = false;
-            this.WindowState = WindowState.Maximized;
+            //this.WindowState = WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
             conn = App.conn;
             refresh();
@@ -52,7 +52,7 @@ namespace ELREORS
         {
             try
             {
-                float hasil = 0; ;
+                float hasil = 0; 
                 conn.Open();
                 max = 0;
                 OracleCommand cmd = new OracleCommand();
