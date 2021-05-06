@@ -70,21 +70,18 @@ namespace ELREORS
                 n.Show();
                 this.Close();
             }
-            //else if (tb_username.Text=="kasir")
-            //{
-            //    try
-            //    {
-            //        conn1.Open();
-            //        conn1.Close();
-            //        Kasir mm = new Kasir(conn1);
-            //        mm.ShowDialog();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //        conn1.Close();
-            //    }
-            //}
+            else if (tb_username.Text == "kasir")
+            {
+                try
+                {
+                    Kasir mm = new Kasir();
+                    mm.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             else if (tb_username.Text=="list")
             {
                 ListPesanan a = new ListPesanan();

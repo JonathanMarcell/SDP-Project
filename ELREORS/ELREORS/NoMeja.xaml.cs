@@ -24,8 +24,9 @@ namespace ELREORS
         public NoMeja()
         {
             InitializeComponent();
+            App.openconn();
             conn = App.conn;
-            refresh();
+            //refresh();
         }
         int max;
         void refresh()
@@ -60,7 +61,7 @@ namespace ELREORS
                 MessageBox.Show("harus diisi dengan angka");
                 return;
             }
-            else if (Convert.ToInt32(tbNo.Text)<=0 || Convert.ToInt32(tbNo.Text) > max )
+            else if (Convert.ToInt32(tbNo.Text)<=0 || Convert.ToInt32(tbNo.Text) > App.getJumlahMeja() )
             {
                 MessageBox.Show("no meja harus lebih besar dari 0 atau no meja terlalu besar");
             }

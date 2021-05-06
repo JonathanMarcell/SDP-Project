@@ -24,19 +24,20 @@ namespace ELREORS
         private OracleConnection conn;
         DataTable dt;
         int nomeja;
-        public Kasir(OracleConnection conn)
+        public Kasir()
         {
             InitializeComponent();
+            App.openconn();
             this.WindowState = WindowState.Maximized;
-            this.conn = conn;
+            this.conn = App.conn;
 
             labelTanggal.Content = "Tanggal : "+ DateTime.Now.ToString().Substring(0,10);
-            loadData();
+            genButton();
         }
 
         void loadData()
         {
-            string query = "select distinct hj.ID as \"No\", hj.KODE_HJUAL as \"Kode HJUAL\", to_char(hj.TANGGAL, 'dd/MM/yyyy') as \"Tanggal\", mn.NAMA as \"Menu\", pg.NAMA as \"Pegawai\", case when hj.STATUS>1 then 'Sudah Dikonfirmasi' else 'Belum Dikonfirmasi' end as \"Status\" from HJUAL hj, PEGAWAI pg, DJUAL dj, MENU mn where hj.ID_PEGAWAI = pg.ID and hj.ID = dj.ID_HEADER and mn.ID = dj.ID_MENU and nomor_meja = " + nomeja;
+            string query = "select distinct hj.ID as \"No\", hj.KODE_HJUAL as \"Kode HJUAL\", to_char(hj.TANGGAL, 'dd/MM/yyyy') as \"Tanggal\", mn.NAMA as \"Menu\" from HJUAL hj, DJUAL dj, MENU mn where hj.ID = dj.ID_HEADER and mn.ID = dj.ID_MENU and hj.status = 0 and hj.nomor_meja = " + nomeja;
             OracleDataAdapter da = new OracleDataAdapter(query, conn);
             dt = new DataTable();
             da.Fill(dt);
@@ -44,60 +45,30 @@ namespace ELREORS
             dgKasir.ItemsSource = dt.DefaultView;
         }
 
-        private void btn1_Click(object sender, RoutedEventArgs e)
+        void genButton()
         {
-            mejudul.Content = "MEJA 1";
-            nomeja = 1;
-            loadData();
-        }
+            for (int i = 1; i <= App.getJumlahMeja(); i++)
+            {
+                Button btn = new Button();
+                btn.Height = 60;
+                btn.Width = 60;
+                btn.Content = i;
+                btn.Margin = new Thickness(0, 0, 0, 20);
+                btn.FontSize = 18;
+                btn.Click += (sender, e) => {
+                    nomeja = Convert.ToInt32(btn.Content);
+                    loadData();
+                };
 
-        private void btn2_Click(object sender, RoutedEventArgs e)
-        {
-            mejudul.Content = "MEJA 2";
-            nomeja = 2;
-            loadData();
-        }
-
-        private void btn3_Click_1(object sender, RoutedEventArgs e)
-        {
-            mejudul.Content = "MEJA 3";
-            nomeja = 3;
-            loadData();
-        }
-
-        private void btn4_Click_1(object sender, RoutedEventArgs e)
-        {
-            mejudul.Content = "MEJA 4";
-            nomeja = 4;
-            loadData();
-        }
-
-        private void btn5_Click_1(object sender, RoutedEventArgs e)
-        {
-            mejudul.Content = "MEJA 5";
-            nomeja = 5;
-            loadData();
-        }
-
-        private void btn6_Click_1(object sender, RoutedEventArgs e)
-        {
-            mejudul.Content = "MEJA 6";
-            nomeja = 6;
-            loadData();
-        }
-
-        private void btn7_Click_1(object sender, RoutedEventArgs e)
-        {
-            mejudul.Content = "MEJA 7";
-            nomeja = 7;
-            loadData();
-        }
-
-        private void btn8_Click_1(object sender, RoutedEventArgs e)
-        {
-            mejudul.Content = "MEJA 8";
-            nomeja = 8;
-            loadData();
+                if(i % 2 == 0)
+                {
+                    stackpanel2.Children.Add(btn);
+                }
+                else
+                {
+                    stackpanel.Children.Add(btn);
+                }
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -105,6 +76,24 @@ namespace ELREORS
             mejudul.Content = "MEJA";
             MainWindow mainwin = new MainWindow();
             mainwin.Show();
+        }
+
+        private void dgKasir_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ShowNota sn = new ShowNota();
+                sn.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

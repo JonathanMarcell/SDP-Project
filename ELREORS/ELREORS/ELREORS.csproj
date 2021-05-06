@@ -123,6 +123,9 @@
       <DependentUpon>Nota.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ShowNota.xaml.cs">
+      <DependentUpon>ShowNota.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tunggu.xaml.cs">
       <DependentUpon>tunggu.xaml</DependentUpon>
     </Compile>
@@ -220,6 +223,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NoMeja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowNota.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
