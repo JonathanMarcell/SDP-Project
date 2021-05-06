@@ -19,24 +19,36 @@
                 <ColumnDefinition Width="110"/>
                 <ColumnDefinition Width="110"/>
                 <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="110"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btn_history" Grid.Column="1" Content="History" Width="100" Height="26" FontSize="16" HorizontalAlignment="Left" Margin="5,3,5,1" Click="btn_history_Click" Foreground="#FFF1DABF">
+            <Button x:Name="btn_history" Grid.Column="1" Content="Riwayat" Width="100" Height="27" FontSize="16" HorizontalAlignment="Left" Margin="5,3,5,1" Click="btn_history_Click" Foreground="#FFF1DABF">
                 <Button.Background>
                     <ImageBrush ImageSource="button square wide.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btn_Menu" Grid.Column="2" Content="Menu" FontSize="16" Width="100" Height="26" HorizontalAlignment="Left" Margin="5,3,5,1" Click="btn_Menu_Click" Foreground="#FFF1DABF">
+            <Button x:Name="btn_Menu" Grid.Column="2" Content="Menu" FontSize="16" Width="100" Height="27" HorizontalAlignment="Left" Margin="5,3,5,1" Click="btn_Menu_Click" Foreground="#FFF1DABF">
                 <Button.Background>
                     <ImageBrush ImageSource="button square wide.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btn_Stock" Grid.Column="3" Content="Stock" Width="100" FontSize="16" Height="26" HorizontalAlignment="Left" Margin="5,3,5,1" Click="btn_Stock_Click" Foreground="#FFF1DABF">
+            <Button x:Name="btn_Stock" Grid.Column="3" Content="Stok" Width="100" FontSize="16" Height="27" HorizontalAlignment="Left" Margin="5,3,5,1" Click="btn_Stock_Click" Foreground="#FFF1DABF">
                 <Button.Background>
                     <ImageBrush ImageSource="button square wide.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btn_Setting" Grid.Column="4" Content="Setting" Width="100" FontSize="16" Height="26" HorizontalAlignment="Left" Margin="5,3,5,1" Click="btn_Setting_Click" Foreground="#FFF1DABF">
+            <Button x:Name="btn_Kategori" Grid.Column="4" Content="Kategori" Width="100" FontSize="16" Height="27" HorizontalAlignment="Left" Margin="5,3,5,1" Foreground="#FFF1DABF" Click="btn_Kategori_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="button square wide.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btn_Pegawai" Grid.Column="5" Content="Pegawai" Width="100" FontSize="16" Height="27" HorizontalAlignment="Left" Margin="5,3,5,1" Foreground="#FFF1DABF" Click="btn_Pegawai_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="button square wide.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btn_Setting" Grid.Column="6" Content="Pengaturan" Width="100" FontSize="16" Height="27" HorizontalAlignment="Left" Margin="5,3,5,1" Click="btn_Setting_Click" Foreground="#FFF1DABF">
                 <Button.Background>
                     <ImageBrush ImageSource="button square wide.png"/>
                 </Button.Background>

@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:ELREORS"
         xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer" x:Class="ELREORS.Admin_History_Chart"
         mc:Ignorable="d"
-        Title="Admin_History_Chart" Height="450" Width="800"
+        Title="Admin_History_Chart" Height="600" Width="1200"
         WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
 
-        <Viewer:CrystalReportsViewer x:Name="CRViewerChart" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772"/>
+        <Viewer:CrystalReportsViewer x:Name="CRViewerChart" HorizontalAlignment="Left" Height="auto" Width="auto" Margin="10,40,0,0" VerticalAlignment="Top" />
 
     </Grid>
 </Window>

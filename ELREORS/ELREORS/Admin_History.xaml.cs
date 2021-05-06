@@ -100,7 +100,7 @@ namespace ELREORS
 
         private void btnShowChart_Click(object sender, RoutedEventArgs e)
         {
-            Admin_History_Chart w = new Admin_History_Chart();
+            Admin_History_Chart w = new Admin_History_Chart(dp_filter1.SelectedDate.Value, dp_filter2.SelectedDate.Value);
             w.ShowDialog();
         }
 
