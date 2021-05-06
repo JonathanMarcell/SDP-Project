@@ -12,17 +12,22 @@ namespace ELREORS
         public int id;
         public string nama;
         public int harga;
-        public string kategori;
+        public int kategori;
         public int status;
         public string keterangan;
-        public menu(int id, string nama, int harga, int status, string keterangan)
+        public byte[] gambar;
+
+        public menu(int id, string nama, int harga, int kategori, int status, string keterangan, byte[] gambar)
         {
             this.id = id;
             this.nama = nama;
             this.harga = harga;
+            this.kategori = kategori;
             this.status = status;
             this.keterangan = keterangan;
+            this.gambar = gambar;
         }
+
         public void setId(int id)
         {
             this.id = id;
@@ -35,12 +40,10 @@ namespace ELREORS
         {
             this.nama = nama;
         }
-
         public string getNama()
         {
             return nama;
         }
-
         public void setHarga(int harga)
         {
             this.harga = harga;
@@ -53,9 +56,17 @@ namespace ELREORS
         {
             this.status = status;
         }
-        public int setStatus()
+        public int getStatus()
         {
             return status;
+        }
+        public void setKategori(int kategori)
+        {
+            this.kategori = kategori;
+        }
+        public int getKategori()
+        {
+            return kategori;
         }
         public void setKeterangan(string keterangan)
         {
@@ -64,6 +75,14 @@ namespace ELREORS
         public string getKeterangan()
         {
             return keterangan;
+        }
+        public void setGambar(byte[] gambar)
+        {
+            this.gambar = gambar;
+        }
+        public byte[] getGambar()
+        {
+            return gambar;
         }
     }
 }

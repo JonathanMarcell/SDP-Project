@@ -23,6 +23,7 @@ namespace ELREORS
     {
         OracleConnection conn;
         List<menu> m = new List<menu>();
+        List<menu> mt = new List<menu>();
         int max = 0;
         int halaman = 0;
         int jumlah = 3;
@@ -33,12 +34,18 @@ namespace ELREORS
             InitializeComponent();
             lbM.Content = n;
             btnPrev.IsEnabled = false;
+            btnApp.IsEnabled = false;
+            lbResto.Content = App.getNamaResto();
             //this.WindowState = WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
             conn = App.conn;
             refresh();
             tampil();
             awal();
+            if (halaman == max - 1)
+            {
+                btnNext.IsEnabled = false;
+            }
         }
         void awal()
         {
@@ -53,19 +60,26 @@ namespace ELREORS
             try
             {
                 float hasil = 0; 
-                conn.Open();
                 max = 0;
                 OracleCommand cmd = new OracleCommand();
-                string qry = "select id as \"id\",nama as \"nama\", harga as \"harga\" , status as \"status\", keterangan as \"keterangan\" from menu where status = 1";
+                string qry = "select id as \"id\",nama as \"nama\", harga as \"harga\", id_kategori as \"kategori\",status as \"status\", keterangan as \"keterangan\", gambar as\"gambar\" from menu where status = 1";
                 cmd = new OracleCommand(qry, conn);
                 cmd.ExecuteReader();
                 OracleDataReader dr = cmd.ExecuteReader();
                 m.Clear();
                 while (dr.Read())
                 {
-                    m.Add(new menu(Convert.ToInt32(dr[0]), dr[1].ToString(), Convert.ToInt32(dr[2]), Convert.ToInt32(dr[3]), dr[4].ToString()));
+                    m.Add(new menu(Convert.ToInt32(dr[0]), dr[1].ToString(), Convert.ToInt32(dr[2]), Convert.ToInt32(dr[3]), Convert.ToInt32(dr[4]), dr[5].ToString(), (Byte[])(dr.GetOracleBlob(6)).Value) );
                 }
-                for (int i = 0; i < m.Count(); i++)
+                mt.Clear();
+                foreach (var item in m)
+                {
+                    if (item.getKategori() == 2)
+                    {
+                        mt.Add(new menu(item.getId(),item.getNama(),item.getHarga(),item.getKategori(),item.getStatus(),item.getKeterangan(), item.getGambar()) );
+                    }
+                }
+                for (int i = 0; i < mt.Count(); i++)
                 {
                     max++;
                     jumlah++;
@@ -73,12 +87,10 @@ namespace ELREORS
                 hasil = max % 3;
                 if (hasil != 0) max = (max / 3) + 1;
                 else max = max / 3;
-                conn.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                conn.Close();
             }
         }
         void tampil()
@@ -90,9 +102,19 @@ namespace ELREORS
                 {
                     if ((iT * halaman) + i1 >= 0 && (iT * halaman) + i1 < m.Count())
                     {
-                        lbN1.Content = m[i1].getNama();
-                        lbK1.Content = m[i1].getKeterangan();
-                        lbH1.Content = m[i1].getHarga();
+                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[i1].getGambar()))
+                        {
+                            var imageSource = new BitmapImage();
+                            imageSource.BeginInit();
+                            imageSource.StreamSource = ms;
+                            imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                            imageSource.EndInit();
+
+                            img1.Source = imageSource;
+                        }
+                        lbN1.Content = mt[i1].getNama();
+                        lbK1.Content = mt[i1].getKeterangan();
+                        lbH1.Content = mt[i1].getHarga();
                     }
                     else
                     {
@@ -108,9 +130,19 @@ namespace ELREORS
 
                     if ((iT * halaman) + i2 >= 0 && (iT * halaman) + i2 < m.Count())
                     {
-                        lbN2.Content = m[i2].getNama();
-                        lbK2.Content = m[i2].getKeterangan();
-                        lbH2.Content = m[i2].getHarga();
+                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[i2].getGambar()))
+                        {
+                            var imageSource = new BitmapImage();
+                            imageSource.BeginInit();
+                            imageSource.StreamSource = ms;
+                            imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                            imageSource.EndInit();
+
+                            img2.Source = imageSource;
+                        }
+                        lbN2.Content = mt[i2].getNama();
+                        lbK2.Content = mt[i2].getKeterangan();
+                        lbH2.Content = mt[i2].getHarga();
                     }
                     else
                     {
@@ -126,9 +158,19 @@ namespace ELREORS
 
                     if ((iT * halaman) + i3 >= 0 && (iT * halaman) + i3 < m.Count())
                     {
-                        lbN3.Content = m[i3].getNama();
-                        lbK3.Content = m[i3].getKeterangan();
-                        lbH3.Content = m[i3].getHarga();
+                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[i3].getGambar()))
+                        {
+                            var imageSource = new BitmapImage();
+                            imageSource.BeginInit();
+                            imageSource.StreamSource = ms;
+                            imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                            imageSource.EndInit();
+
+                            img3.Source = imageSource;
+                        }
+                        lbN3.Content = mt[i3].getNama();
+                        lbK3.Content = mt[i3].getKeterangan();
+                        lbH3.Content = mt[i3].getHarga();
                     }
                     else
                     {
@@ -146,9 +188,19 @@ namespace ELREORS
                 {
                     if ((iT * halaman) + i1 >= 0 && (iT * halaman) + i1 < m.Count())
                     {
-                        lbN1.Content = m[(iT * halaman) + i1].getNama();
-                        lbK1.Content = m[(iT * halaman) + i1].getKeterangan();
-                        lbH1.Content = m[(iT * halaman) + i1].getHarga();
+                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[(iT * halaman) + i1].getGambar()))
+                        {
+                            var imageSource = new BitmapImage();
+                            imageSource.BeginInit();
+                            imageSource.StreamSource = ms;
+                            imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                            imageSource.EndInit();
+
+                            img1.Source = imageSource;
+                        }
+                        lbN1.Content = mt[(iT * halaman) + i1].getNama();
+                        lbK1.Content = mt[(iT * halaman) + i1].getKeterangan();
+                        lbH1.Content = mt[(iT * halaman) + i1].getHarga();
                     }
                     else
                     {
@@ -164,9 +216,19 @@ namespace ELREORS
 
                     if ((iT * halaman) + i2 >= 0 && (iT * halaman) + i2 < m.Count())
                     {
-                        lbN2.Content = m[(iT * halaman) + i2].getNama();
-                        lbK2.Content = m[(iT * halaman) + i2].getKeterangan();
-                        lbH2.Content = m[(iT * halaman) + i2].getHarga();
+                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[(iT * halaman) + i2].getGambar()))
+                        {
+                            var imageSource = new BitmapImage();
+                            imageSource.BeginInit();
+                            imageSource.StreamSource = ms;
+                            imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                            imageSource.EndInit();
+
+                            img2.Source = imageSource;
+                        }
+                        lbN2.Content = mt[(iT * halaman) + i2].getNama();
+                        lbK2.Content = mt[(iT * halaman) + i2].getKeterangan();
+                        lbH2.Content = mt[(iT * halaman) + i2].getHarga();
                     }
                     else
                     {
@@ -182,9 +244,19 @@ namespace ELREORS
 
                     if ((iT * halaman) + i3 >= 0 && (iT * halaman) + i3 < m.Count())
                     {
-                        lbN3.Content = m[(iT * halaman) + i3].getNama();
-                        lbK3.Content = m[(iT * halaman) + i3].getKeterangan();
-                        lbH3.Content = m[(iT * halaman) + i3].getHarga();
+                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[(iT * halaman) + i3].getGambar()))
+                        {
+                            var imageSource = new BitmapImage();
+                            imageSource.BeginInit();
+                            imageSource.StreamSource = ms;
+                            imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                            imageSource.EndInit();
+
+                            img3.Source = imageSource;
+                        }
+                        lbN3.Content = mt[(iT * halaman) + i3].getNama();
+                        lbK3.Content = mt[(iT * halaman) + i3].getKeterangan();
+                        lbH3.Content = mt[(iT * halaman) + i3].getHarga();
                     }
                     else
                     {
@@ -455,7 +527,6 @@ namespace ELREORS
             }
             else
             {
-                conn.Open();
                 int ctr = 0;
                 OracleTransaction trans;
                 trans = conn.BeginTransaction();
@@ -472,7 +543,7 @@ namespace ELREORS
                             if (daO.Rows[i]["Nama"] == m[j].getNama())
                             {
                                 id = m[j].getId();
-                                qry = "insert into djual values(null,null," + id + "," + Convert.ToInt32(lbM.Content) + ",'" + daO.Rows[i]["Keterangan"].ToString() + "')";
+                                qry = "insert into djual values(null,null," + id + "," + Convert.ToInt32(lbM.Content) + ",'" + daO.Rows[i]["Harga"] + "','" + daO.Rows[i]["Jumlah"] + "','" + daO.Rows[i]["Keterangan"].ToString() + "',0)";
                                 cmd = new OracleCommand(qry, conn);
                                 cmd.ExecuteNonQuery();
                             }
@@ -483,13 +554,13 @@ namespace ELREORS
                     tunggu t = new tunggu(temp);
                     t.Show();
                     this.Close();
-                    conn.Close();
+                    
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                     trans.Rollback();
-                    conn.Close();
+                    
                 }
 
             }
@@ -509,6 +580,7 @@ namespace ELREORS
             {
                 btnNext.IsEnabled = false;
             }
+            MessageBox.Show(halaman+"");
         }
         private void btnPrev_Click(object sender, RoutedEventArgs e)
         {
@@ -525,6 +597,7 @@ namespace ELREORS
             {
                 btnPrev.IsEnabled = false;
             }
+            MessageBox.Show(halaman + "");
         }
         private void btnMin1_Click(object sender, RoutedEventArgs e)
         {
@@ -562,24 +635,59 @@ namespace ELREORS
             dataOrder.ItemsSource = daO.DefaultView;
             gantiJ();
         }
-        private void lbNama_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void btnApp_Click(object sender, RoutedEventArgs e)
         {
-            tbM.Visibility = Visibility.Visible;
-            tbM.Text = "Silahkan masukan no meja";
-        }
-        private void lbM_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            tbM.Visibility = Visibility.Visible;
-            tbM.Text = "Silahkan masukan no meja";
-        }
-        private void TextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (e.Key == Key.Enter)
+            btnApp.IsEnabled = false;
+            btnMain.IsEnabled = true;
+            btnDes.IsEnabled = true;
+            mt.Clear();
+            foreach (var item in m)
             {
-                lbM.Content = tbM.Text;
-                tbM.Visibility = Visibility.Hidden;
+                if (item.getKategori() == 2)
+                {
+                    mt.Add(new menu(item.getId(), item.getNama(), item.getHarga(), item.getKategori(), item.getStatus(), item.getKeterangan(), item.getGambar()));
+                }
             }
+            gantiJ();
+            tampilLb();
+            tampil();
+            cekJ();
+        }
+        private void btnMain_Click(object sender, RoutedEventArgs e)
+        {
+            btnApp.IsEnabled = true;
+            btnMain.IsEnabled = false;
+            btnDes.IsEnabled = true;
+            mt.Clear();
+            foreach (var item in m)
+            {
+                if (item.getKategori() == 3)
+                {
+                    mt.Add(new menu(item.getId(), item.getNama(), item.getHarga(), item.getKategori(), item.getStatus(), item.getKeterangan(),item.getGambar()));
+                }
+            }
+            gantiJ();
+            tampilLb();
+            tampil();
+            cekJ();
+        }
+        private void btnDes_Click(object sender, RoutedEventArgs e)
+        {
+            btnApp.IsEnabled = true;
+            btnMain.IsEnabled = true;
+            btnDes.IsEnabled = false;
+            mt.Clear();
+            foreach (var item in m)
+            {
+                if (item.getKategori() == 4)
+                {
+                    mt.Add(new menu(item.getId(), item.getNama(), item.getHarga(), item.getKategori(), item.getStatus(), item.getKeterangan(),item.getGambar()));
+                }
+            }
+            gantiJ();
+            tampilLb();
+            tampil();
+            cekJ();
         }
     }
 }

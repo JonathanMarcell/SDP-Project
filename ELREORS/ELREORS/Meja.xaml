@@ -8,13 +8,11 @@
         Title="Meja" Height="768" Width="1366">
     <Grid Margin="0,2,0,-1.6">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="516*"/>
-            <ColumnDefinition Width="164*"/>
-            <ColumnDefinition Width="109*"/>
-            <ColumnDefinition Width="571*"/>
+            <ColumnDefinition Width="683*"/>
+            <ColumnDefinition Width="683*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="lbNama" Grid.Column="0" Margin="10,0,0,0" Content="Meja" FontSize="32" Width="auto" Height="auto" HorizontalAlignment="Left" VerticalAlignment="Top" MouseDoubleClick="lbNama_MouseDoubleClick"/>
-        <Label x:Name="lbM" Grid.Column="0" Content="1" FontSize="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="auto" Height="auto" Margin="80,0,0,0" MouseDoubleClick="lbM_MouseDoubleClick"/>
+        <Label x:Name="lbNama" Grid.Column="0" Margin="10,0,0,0" Content="Meja" FontSize="32" Width="auto" Height="auto" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label x:Name="lbM" Grid.Column="0" Content="1" FontSize="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="auto" Height="auto" Margin="80,0,0,0"/>
         <Label Name="oList" Grid.Column="0" Margin="10,45,0,0">
             <Label.Content>Order List</Label.Content>
             <Label.FontSize>20</Label.FontSize>
@@ -23,12 +21,15 @@
             <Label.VerticalAlignment>top</Label.VerticalAlignment>
             <Label.HorizontalAlignment>left</Label.HorizontalAlignment>
         </Label>
-        <DataGrid Name="dataOrder" Height="auto" Margin="10,80,20,70" Grid.ColumnSpan="2" FontSize="20" ColumnWidth="*"/>
-        <Label Content="Total Harga: Rp." FontSize="20" Height="auto" Width="auto" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,10"/>
-        <Label x:Name="lbTH" Content="" FontSize="20" Height="auto" Width="auto" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+        <DataGrid Name="dataOrder" Height="auto" Width="auto" Margin="10,80,10,70" FontSize="20" ColumnWidth="*" Grid.Column="0"/>
+        <Label Content="Total Harga: Rp." FontSize="20" Height="auto" Width="auto" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,160,10"/>
+        <Label x:Name="lbTH" Content="" FontSize="20" Height="auto" Width="auto" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,100,10"/>
+        <Label x:Name="lbResto" Content="ELREORS" FontSize="32" Height="auto" Width="auto" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0"/>
+        
+        
         <Label Name="Menu" Grid.Column="3" Margin="187.6,0,297,0">
             <Label.Content>Menu</Label.Content>
-            <Label.FontSize>30</Label.FontSize>
+            <Label.FontSize>32</Label.FontSize>
             <Label.Width>auto</Label.Width>
             <Label.Height>auto</Label.Height>
             <Label.VerticalAlignment>top</Label.VerticalAlignment>
@@ -36,14 +37,10 @@
         </Label>
         <Button Name="btnBersih" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="16" Margin="10,0,0,10" Content="Bersihkan" Click="btnBersih_Click"/>
         <Button Name="btnPesan" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="16" Margin="140,0,0,10" Content="Pesan" Click="btnPesan_Click"/>
-        <Label Name="Food" Grid.Column="3" Margin="197.6,30,307,0">
-            <Label.Content>Food</Label.Content>
-            <Label.FontSize>25</Label.FontSize>
-            <Label.Width>auto</Label.Width>
-            <Label.Height>auto</Label.Height>
-            <Label.VerticalAlignment>top</Label.VerticalAlignment>
-            <Label.HorizontalAlignment>center</Label.HorizontalAlignment>
-        </Label>
+        <Button x:Name="btnApp" Width="200" Height="50" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Appetizer" FontSize="32" Margin="10,55,0,0" Click="btnApp_Click"/>
+        <Button x:Name="btnMain" Width="200" Height="50" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"  Content="Main Course" FontSize="32" Margin="220,55,0,0" Click="btnMain_Click"/>
+        <Button x:Name="btnDes" Width="200" Height="50" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Dessert" FontSize="32" Margin="430,55,0,0" Click="btnDes_Click"/>
+
         <Button x:Name="btnPrev" Content="Previous" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="3" Height="50" Width="120" Margin="0,0,140,10" Click="btnPrev_Click"/>
         <Button x:Name="btnNext" Content="Next" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="3" Width="120" Height="50" Margin="0,0,10,10" Click="btnNext_Click"/>
 
@@ -51,29 +48,28 @@
         <Image x:Name="img2" Width="180" Height="180" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,315,0,0" Grid.ColumnSpan="2"/>
         <Image x:Name="img3" Width="180" Height="180" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,510,0,0" Grid.ColumnSpan="2"/>
 
-        <Label x:Name="lbN1" Content="nasi goreng" Grid.Column="3" Height="50" Width="200" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100.6,115,0,0"/>
-        <Label x:Name="lbK1" Content="nasi digoreng dengan minyak" Grid.Column="3" Height="40" Width="450" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100.6,155,0,0"/>
-        <Label x:Name="Rp1" Content="Rp." Grid.Column="3" Height="40" Width="40" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100.6,185,0,0"/>
-        <Label x:Name="lbH1" Content="" Grid.Column="3" Height="40" Width="420" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140.6,185,0,0"/>
-        <Button x:Name="btnMin1" Content="-" Width="40" Height="60" FontSize="30" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100.6,235,0,0" Grid.Column="3" Click="btnMin1_Click"/>
-        <Label x:Name="lbJ1" Content="0" Width="40" Height="60" FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="3" Margin="140.6,235,0,0"/>
-        <Button x:Name="btnPlus1" Content="+" Width="40" Height="60" FontSize="30" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="170.6,235,0,0" Grid.Column="3" Click="btnPlus1_Click"/>
+        <Label x:Name="lbN1" Content="nasi goreng" Grid.Column="3" Height="50" Width="200" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,115,0,0"/>
+        <Label x:Name="lbK1" Content="nasi digoreng dengan minyak" Grid.Column="3" Height="40" Width="450" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,155,0,0"/>
+        <Label x:Name="Rp1" Content="Rp." Grid.Column="3" Height="40" Width="40" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,185,0,0"/>
+        <Label x:Name="lbH1" Content="" Grid.Column="3" Height="40" Width="420" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,185,0,0"/>
+        <Button x:Name="btnMin1" Content="-" Width="40" Height="60" FontSize="30" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,235,0,0" Grid.Column="3" Click="btnMin1_Click"/>
+        <Label x:Name="lbJ1" Content="0" Width="40" Height="60" FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="3" Margin="250,235,0,0"/>
+        <Button x:Name="btnPlus1" Content="+" Width="40" Height="60" FontSize="30" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="280,235,0,0" Grid.Column="3" Click="btnPlus1_Click"/>
 
-        <Label x:Name="lbN2" Content="nasi goreng" Grid.Column="3" Height="50" Width="200" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100.6,315,0,0"/>
-        <Label x:Name="lbK2" Content="nasi digoreng dengan minyak" Grid.Column="3" Height="40" Width="450" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100.6,355,0,0"/>
-        <Label x:Name="Rp2" Content="Rp." Grid.Column="3" Height="40" Width="40" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100.6,385,0,0"/>
-        <Label x:Name="lbH2" Content="" Grid.Column="3" Height="40" Width="420" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140.6,385,0,0"/>
-        <Button x:Name="btnMin2" Content="-" Width="40" Height="60" FontSize="30" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100.6,435,0,0" Grid.Column="3" Click="btnMin2_Click"/>
-        <Label x:Name="lbJ2" Content="0" Width="40" Height="60" FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="3" Margin="140.6,435,0,0"/>
-        <Button x:Name="btnPlus2" Content="+" Width="40" Height="60" FontSize="30" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="170.6,435,0,0" Grid.Column="3" Click="btnPlus2_Click"/>
+        <Label x:Name="lbN2" Content="nasi goreng" Grid.Column="3" Height="50" Width="200" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,315,0,0"/>
+        <Label x:Name="lbK2" Content="nasi digoreng dengan minyak" Grid.Column="3" Height="40" Width="450" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,355,0,0"/>
+        <Label x:Name="Rp2" Content="Rp." Grid.Column="3" Height="40" Width="40" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,385,0,0"/>
+        <Label x:Name="lbH2" Content="" Grid.Column="3" Height="40" Width="420" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,385,0,0"/>
+        <Button x:Name="btnMin2" Content="-" Width="40" Height="60" FontSize="30" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,435,0,0" Grid.Column="3" Click="btnMin2_Click"/>
+        <Label x:Name="lbJ2" Content="0" Width="40" Height="60" FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="3" Margin="250,435,0,0"/>
+        <Button x:Name="btnPlus2" Content="+" Width="40" Height="60" FontSize="30" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="280,435,0,0" Grid.Column="3" Click="btnPlus2_Click"/>
 
-        <Label x:Name="lbN3" Content="nasi goreng" Grid.Column="3" Height="50" Width="200" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100.6,510,0,0"/>
-        <Label x:Name="lbK3" Content="nasi digoreng dengan minyak" Grid.Column="3" Height="40" Width="450" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100.6,550,0,0"/>
-        <Label x:Name="Rp3" Content="Rp." Grid.Column="3" Height="40" Width="40" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100.6,580,0,0"/>
-        <Label x:Name="lbH3" Content="" Grid.Column="3" Height="40" Width="420" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140.6,580,0,0"/>
-        <Button x:Name="btnMin3" Content="-" Width="40" Height="60" FontSize="30" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100.6,630,0,0" Grid.Column="3" Click="btnMin3_Click"/>
-        <Label x:Name="lbJ3" Content="0" Width="40" Height="60" FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="3" Margin="140.6,630,0,0"/>
-        <Button x:Name="btnPlus3" Content="+" Width="40" Height="60" FontSize="30" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="170.6,630,0,0" Grid.Column="3" Click="btnPlus3_Click"/>
-        <TextBox x:Name="tbM" HorizontalAlignment="Left" Height="23" Margin="220,30,0,0" TextWrapping="Wrap" Text="masukin no meja" VerticalAlignment="Top" Width="120" KeyDown="TextBox_KeyDown" Visibility="Hidden"/>
+        <Label x:Name="lbN3" Content="nasi goreng" Grid.Column="3" Height="50" Width="200" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,510,0,0"/>
+        <Label x:Name="lbK3" Content="nasi digoreng dengan minyak" Grid.Column="3" Height="40" Width="450" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,550,0,0"/>
+        <Label x:Name="Rp3" Content="Rp." Grid.Column="3" Height="40" Width="40" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,580,0,0"/>
+        <Label x:Name="lbH3" Content="" Grid.Column="3" Height="40" Width="420" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,580,0,0"/>
+        <Button x:Name="btnMin3" Content="-" Width="40" Height="60" FontSize="30" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,630,0,0" Grid.Column="3" Click="btnMin3_Click"/>
+        <Label x:Name="lbJ3" Content="0" Width="40" Height="60" FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="3" Margin="250,630,0,0"/>
+        <Button x:Name="btnPlus3" Content="+" Width="40" Height="60" FontSize="30" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="280,630,0,0" Grid.Column="3" Click="btnPlus3_Click"/>
     </Grid>
 </Window>
