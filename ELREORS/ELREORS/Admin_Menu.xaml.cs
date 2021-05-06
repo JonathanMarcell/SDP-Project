@@ -66,7 +66,7 @@ namespace ELREORS
             if (tb_search.Text == "")
             {
                 OracleDataAdapter da = new OracleDataAdapter(
-                    "select ID, KODE_MENU as KODE , NAMA , CASE when STATUS = 1 then 'Aktif' ELSE 'NonAktif' END as STATUS , HARGA , KETERANGAN from menu order by 1", conn);
+                    "select m.ID, KODE_MENU as KODE , m.NAMA , k.NAMA as KATEGORI , CASE when m.STATUS = 1 then 'Aktif' ELSE 'NonAktif' END as STATUS , HARGA , KETERANGAN from menu m join kategori k on k.id=m.id_kategori order by 1", conn);
                 dt = new DataTable();
                 da.Fill(dt);
                 dg_Menu.ItemsSource = dt.DefaultView;
@@ -75,7 +75,7 @@ namespace ELREORS
             {
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = conn;
-                cmd.CommandText = "select ID, KODE_MENU as KODE , NAMA , CASE when STATUS = 1 then 'Aktif' ELSE 'NonAktif' END as STATUS , HARGA , KETERANGAN from menu where lower(nama) like :param order by 1";
+                cmd.CommandText = "select m.ID, KODE_MENU as KODE , m.NAMA , k.NAMA as KATEGORI , CASE when m.STATUS = 1 then 'Aktif' ELSE 'NonAktif' END as STATUS , HARGA , KETERANGAN from menu m join kategori k on k.id=m.id_kategori where lower(m.nama) like :param order by 1";
                 cmd.Parameters.Add(":param", '%'+ tb_search.Text.ToLower() + '%');
                 OracleDataAdapter da = new OracleDataAdapter(cmd);
                 dt = new DataTable();
@@ -84,6 +84,41 @@ namespace ELREORS
             }
         }
 
+        private void dg_Menu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int idx = dg_Menu.SelectedIndex+1;
+            if (idx == 0) {
+                img.Source=null; 
+                return; 
+            }
+            try
+            {
+                OracleCommand cmd = new OracleCommand($"select gambar from menu where id={idx}", App.conn);
 
+                if (cmd.ExecuteScalar() == null || cmd.ExecuteScalar().ToString() == "")
+                {
+                    img.Source = null;
+                    return; 
+                }
+                OracleDataReader dr = cmd.ExecuteReader();
+                dr.Read();
+                Byte[] data = (Byte[])(dr.GetOracleBlob(0)).Value;
+                using (System.IO.MemoryStream ms = new System.IO.MemoryStream(data))
+                {
+                    var imageSource = new BitmapImage();
+                    imageSource.BeginInit();
+                    imageSource.StreamSource = ms;
+                    imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                    imageSource.EndInit();
+
+                    // Assign the Source property of your image
+                    img.Source = imageSource;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(idx + " - "+ ex);
+            }
+        }
     }
 }

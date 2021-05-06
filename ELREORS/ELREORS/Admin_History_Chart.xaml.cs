@@ -23,5 +23,16 @@ namespace ELREORS
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            CRViewerChart.Owner = Window.GetWindow(this);
+            Admin_History_Chart_CrystalReport rpt = new Admin_History_Chart_CrystalReport();
+            rpt.SetDatabaseLogon(App.userid, App.password, App.datasource, "");
+
+            //rpt.SetParameterValue("paramKategori", kategori.SelectedVal);
+
+            CRViewerChart.ViewerCore.ReportSource = rpt;
+        }
     }
 }

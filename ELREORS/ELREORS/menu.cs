@@ -12,6 +12,7 @@ namespace ELREORS
         public int id;
         public string nama;
         public int harga;
+        public string kategori;
         public int status;
         public string keterangan;
         public menu(int id, string nama, int harga, int status, string keterangan)

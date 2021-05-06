@@ -10,16 +10,25 @@
       ShowsNavigationUI="False">
 
     <Grid>
-        <Label Content="Ubah Jumlah Meja :" HorizontalAlignment="Left" Margin="40,249,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Ubah Jumlah Meja :" HorizontalAlignment="Left" Margin="40,176,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Settings" HorizontalAlignment="Left" Margin="40,10,0,0" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFF1DABF"/>
-        <TextBox x:Name="tbJumlahMeja" HorizontalAlignment="Left" Height="23" Margin="236,253,0,0" TextWrapping="Wrap" Text="null" VerticalAlignment="Top"  FontSize="18" Width="120"/>
+        <TextBox x:Name="tbJumlahMeja" HorizontalAlignment="Left" Height="23" Margin="236,180,0,0" TextWrapping="Wrap" Text="null" VerticalAlignment="Top"  FontSize="18" Width="419"/>
         <Button Content="Simpan" HorizontalAlignment="Left" Margin="1196,596,0,0" VerticalAlignment="Top" Width="135" Click="Button_Click" Height="50" FontSize="22" Foreground="#FFF1DABF">
             <Button.Background>
                 <ImageBrush ImageSource="button square wide.png"/>
             </Button.Background>
         </Button>
-        <Label Content="Nama Toko  :" HorizontalAlignment="Left" Margin="40,108,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Label Content="Logo :" HorizontalAlignment="Left" Margin="40,170,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Nama Restoran  :" HorizontalAlignment="Left" Margin="60,108,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Logo :" HorizontalAlignment="Left" Margin="147,240,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="tbNamaResto" HorizontalAlignment="Left" Height="23" Margin="236,119,0,0" TextWrapping="Wrap" Text="null" VerticalAlignment="Top"  FontSize="18" Width="419"/>
+        <Button x:Name="btnPilihLogo" Content="Browse" HorizontalAlignment="Left" Margin="236,240,0,0" VerticalAlignment="Top" Width="100" FontSize="18" Height="32" Foreground="#FFF1DABF" Click="btnPilihLogo_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="button square wide.png"/>
+            </Button.Background>
+        </Button>
+        <Label x:Name="lbDirectory" Content="" HorizontalAlignment="Left" FontSize="18" Margin="346,238,0,0" MaxWidth="300" Width="auto" VerticalAlignment="Top"/>
+        <Image x:Name="img" HorizontalAlignment="Left" Height="316" Margin="40,314,0,0" VerticalAlignment="Top" Width="316"/>
+        <Label Content="About" HorizontalAlignment="Left" Margin="1272,84,0,0" VerticalAlignment="Top" FontSize="18"/>
 
     </Grid>
 </Page>

@@ -25,19 +25,51 @@ namespace ELREORS
         string newId;
         OracleConnection conn;
         string imagepath;
+        List<Kategori> listkat = new List<Kategori>();
         public Admin_Menu_Insert()
         {
             InitializeComponent();
             conn = App.conn;
+            loadKategori();
+        }
+
+        private void loadKategori()
+        {
+            try
+            {
+                listkat = new List<Kategori>();
+                cbKategori.Items.Clear();
+                OracleCommand cmd = new OracleCommand("select ID, NAMA from Kategori", conn);
+                OracleDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    listkat.Add(new Kategori(reader.GetValue(0).ToString(), reader.GetValue(1).ToString()));
+                }
+                reader.Close();
+                cbKategori.ItemsSource = listkat;
+                cbKategori.DisplayMemberPath = "nama";
+                cbKategori.SelectedValuePath = "id";
+            }
+            catch (Exception ex )
+            {
+                MessageBox.Show(ex+"");
+            }
         }
 
         private void btn_insert_Click(object sender, RoutedEventArgs e)
         {
+            string idkat;
+            if (tb_harga.Text == "" || tb_nama.Text == "" || cbKategori.SelectedIndex == -1 || imagepath=="")
+            {
+                MessageBox.Show("Ada field kosong");
+                return;
+            }
+            idkat = cbKategori.SelectedValue.ToString();
             bool success = false;
             try
             {
-                string qry = $"INSERT INTO MENU (ID, KODE_MENU, NAMA, HARGA, STATUS, KETERANGAN ,GAMBAR) VALUES " +
-                    $"(null, null, :NAMA, :HARGA, :STATUS, :KETERANGAN , :GAMBAR)";
+                string qry = $"INSERT INTO MENU (ID, ID_KATEGORI ,KODE_MENU, NAMA, HARGA, STATUS, KETERANGAN ,GAMBAR) VALUES " +
+                    $"(null, {idkat}, null, :NAMA, :HARGA, :STATUS, :KETERANGAN , :GAMBAR)";
 
                 FileStream fls;
                 fls = new FileStream(@imagepath, FileMode.Open, FileAccess.Read);
@@ -46,7 +78,7 @@ namespace ELREORS
                 fls.Read(blob, 0, System.Convert.ToInt32(fls.Length));
                 fls.Close();
 
-                OracleCommand cmd = new OracleCommand(qry, conn); //tetap lakukan oracle command.
+                OracleCommand cmd = new OracleCommand(qry, conn); 
                 cmd.Parameters.Add("NAMA",tb_nama.Text);
                 cmd.Parameters.Add("HARGA",tb_harga.Text);
                 cmd.Parameters.Add("STATUS", cb_status.IsChecked==true ? 1 : 0 );
@@ -80,7 +112,7 @@ namespace ELREORS
                 fldlg.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 fldlg.Title = "Select an Image";
                 //this will allow onlt those file extensions to be added 
-                fldlg.Filter = "Image File (*.jpg;*.bmp;*.gif)|*.jpg;*.bmp;*.gif";
+                fldlg.Filter = "Image File (*.jpg;*.bmp;*.gif)|*.jpg;*.bmp;*.gif;*.png";
                 if (fldlg.ShowDialog() == true)
                 {
                     imagepath = fldlg.FileName;

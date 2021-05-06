@@ -29,11 +29,10 @@ namespace ELREORS
             kodenota.Content = nonota;
             this.id = id;
             OracleDataAdapter da = new OracleDataAdapter(
-                "select m.nama as Nama, count(m.harga) as Jumlah ,sum(m.harga) as Subtotal " +
+                "select m.nama as Nama,  d.harga as Harga, d.JUMLAH as Jumlah , d.harga*d.jumlah as Subtotal " +
                 "from djual d " +
                 "left join menu m on d.id_menu = m.id " +
-                $"where d.ID_HEADER={id} "+
-                "group by m.nama", App.conn);
+                $"where d.ID_HEADER={id} ", App.conn);
             da.Fill(dt);
             dgdetail.ItemsSource = dt.DefaultView;
         }

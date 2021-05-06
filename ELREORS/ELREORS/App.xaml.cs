@@ -13,17 +13,21 @@ namespace ELREORS
     /// </summary>
     public partial class App : Application
     {
+        public static string datasource = "orcl";
+
+        //kuubah supaya bisa diambil buat report
+
+        //public static string userid = "bryant"; static string password = "bryant";
+
+        //public static string userid = "sdp"; public static string password = "sdp";
+
+        //public static string userid = "coba"; public static string password = "1";
+
+        public static string userid = "jo2"; public static string password = "jo2";
+
         public static OracleConnection conn =
+        new OracleConnection($"Data Source = {datasource} ; User Id = {userid} ; Password = {password}");
 
-            //ini masukin user oracle , mending bikin user baru sih menurutku
-
-        new OracleConnection("Data Source =orcl; User Id = bryant ; Password =bryant ");
-
-        //new OracleConnection("Data Source =  orcl; User Id = sdp ; Password = sdp");
-
-        //new OracleConnection("Data Source = orcl ; User Id = coba ; Password = 1");
-
-        //new OracleConnection("Data Source = orcl ; User Id = jo2 ; Password = jo2");
 
         public static void openconn()
         {
@@ -41,7 +45,7 @@ namespace ELREORS
         {
             try
             {
-                OracleCommand cmd = new OracleCommand("select * from jumlahmeja", conn);
+                OracleCommand cmd = new OracleCommand("select JUMLAH_MEJA from PROFIL", conn);
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
             catch (Exception ex)
@@ -50,5 +54,21 @@ namespace ELREORS
             }
             return 0;
         }
+        public static string getNamaResto()
+        {
+            try
+            {
+                OracleCommand cmd = new OracleCommand("select NAMA_RESTO from PROFIL", conn);
+                return cmd.ExecuteScalar().ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            return "";
+        }
+
+
+
     }
 }

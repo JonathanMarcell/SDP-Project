@@ -88,7 +88,7 @@ namespace ELREORS
             textJumlahNota.Text = "Jumlah Nota : "+dt.Rows.Count;
         }
 
-        private void btn_print_Click(object sender, RoutedEventArgs e)
+        private void btn_report_Click(object sender, RoutedEventArgs e)
         {
 
         }

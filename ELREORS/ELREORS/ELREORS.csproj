@@ -58,9 +58,15 @@
     <Reference Include="Oracle.DataAccess">
       <HintPath>D:\app\ACER\product\11.2.0\dbhome_2\ODP.NET\bin\2.x\Oracle.DataAccess.dll</HintPath>
     </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="sapbusinessobjects.wpf.viewer, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="SAPBusinessObjects.WPF.ViewerShared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -82,6 +88,12 @@
     <Compile Include="Admin_History_Chart.xaml.cs">
       <DependentUpon>Admin_History_Chart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Admin_History_Chart_CrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Admin_History_Chart_CrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Admin_History_Details.xaml.cs">
       <DependentUpon>Admin_History_Details.xaml</DependentUpon>
     </Compile>
@@ -100,6 +112,7 @@
     <Compile Include="Admin_Stock_Update.xaml.cs">
       <DependentUpon>Admin_Stock_Update.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Kategori.cs" />
     <Compile Include="menu.cs" />
     <Compile Include="NoMeja.xaml.cs">
       <DependentUpon>NoMeja.xaml</DependentUpon>
@@ -232,6 +245,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Admin_History_Chart_CrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Admin_History_Chart_CrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Nota.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Nota.cs</LastGenOutput>

@@ -8,7 +8,7 @@
         Title="Admin_Menu_Update" Height="429.344" Width="493.115"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBox x:Name="tb_nama" FontSize="18" HorizontalAlignment="Left" Height="22" Margin="34,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369"/>
+        <TextBox x:Name="tb_nama" FontSize="18" HorizontalAlignment="Left" Height="22" Margin="106,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="350"/>
         <TextBox x:Name="tb_harga" FontSize="18" HorizontalAlignment="Left" Height="24" Margin="34,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
         <Button x:Name="btn_pilihBahan" FontSize="18" Content="Pilih Bahan" HorizontalAlignment="Left" Margin="347,250,0,0" VerticalAlignment="Top" Width="109" Click="btn_pilihBahan_Click"/>
         <Label Content="Nama :" FontSize="18" HorizontalAlignment="Left" Margin="33,37,0,0" VerticalAlignment="Top"/>
@@ -21,6 +21,9 @@
         <Label x:Name="label_id" FontSize="18" Content="ID : " HorizontalAlignment="Left" Margin="34,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.447,-0.385"/>
         <TextBox x:Name="tb_keterangan" FontSize="18" HorizontalAlignment="Left" Height="24" Margin="32,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="424"/>
         <Label Content="Keterangan :" FontSize="18" HorizontalAlignment="Left" Margin="34,164,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbKategori" HorizontalAlignment="Left" Margin="247,128,0,0" VerticalAlignment="Top" Width="209">
+        </ComboBox>
+        <Label Content="Kategori :" FontSize="18" HorizontalAlignment="Left" Margin="247,94,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

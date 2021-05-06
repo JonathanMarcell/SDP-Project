@@ -25,10 +25,12 @@ namespace ELREORS
         string Id;
         OracleConnection conn;
         string imagepath="";
+        List<Kategori> listkat = new List<Kategori>();
         public Admin_Menu_Update(string id, string kd,string nm,string status,string hrg,string keterangan)
         {
             InitializeComponent();
             conn = App.conn;
+            loadKategori();
             Id = id;
             label_id.Content += kd;
             tb_harga.Text = hrg;
@@ -39,20 +41,45 @@ namespace ELREORS
                 cb_status.IsChecked = true;
             }
         }
+        private void loadKategori()
+        {
+            try
+            {
+                listkat = new List<Kategori>();
+                cbKategori.Items.Clear();
+                OracleCommand cmd = new OracleCommand("select ID, NAMA from Kategori", conn);
+                OracleDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    listkat.Add(new Kategori(reader.GetValue(0).ToString(), reader.GetValue(1).ToString() ) );
+                }
+                reader.Close();
+                cbKategori.ItemsSource=listkat;
+                cbKategori.DisplayMemberPath = "nama";
+                cbKategori.SelectedValuePath = "id";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("failed to load kategori");
+            }
+        }
 
         private void btn_update_Click(object sender, RoutedEventArgs e)
         {
-            if (tb_harga.Text=="" || tb_nama.Text == "")
+            string idkat;
+            if (tb_harga.Text=="" || tb_nama.Text == "" || cbKategori.SelectedIndex==-1)
             {
                 MessageBox.Show("Ada field kosong");
                 return;
             }
+            idkat = cbKategori.SelectedValue.ToString();
+            MessageBox.Show(idkat);
             bool success = false;
             try
             {
                 if (imagepath !="")
                 {
-                    string qry = $"update menu set NAMA=:NAMA, HARGA=:HARGA , STATUS=:STATUS , KETERANGAN=:KETERANGAN , GAMBAR=:GAMBAR  where id={Id}";
+                    string qry = $"update menu set ID_KATEGORI={idkat}, NAMA=:NAMA, HARGA=:HARGA , STATUS=:STATUS , KETERANGAN=:KETERANGAN , GAMBAR=:GAMBAR where id={Id}";
                     FileStream fls;
                     fls = new FileStream(@imagepath, FileMode.Open, FileAccess.Read);
                     //a byte array to read the image 
@@ -60,7 +87,7 @@ namespace ELREORS
                     fls.Read(blob, 0, System.Convert.ToInt32(fls.Length));
                     fls.Close();
 
-                    OracleCommand cmd = new OracleCommand(qry, conn); //tetap lakukan oracle command.
+                    OracleCommand cmd = new OracleCommand(qry, conn);
                     cmd.Parameters.Add("NAMA", tb_nama.Text);
                     cmd.Parameters.Add("HARGA", tb_harga.Text);
                     cmd.Parameters.Add("STATUS", cb_status.IsChecked == true ? 1 : 0);
@@ -71,8 +98,8 @@ namespace ELREORS
                 }
                 else
                 {
-                    string qry = $"update menu set NAMA=:NAMA, HARGA=:HARGA , STATUS=:STATUS , KETERANGAN=:KETERANGAN where id={Id}";
-                    OracleCommand cmd = new OracleCommand(qry, conn); //tetap lakukan oracle command.
+                    string qry = $"update menu set ID_KATEGORI={idkat}, NAMA=:NAMA, HARGA=:HARGA , STATUS=:STATUS , KETERANGAN=:KETERANGAN where id={Id}";
+                    OracleCommand cmd = new OracleCommand(qry, conn);
                     cmd.Parameters.Add("NAMA", tb_nama.Text);
                     cmd.Parameters.Add("HARGA", tb_harga.Text);
                     cmd.Parameters.Add("STATUS", cb_status.IsChecked == true ? 1 : 0);
@@ -107,7 +134,7 @@ namespace ELREORS
                 fldlg.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 fldlg.Title = "Select an Image";
                 //this will allow onlt those file extensions to be added 
-                fldlg.Filter = "Image File (*.jpg;*.bmp;*.gif)|*.jpg;*.bmp;*.gif";
+                fldlg.Filter = "Image File (*.jpg;*.bmp;*.gif)|*.jpg;*.bmp;*.gif;*.png";
                 if (fldlg.ShowDialog() == true)
                 {
                     imagepath = fldlg.FileName;

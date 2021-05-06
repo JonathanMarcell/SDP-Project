@@ -36,16 +36,24 @@
             <DatePicker x:Name="dp_filter1" Grid.Column="1" Margin="5,5,30,5" FontSize="18" VerticalAlignment="Center" SelectedDateChanged="DateChange" />
             <TextBlock Text="hingga" Grid.Column="2" Margin="5" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF1DABF"/>
             <DatePicker x:Name="dp_filter2" Grid.Column="3" Margin="5" FontSize="18" VerticalAlignment="Center" SelectedDateChanged="DateChange" />
-            
+
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
-            <DataGrid x:Name="dataGrid" Margin="20" ColumnWidth="*" FontSize="24" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True" MouseDoubleClick="dataGrid_MouseDoubleClick"/>
+            <DataGrid x:Name="dataGrid" Margin="20" ColumnWidth="*" CanUserSortColumns="false" FontSize="24" CanUserReorderColumns="False" IsReadOnly="True" MouseDoubleClick="dataGrid_MouseDoubleClick"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2">
             <TextBlock x:Name="textTotal" Text="Total : Rp -" Margin="0,0,100,0" FontSize="18" HorizontalAlignment="Right"/>
             <TextBlock x:Name="textJumlahNota" Text="Jumlah Nota : 0" Margin="10,0,350,10" FontSize="18" HorizontalAlignment="Right" />
-            <Button x:Name="btnShowChart" Content="GRAFIK" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" FontSize="18" Width="125" Height="40" Click="btnShowChart_Click"/>
-            <Button x:Name="btn_print" Content="PRINT"  Margin="180,0,0,0"  FontSize="18" Width="125" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btn_print_Click"/>
+            <Button x:Name="btnShowChart" Content="GRAFIK" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" FontSize="18" Width="125" Height="40" Click="btnShowChart_Click" Foreground="#FFF1DABF">
+                <Button.Background>
+                    <ImageBrush ImageSource="button square wide.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btn_report" Content="REPORT"  Margin="180,0,0,40"  FontSize="18" Width="125" HorizontalAlignment="Left" Click="btn_report_Click" Foreground="#FFF1DABF">
+                <Button.Background>
+                    <ImageBrush ImageSource="button square wide.png"/>
+                </Button.Background>
+            </Button>
         </Grid>
     </Grid>
 </Page>
