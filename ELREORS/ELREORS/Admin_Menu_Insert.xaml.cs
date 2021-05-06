@@ -31,6 +31,8 @@ namespace ELREORS
             InitializeComponent();
             conn = App.conn;
             loadKategori();
+            OracleCommand cmd = new OracleCommand("select count(*)+1 from menu", conn);
+            newId = cmd.ExecuteScalar().ToString();
         }
 
         private void loadKategori()
@@ -60,7 +62,7 @@ namespace ELREORS
         {
             
             string idkat;
-            if (tb_harga.Text == "" || tb_nama.Text == "" || cbKategori.SelectedIndex == -1 || imagepath=="")
+            if (tb_harga.Text == "" || tb_nama.Text == "" || cbKategori.SelectedIndex == -1 )
             {
                 MessageBox.Show("Ada field kosong");
                 return;
@@ -118,7 +120,8 @@ namespace ELREORS
 
         private void btn_pilihBahan_Click(object sender, RoutedEventArgs e)
         {
-
+            Admin_Menu_PilihBahan w = new Admin_Menu_PilihBahan(newId,tb_nama.Text);
+            w.Show();
         }
 
         private void btn_browse_Click(object sender, RoutedEventArgs e)

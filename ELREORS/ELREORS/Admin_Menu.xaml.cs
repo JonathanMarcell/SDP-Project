@@ -24,7 +24,6 @@ namespace ELREORS
     {
         OracleConnection conn;
         DataTable dt;
-        OracleCommandBuilder builder;
         public Admin_Menu()
         {
             InitializeComponent();
@@ -51,7 +50,8 @@ namespace ELREORS
             string stat  = dt.Rows[idx]["STATUS"].ToString();
             string hrg  = dt.Rows[idx]["HARGA"].ToString();
             string ketr  = dt.Rows[idx]["KETERANGAN"].ToString();
-            Admin_Menu_Update a = new Admin_Menu_Update(id,kode,nm,stat,hrg,ketr);
+            string kategori = dt.Rows[idx]["KATEGORI"].ToString();
+            Admin_Menu_Update a = new Admin_Menu_Update(id,kode,kategori,nm,stat,hrg,ketr);
             a.ShowDialog();
             loaddata();
         }

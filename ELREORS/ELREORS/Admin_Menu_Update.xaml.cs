@@ -26,7 +26,7 @@ namespace ELREORS
         OracleConnection conn;
         string imagepath="";
         List<Kategori> listkat = new List<Kategori>();
-        public Admin_Menu_Update(string id, string kd,string nm,string status,string hrg,string keterangan)
+        public Admin_Menu_Update(string id, string kd,string kategori,string nm,string status,string hrg,string keterangan)
         {
             InitializeComponent();
             conn = App.conn;
@@ -39,6 +39,15 @@ namespace ELREORS
             if (status.ToLower() == "aktif")
             {
                 cb_status.IsChecked = true;
+            }
+            int temp=0;
+            foreach (Kategori item in listkat)
+            {
+                if (item.nama==kategori)
+                {
+                    cbKategori.SelectedIndex = temp;
+                }
+                temp++;
             }
         }
         private void loadKategori()
@@ -73,7 +82,6 @@ namespace ELREORS
                 return;
             }
             idkat = cbKategori.SelectedValue.ToString();
-            MessageBox.Show(idkat);
             bool success = false;
             try
             {
@@ -122,7 +130,8 @@ namespace ELREORS
 
         private void btn_pilihBahan_Click(object sender, RoutedEventArgs e)
         {
-
+            Admin_Menu_PilihBahan w = new Admin_Menu_PilihBahan(Id, tb_nama.Text);
+            w.Show();
         }
 
         private void btn_browse_Click(object sender, RoutedEventArgs e)

@@ -17,13 +17,13 @@ namespace ELREORS
 
         //kuubah supaya bisa diambil buat report
 
-        public static string userid = "bryant"; public static string password = "bryant";
+        //public static string userid = "bryant"; public static string password = "bryant";
 
         //public static string userid = "sdp"; public static string password = "sdp";
 
         //public static string userid = "coba"; public static string password = "1";
 
-        //public static string userid = "jo2"; public static string password = "jo2";
+        public static string userid = "jo2"; public static string password = "jo2";
 
         public static OracleConnection conn =
         new OracleConnection($"Data Source = {datasource} ; User Id = {userid} ; Password = {password}");
@@ -33,7 +33,10 @@ namespace ELREORS
         {
             try
             {
-                conn.Open();
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
             }
             catch (Exception ex)
             {
