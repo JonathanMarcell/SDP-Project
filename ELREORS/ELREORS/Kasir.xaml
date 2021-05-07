@@ -19,7 +19,7 @@
         <Label x:Name="labelTanggal"  Content="Tanggal: dd/mm/yyyy" Grid.Column="3" HorizontalAlignment="Right" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="18" Height="34" Width="181"/>
         <Label x:Name="mejudul" Content="MEJA" Grid.Column="3" HorizontalAlignment="Center" Margin="499,47,481,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Width="96" Height="39"/>
         <Button x:Name="btnCancel" Content="CANCEL" Grid.Column="3" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="100" Height="34" Click="btnCancel_Click" FontSize="18"/>
-        <DataGrid x:Name="dgKasir" Grid.Column="3" Margin="10,95,10,146" FontSize="18" SelectionChanged="dgKasir_SelectionChanged"/>
+        <DataGrid x:Name="dgKasir" Grid.Column="3" Margin="10,95,10,146" FontSize="22" SelectionChanged="dgKasir_SelectionChanged"/>
         <Label x:Name="pajak" Content="Pajak 10%" Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,10,98" VerticalAlignment="Bottom" Width="294" FontSize="18" Height="34"/>
         <Label x:Name="totHarga" Content="Total Harga: Rp. " Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,10,62" VerticalAlignment="Bottom" FontWeight="Bold" Width="342" FontSize="18" Height="34"/>
         <Button x:Name="btnPrint" Content="PRINT NOTA &amp; CONFIRM PAYMENT" Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="342" Height="34" Click="btnPrint_Click" FontSize="18"/>
