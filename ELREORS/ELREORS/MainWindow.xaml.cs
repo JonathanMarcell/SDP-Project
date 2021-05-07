@@ -72,15 +72,9 @@ namespace ELREORS
             }
             else if (tb_username.Text == "kasir")
             {
-                try
-                {
-                    Kasir mm = new Kasir();
-                    mm.ShowDialog();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                Kasir mm = new Kasir();
+                mm.ShowDialog();
+                this.Close();
             }
             else if (tb_username.Text=="list")
             {
