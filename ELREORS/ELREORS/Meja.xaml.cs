@@ -46,6 +46,16 @@ namespace ELREORS
             {
                 btnNext.IsEnabled = false;
             }
+
+            OracleCommand cmd = new OracleCommand();
+            string qry = "select nama from kategori";
+            cmd = new OracleCommand(qry, conn);
+            OracleDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                cbKategori.Items.Add(dr[0]);
+            }
+            cbKategori.SelectedIndex = 0;
         }
         void awal()
         {
@@ -682,6 +692,58 @@ namespace ELREORS
                 if (item.getKategori() == 4)
                 {
                     mt.Add(new menu(item.getId(), item.getNama(), item.getHarga(), item.getKategori(), item.getStatus(), item.getKeterangan(),item.getGambar()));
+                }
+            }
+            gantiJ();
+            tampilLb();
+            tampil();
+            cekJ();
+        }
+
+        private void cbKategori_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbKategori.SelectedIndex==0)
+            {
+                mt.Clear();
+                foreach (var item in m)
+                {
+                    if (item.getKategori() == 1)
+                    {
+                        mt.Add(new menu(item.getId(), item.getNama(), item.getHarga(), item.getKategori(), item.getStatus(), item.getKeterangan(), item.getGambar()));
+                    }
+                }
+            }
+            else if (cbKategori.SelectedIndex == 1)
+            {
+                mt.Clear();
+                foreach (var item in m)
+                {
+                    if (item.getKategori() == 2)
+                    {
+                        mt.Add(new menu(item.getId(), item.getNama(), item.getHarga(), item.getKategori(), item.getStatus(), item.getKeterangan(), item.getGambar()));
+                    }
+                }
+            }
+            else if (cbKategori.SelectedIndex == 2)
+            {
+                mt.Clear();
+                foreach (var item in m)
+                {
+                    if (item.getKategori() == 3)
+                    {
+                        mt.Add(new menu(item.getId(), item.getNama(), item.getHarga(), item.getKategori(), item.getStatus(), item.getKeterangan(), item.getGambar()));
+                    }
+                }
+            }
+            else if (cbKategori.SelectedIndex == 3)
+            {
+                mt.Clear();
+                foreach (var item in m)
+                {
+                    if (item.getKategori() == 4)
+                    {
+                        mt.Add(new menu(item.getId(), item.getNama(), item.getHarga(), item.getKategori(), item.getStatus(), item.getKeterangan(), item.getGambar()));
+                    }
                 }
             }
             gantiJ();

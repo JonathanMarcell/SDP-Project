@@ -126,6 +126,7 @@
     <Compile Include="ShowNota.xaml.cs">
       <DependentUpon>ShowNota.xaml</DependentUpon>
     </Compile>
+    <Compile Include="status.cs" />
     <Compile Include="tunggu.xaml.cs">
       <DependentUpon>tunggu.xaml</DependentUpon>
     </Compile>

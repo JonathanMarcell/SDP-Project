@@ -33,6 +33,7 @@ namespace ELREORS
         int time,timer;
         DispatcherTimer dt = new DispatcherTimer();
         string temp1;
+        List<status> s = new List<status>();
         void selesai()
         {
             OracleCommand cmd = new OracleCommand();
@@ -40,6 +41,28 @@ namespace ELREORS
             cmd = new OracleCommand(qry, conn);
             cmd.ExecuteReader();
             OracleDataReader dr = cmd.ExecuteReader();
+            s.Clear();
+            while (dr.Read())
+            {
+                s.Add(new status(Convert.ToInt32(dr[0])));
+            }
+            int max = s.Count();
+            int ctr = 0;
+            foreach (var item in s)
+            {
+                if (item.getStatusM() == 1)
+                {
+                    ctr++;
+                }
+            }
+            if (ctr==max)
+            {
+                string temp = lbNama.Content.ToString().Substring(5, 1);
+                dt.Stop();
+                Meja a = new Meja(temp);
+                a.Show();
+                Close();
+            }
         }
         private void btnSelesai_Click(object sender, RoutedEventArgs e)
         {
@@ -51,6 +74,7 @@ namespace ELREORS
         {
             time++;
             timer++;
+            selesai();
             if (time>6)
             {
                 meunggu.Content = "Terima kasih";
