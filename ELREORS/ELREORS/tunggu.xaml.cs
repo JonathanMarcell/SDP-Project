@@ -29,6 +29,7 @@ namespace ELREORS
             //this.WindowStyle = WindowStyle.None;
             lbNama.Content = "Meja " + n;
             temp1 = n;
+            conn = App.conn;
         }
         int time,timer;
         DispatcherTimer dt = new DispatcherTimer();
