@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,24 +21,36 @@ namespace ELREORS
     /// </summary>
     public partial class tunggu : Window
     {
+        OracleConnection conn;
         public tunggu(string n)
         {
             InitializeComponent();
-            this.WindowState = WindowState.Maximized;
+            //this.WindowState = WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
             lbNama.Content = "Meja " + n;
+            temp1 = n;
         }
         int time,timer;
         DispatcherTimer dt = new DispatcherTimer();
+        string temp1;
+        void selesai()
+        {
+            OracleCommand cmd = new OracleCommand();
+            string qry = "select status as \"status\" from djual where nomor_meja = "+temp1 ;
+            cmd = new OracleCommand(qry, conn);
+            cmd.ExecuteReader();
+            OracleDataReader dr = cmd.ExecuteReader();
+        }
         private void btnSelesai_Click(object sender, RoutedEventArgs e)
         {
             meunggu.Content =  "Terima kasih";
             bayar.Visibility = Visibility.Hidden;
+            timer = 0;
         }
-
         private void dtTicker(object sender, EventArgs e)
         {
             time++;
+            timer++;
             if (time>6)
             {
                 meunggu.Content = "Terima kasih";
@@ -53,10 +66,13 @@ namespace ELREORS
             }
             if (timer>3)
             {
-
+                string temp = lbNama.Content.ToString().Substring(5, 1);
+                dt.Stop();
+                Meja a = new Meja(temp);
+                a.Show();
+                Close();
             }
         }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             time = 0;
