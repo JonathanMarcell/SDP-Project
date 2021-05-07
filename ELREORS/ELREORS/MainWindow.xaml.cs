@@ -74,6 +74,7 @@ namespace ELREORS
             {
                 Kasir mm = new Kasir();
                 mm.ShowDialog();
+                this.Close();
             }
             else if (tb_username.Text=="list")
             {
