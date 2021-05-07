@@ -77,6 +77,7 @@ namespace ELREORS
             mejudul.Content = "MEJA";
             MainWindow mainwin = new MainWindow();
             mainwin.Show();
+            this.Close();
         }
 
         private void dgKasir_SelectionChanged(object sender, SelectionChangedEventArgs e)
