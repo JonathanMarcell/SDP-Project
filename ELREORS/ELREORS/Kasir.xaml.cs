@@ -87,14 +87,39 @@ namespace ELREORS
 
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (dt.Rows.Count == 0)
             {
-                ShowNota sn = new ShowNota();
-                sn.ShowDialog();
+                MessageBox.Show("Tidak Ada Pesanan Pada Meja "+nomeja);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                int updatedstat = 1;
+                string confirm = "UPDATE HJUAL set STATUS = :stat WHERE NOMOR_MEJA = :nomeja";
+                OracleCommand cmd = new OracleCommand(confirm, conn);
+                try
+                {
+                    cmd.Parameters.Add(":NAMA", updatedstat);
+                    cmd.Parameters.Add(":nomeja", nomeja);
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Konfirmasi Berhasil");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                try
+                {
+                    ShowNota sn = new ShowNota();
+                    sn.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                loadData();
             }
         }
     }
