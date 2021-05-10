@@ -29,12 +29,14 @@ namespace ELREORS
         int jumlah = 3;
         DataTable daO;
         int indexing = 0;
+        int sekarang = 0;
         public Meja(string n)
         {
             InitializeComponent();
             lbM.Content = n;
             btnPrev.IsEnabled = false;
             btnApp.IsEnabled = false;
+            sekarang = 1;
             lbResto.Content = App.getNamaResto();
             //this.WindowState = WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
@@ -42,11 +44,6 @@ namespace ELREORS
             refresh();
             tampil();
             awal();
-            if (halaman == max - 1)
-            {
-                btnNext.IsEnabled = false;
-            }
-
             OracleCommand cmd = new OracleCommand();
             string qry = "select nama from kategori";
             cmd = new OracleCommand(qry, conn);
@@ -56,6 +53,9 @@ namespace ELREORS
                 cbKategori.Items.Add(dr[0]);
             }
             cbKategori.SelectedIndex = 0;
+            countH();
+            lbSek.Content = sekarang;
+            lbMax.Content = max;
         }
         void awal()
         {
@@ -103,6 +103,30 @@ namespace ELREORS
                 MessageBox.Show(ex.Message);
             }
         }
+        void countH()
+        {
+            btnNext.IsEnabled = true;
+            float hasil = 0;
+            halaman = 0;
+            max = 0;
+            jumlah = 0;
+            sekarang = 1;
+            for (int i = 0; i < mt.Count(); i++)
+            {
+                max++;
+                jumlah++;
+            }
+            hasil = max % 3;
+            if (hasil != 0) max = (max / 3) + 1;
+            else max = max / 3;
+            if (sekarang==max)
+            {
+                btnNext.IsEnabled = false;
+                btnPrev.IsEnabled = false;
+            }
+            lbMax.Content = max;
+            lbSek.Content = 1;
+        }
         void tampil()
         {
             int i1 = 0, i2 = 1, i3 = 2, iT = 3;
@@ -110,7 +134,7 @@ namespace ELREORS
             {
                 if (halaman == 0)
                 {
-                    if ((iT * halaman) + i1 >= 0 && (iT * halaman) + i1 < m.Count())
+                    if ((iT * halaman) + i1 >= 0 && (iT * halaman) + i1 < mt.Count())
                     {
                         using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[i1].getGambar()))
                         {
@@ -138,7 +162,7 @@ namespace ELREORS
                         Rp1.Visibility = Visibility.Hidden;
                     }
 
-                    if ((iT * halaman) + i2 >= 0 && (iT * halaman) + i2 < m.Count())
+                    if ((iT * halaman) + i2 >= 0 && (iT * halaman) + i2 < mt.Count())
                     {
                         using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[i2].getGambar()))
                         {
@@ -166,7 +190,7 @@ namespace ELREORS
                         Rp2.Visibility = Visibility.Hidden;
                     }
 
-                    if ((iT * halaman) + i3 >= 0 && (iT * halaman) + i3 < m.Count())
+                    if ((iT * halaman) + i3 >= 0 && (iT * halaman) + i3 < mt.Count())
                     {
                         using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[i3].getGambar()))
                         {
@@ -196,7 +220,7 @@ namespace ELREORS
                 }
                 else
                 {
-                    if ((iT * halaman) + i1 >= 0 && (iT * halaman) + i1 < m.Count())
+                    if ((iT * halaman) + i1 >= 0 && (iT * halaman) + i1 < mt.Count())
                     {
                         using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[(iT * halaman) + i1].getGambar()))
                         {
@@ -224,7 +248,7 @@ namespace ELREORS
                         Rp1.Visibility = Visibility.Hidden;
                     }
 
-                    if ((iT * halaman) + i2 >= 0 && (iT * halaman) + i2 < m.Count())
+                    if ((iT * halaman) + i2 >= 0 && (iT * halaman) + i2 < mt.Count())
                     {
                         using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[(iT * halaman) + i2].getGambar()))
                         {
@@ -252,7 +276,7 @@ namespace ELREORS
                         Rp2.Visibility = Visibility.Hidden;
                     }
 
-                    if ((iT * halaman) + i3 >= 0 && (iT * halaman) + i3 < m.Count())
+                    if ((iT * halaman) + i3 >= 0 && (iT * halaman) + i3 < mt.Count())
                     {
                         using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[(iT * halaman) + i3].getGambar()))
                         {
@@ -529,10 +553,6 @@ namespace ELREORS
                 }
             }
         }
-        void currency()
-        {
-            
-        }
         private void btnPesan_Click(object sender, RoutedEventArgs e)
         {
             if (dataOrder.Items.Count <= 1)
@@ -585,6 +605,7 @@ namespace ELREORS
             btnPrev.IsEnabled = true;
             if (halaman < max - 1)
             {
+                sekarang = sekarang + 1;
                 tampilLb();
                 halaman = halaman + 1;
                 tampil();
@@ -594,7 +615,8 @@ namespace ELREORS
             {
                 btnNext.IsEnabled = false;
             }
-            MessageBox.Show(halaman+"");
+            
+            lbSek.Content = sekarang;
         }
         private void btnPrev_Click(object sender, RoutedEventArgs e)
         {
@@ -603,6 +625,7 @@ namespace ELREORS
             if (halaman > 0)
             {
                 tampilLb();
+                sekarang = sekarang - 1;
                 halaman = halaman - 1;
                 tampil();
                 cekJ();
@@ -611,7 +634,7 @@ namespace ELREORS
             {
                 btnPrev.IsEnabled = false;
             }
-            MessageBox.Show(halaman + "");
+            lbSek.Content = sekarang;
         }
         private void btnMin1_Click(object sender, RoutedEventArgs e)
         {
@@ -703,7 +726,6 @@ namespace ELREORS
             tampil();
             cekJ();
         }
-
         private void cbKategori_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cbKategori.SelectedIndex==0)
@@ -716,6 +738,7 @@ namespace ELREORS
                         mt.Add(new menu(item.getId(), item.getNama(), item.getHarga(), item.getKategori(), item.getStatus(), item.getKeterangan(), item.getGambar()));
                     }
                 }
+                countH();
             }
             else if (cbKategori.SelectedIndex == 1)
             {
@@ -727,6 +750,7 @@ namespace ELREORS
                         mt.Add(new menu(item.getId(), item.getNama(), item.getHarga(), item.getKategori(), item.getStatus(), item.getKeterangan(), item.getGambar()));
                     }
                 }
+                countH();
             }
             else if (cbKategori.SelectedIndex == 2)
             {
@@ -738,6 +762,7 @@ namespace ELREORS
                         mt.Add(new menu(item.getId(), item.getNama(), item.getHarga(), item.getKategori(), item.getStatus(), item.getKeterangan(), item.getGambar()));
                     }
                 }
+                countH();
             }
             else if (cbKategori.SelectedIndex == 3)
             {
@@ -749,6 +774,7 @@ namespace ELREORS
                         mt.Add(new menu(item.getId(), item.getNama(), item.getHarga(), item.getKategori(), item.getStatus(), item.getKeterangan(), item.getGambar()));
                     }
                 }
+                countH();
             }
             gantiJ();
             tampilLb();
