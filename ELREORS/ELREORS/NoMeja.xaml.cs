@@ -26,14 +26,13 @@ namespace ELREORS
             InitializeComponent();
             App.openconn();
             conn = App.conn;
-            //refresh();
+            refresh();
         }
         int max;
         void refresh()
         {
             try
             {
-                conn.Open();
                 OracleCommand cmd = new OracleCommand();
                 string qry = "select *  from jumlahmeja";
                 cmd = new OracleCommand(qry, conn);
@@ -42,7 +41,7 @@ namespace ELREORS
                 {
                     max = Convert.ToInt32(dr[0]);
                 }
-                conn.Close();
+                
             }
             catch (Exception ex)
             {

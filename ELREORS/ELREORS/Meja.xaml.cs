@@ -529,6 +529,10 @@ namespace ELREORS
                 }
             }
         }
+        void currency()
+        {
+            
+        }
         private void btnPesan_Click(object sender, RoutedEventArgs e)
         {
             if (dataOrder.Items.Count <= 1)
