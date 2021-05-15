@@ -25,7 +25,8 @@ namespace ELREORS
         public MainWindow()
         {
             InitializeComponent();
-
+            //ngubah locale jd indo
+            System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo("id-ID");
             //fullscreen & no window control, nanti kasi ini ke semua wpf
             this.WindowState= WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;

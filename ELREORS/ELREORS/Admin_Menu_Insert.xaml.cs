@@ -152,5 +152,21 @@ namespace ELREORS
             }
         }
 
+
+        string _prevText = string.Empty;
+
+        private void cbKategori_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            foreach (var item in cbKategori.Items)
+            {
+                if (item.ToString().StartsWith(cbKategori.Text))
+                {
+                    _prevText = cbKategori.Text;
+                    return;
+                }
+            }
+            cbKategori.Text = _prevText;
+        }
+
     }
 }

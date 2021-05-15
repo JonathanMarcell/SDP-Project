@@ -22,7 +22,8 @@
         <Label x:Name="label_id" FontSize="18" Content="ID :" HorizontalAlignment="Left" Margin="34,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.447,-0.385"/>
         <TextBox x:Name="tb_keterangan" FontSize="18" HorizontalAlignment="Left" Height="24" Margin="32,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="424"/>
         <Label Content="Keterangan :" FontSize="18" HorizontalAlignment="Left" Margin="34,164,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbKategori" HorizontalAlignment="Left" Margin="247,128,0,0" VerticalAlignment="Top" Width="209" FontSize="16">
+        <ComboBox x:Name="cbKategori" HorizontalAlignment="Left" Margin="247,128,0,0" VerticalAlignment="Top" Width="209" FontSize="16" IsTextSearchEnabled="True" IsEditable="True"
+          TextBoxBase.TextChanged="cbKategori_TextChanged">
         </ComboBox>
         <Label Content="Kategori :" FontSize="18" HorizontalAlignment="Left" Margin="247,94,0,0" VerticalAlignment="Top"/>
 
