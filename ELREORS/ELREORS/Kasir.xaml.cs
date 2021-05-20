@@ -37,9 +37,10 @@ namespace ELREORS
 
         void loadData()
         {
-            string query = "select distinct hj.ID as \"No\", hj.KODE_HJUAL as \"Kode HJUAL\", to_char(hj.TANGGAL, 'dd/MM/yyyy') as \"Tanggal\", mn.NAMA as \"Menu\", dj.JUMLAH as \"Jumlah\", dj.HARGA as \"Harga\", dj.JUMLAH * dj.HARGA as \"Subtotal\" from HJUAL hj, DJUAL dj, MENU mn where hj.ID = dj.ID_HEADER and mn.ID = dj.ID_MENU and hj.status = 0 and hj.nomor_meja = " + nomeja;
+            string query = "select distinct hj.KODE_HJUAL as \"Kode HJUAL\", to_char(hj.TANGGAL, 'dd/MM/yyyy') as \"Tanggal\", mn.NAMA as \"Menu\", dj.JUMLAH as \"Jumlah\", dj.HARGA as \"Harga\", dj.JUMLAH * dj.HARGA as \"Subtotal\" from HJUAL hj, DJUAL dj, MENU mn where hj.ID = dj.ID_HEADER and mn.ID = dj.ID_MENU and hj.status = 0 and hj.nomor_meja = " + nomeja;
             OracleDataAdapter da = new OracleDataAdapter(query, conn);
             dt = new DataTable();
+            dt.Columns.Add("No");
             da.Fill(dt);
 
             dgKasir.ItemsSource = dt.DefaultView;
@@ -59,6 +60,18 @@ namespace ELREORS
                     nomeja = Convert.ToInt32(btn.Content);
                     mejudul.Content = "MEJA " + nomeja.ToString();
                     loadData();
+                    int harga = 0;
+                    double hrgpajak = 0;
+                    for (int j = 0; j < dt.Rows.Count; j++)
+                    {
+                        dt.Rows[j]["No"] = j+1;
+                        hrgpajak = (Convert.ToInt32(dt.Rows[j]["Subtotal"]) * 0.1) + hrgpajak;
+                        pajak.Content = hrgpajak + "";
+                        pajak.HorizontalContentAlignment = HorizontalAlignment.Right;
+                        harga = Convert.ToInt32(dt.Rows[j]["Subtotal"]) + harga;
+                        totHarga.Content = harga + (int)hrgpajak + "";
+                        totHarga.HorizontalContentAlignment = HorizontalAlignment.Right;
+                    }
                 };
 
                 if(i % 2 == 0)

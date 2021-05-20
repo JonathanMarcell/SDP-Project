@@ -22,9 +22,9 @@ namespace ELREORS
 
         //public static string userid = "sdp"; public static string password = "sdp";
 
-        //public static string userid = "coba"; public static string password = "1";
+        public static string userid = "coba"; public static string password = "1";
 
-        public static string userid = "jo2"; public static string password = "jo2";
+        //public static string userid = "jo2"; public static string password = "jo2";
 
         public static OracleConnection conn =
         new OracleConnection($"Data Source = {datasource} ; User Id = {userid} ; Password = {password}");
