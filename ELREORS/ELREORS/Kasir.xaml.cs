@@ -48,6 +48,7 @@ namespace ELREORS
 
         void genButton()
         {
+            Color color = (Color)ColorConverter.ConvertFromString("#FFDFD991");
             for (int i = 1; i <= App.getJumlahMeja(); i++)
             {
                 Button btn = new Button();
@@ -56,6 +57,7 @@ namespace ELREORS
                 btn.Content = i;
                 btn.Margin = new Thickness(0, 0, 0, 20);
                 btn.FontSize = 18;
+                btn.Foreground = new System.Windows.Media.SolidColorBrush(color);
                 btn.Click += (sender, e) => {
                     nomeja = Convert.ToInt32(btn.Content);
                     mejudul.Content = "MEJA " + nomeja.ToString();
