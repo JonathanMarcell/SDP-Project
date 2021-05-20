@@ -28,10 +28,9 @@ namespace ELREORS
         {
             InitializeComponent();
             App.openconn();
-            this.WindowState = WindowState.Maximized;
             this.conn = App.conn;
 
-            labelTanggal.Content = "Tanggal : "+ DateTime.Now.ToString().Substring(0,10);
+            labelTanggal.Content = "Tanggal : "+ DateTime.Now.ToShortDateString();
             genButton();
         }
 
@@ -58,6 +57,14 @@ namespace ELREORS
                 btn.Margin = new Thickness(0, 0, 0, 20);
                 btn.FontSize = 18;
                 btn.Foreground = new System.Windows.Media.SolidColorBrush(color);
+                Uri uri = new Uri("Resource/button square-bold.png", UriKind.Relative);
+                BitmapImage img = new BitmapImage(uri);
+                ImageBrush b = new ImageBrush(img);
+                b.Opacity = 1; //default 1
+                b.TileMode = TileMode.Tile; //default None
+                b.Stretch = Stretch.Fill; //default Fill
+                btn.Background = b;
+                btn.FontWeight = FontWeights.Bold;
                 btn.Click += (sender, e) => {
                     nomeja = Convert.ToInt32(btn.Content);
                     mejudul.Content = "MEJA " + nomeja.ToString();
@@ -136,7 +143,7 @@ namespace ELREORS
 
                 try
                 {
-                    ShowNota sn = new ShowNota();
+                    ShowNota sn = new ShowNota(nomeja);
                     sn.ShowDialog();
                 }
                 catch (Exception ex)

@@ -35,7 +35,7 @@
             </Button.Background>
         </Button>
         <StackPanel x:Name="stackpanel" Grid.Column="1" HorizontalAlignment="Left" Height="609" Margin="27,112,0,0" VerticalAlignment="Top" Width="105"/>
-        <StackPanel x:Name="stackpanel2" Grid.Column="2" HorizontalAlignment="Left" Height="609" Margin="10,110,0,0" VerticalAlignment="Top" Width="105"/>
+        <StackPanel x:Name="stackpanel2" Grid.Column="2" HorizontalAlignment="Left" Height="609" Margin="2,110,0,0" VerticalAlignment="Top" Width="105"/>
         <Label x:Name="totHarga" Content="0" Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,46,62" VerticalAlignment="Bottom" FontWeight="Bold" Width="110" FontSize="18" Height="34"/>
         <Label x:Name="pajak" Content="0" Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,46,98" VerticalAlignment="Bottom" Width="110" FontSize="18" Height="34"/>
 
