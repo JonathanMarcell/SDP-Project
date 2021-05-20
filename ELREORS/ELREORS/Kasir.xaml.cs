@@ -64,15 +64,25 @@ namespace ELREORS
                     loadData();
                     int harga = 0;
                     double hrgpajak = 0;
-                    for (int j = 0; j < dt.Rows.Count; j++)
+                    if (dt.Rows.Count < 1)
                     {
-                        dt.Rows[j]["No"] = j+1;
-                        hrgpajak = (Convert.ToInt32(dt.Rows[j]["Subtotal"]) * 0.1) + hrgpajak;
-                        pajak.Content = hrgpajak + "";
+                        pajak.Content = "-";
                         pajak.HorizontalContentAlignment = HorizontalAlignment.Right;
-                        harga = Convert.ToInt32(dt.Rows[j]["Subtotal"]) + harga;
-                        totHarga.Content = harga + (int)hrgpajak + "";
+                        totHarga.Content = "-";
                         totHarga.HorizontalContentAlignment = HorizontalAlignment.Right;
+                    }
+                    else
+                    {
+                        for (int j = 0; j < dt.Rows.Count; j++)
+                        {
+                            dt.Rows[j]["No"] = j + 1;
+                            hrgpajak = (Convert.ToInt32(dt.Rows[j]["Subtotal"]) * 0.1) + hrgpajak;
+                            pajak.Content = hrgpajak + "";
+                            pajak.HorizontalContentAlignment = HorizontalAlignment.Right;
+                            harga = Convert.ToInt32(dt.Rows[j]["Subtotal"]) + harga;
+                            totHarga.Content = harga + (int)hrgpajak + "";
+                            totHarga.HorizontalContentAlignment = HorizontalAlignment.Right;
+                        }
                     }
                 };
 
