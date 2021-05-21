@@ -1,0 +1,25 @@
+﻿<Window x:Class="ELREORS.Admin_History_Details_Update"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ELREORS"
+        mc:Ignorable="d"
+        Title="Admin_History_Details_Update" Height="310" Width="500"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+    <Grid>
+        <Label Content="Menu :" HorizontalAlignment="Left" Margin="73,67,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Harga :" HorizontalAlignment="Left" Margin="73,106,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Jumlah :" HorizontalAlignment="Left" Margin="63,145,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="tbHarga" HorizontalAlignment="Left" Height="23" Margin="160,113,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="280" FontSize="18"/>
+        <TextBox x:Name="tbJumlah" HorizontalAlignment="Left" Height="23" Margin="160,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="280" FontSize="18"/>
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="207,248,0,0" VerticalAlignment="Top" Width="104" FontSize="18" RenderTransformOrigin="0.5,0.5" Click="btnSave_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="336,248,0,0" VerticalAlignment="Top" Width="104" FontSize="18" RenderTransformOrigin="0.5,0.5" Click="btnCancel_Click"/>
+        <Label Content="Update Details" HorizontalAlignment="Left" Margin="184,10,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ComboBox x:Name="cbMenu" HorizontalAlignment="Left" Margin="160,70,0,0" VerticalAlignment="Top" Width="280" FontSize="16" IsTextSearchEnabled="True" IsEditable="True"
+          TextBoxBase.TextChanged="cbMenu_TextChanged"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="73,251,0,0" VerticalAlignment="Top" Width="104" FontSize="16" Click="btnDelete_Click"/>
+
+    </Grid>
+</Window>

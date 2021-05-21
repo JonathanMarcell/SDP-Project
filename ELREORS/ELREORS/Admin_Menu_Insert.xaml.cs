@@ -121,7 +121,7 @@ namespace ELREORS
         private void btn_pilihBahan_Click(object sender, RoutedEventArgs e)
         {
             Admin_Menu_PilihBahan w = new Admin_Menu_PilihBahan(newId,tb_nama.Text);
-            w.Show();
+            w.ShowDialog();
         }
 
         private void btn_browse_Click(object sender, RoutedEventArgs e)

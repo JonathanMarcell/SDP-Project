@@ -135,5 +135,10 @@ namespace ELREORS
             dataGrid.Columns[6].Width = new DataGridLength(2, DataGridLengthUnitType.Star);
             dataGrid.Columns[0].Width = new DataGridLength(2, DataGridLengthUnitType.Star);
         }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            loaddata();
+        }
     }
 }

@@ -17,6 +17,11 @@ namespace ELREORS
         public string keterangan;
         public byte[] gambar;
 
+        public menu(int id, string nama)
+        {
+            this.id = id;
+            this.nama = nama;
+        }
         public menu(int id, string nama, int harga, int kategori, int status, string keterangan, byte[] gambar)
         {
             this.id = id;
