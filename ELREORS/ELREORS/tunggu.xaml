@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ELREORS"
         mc:Ignorable="d"
+        x:Name="win"
         Title="tunggu" Height="768" Width="1366" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -15,10 +16,10 @@
             <Label.FontSize>60</Label.FontSize>
             <Label.Width>auto</Label.Width>
             <Label.Height>auto</Label.Height>
-            <Label.HorizontalAlignment>left</Label.HorizontalAlignment>
+            <Label.HorizontalAlignment>center</Label.HorizontalAlignment>
             <Label.VerticalAlignment>top</Label.VerticalAlignment>
         </Label>
-        <Label x:Name="meunggu" Margin="0,70,0,0">
+        <Label x:Name="meunggu" Margin="0,330,0,0">
             <Label.Content>Silahkan Menunggu</Label.Content>
             <Label.FontSize>40</Label.FontSize>
             <Label.Width>auto</Label.Width>
@@ -26,15 +27,15 @@
             <Label.VerticalAlignment>top</Label.VerticalAlignment>
             <Label.HorizontalAlignment>center</Label.HorizontalAlignment>
         </Label>
-        <Label x:Name="bayar" Margin="10,120,0,10">
+        <Label x:Name="bayar" Margin="10,380,0,10">
             <Label.Content>Untuk pembayaran, silahkan menuju ke kasir dan menyebutkan nomor meja</Label.Content>
-            <Label.FontSize>22</Label.FontSize>
+            <Label.FontSize>30</Label.FontSize>
             <Label.Width>auto</Label.Width>
             <Label.Height>auto</Label.Height>
             <Label.HorizontalAlignment>center</Label.HorizontalAlignment>
             <Label.VerticalAlignment>top</Label.VerticalAlignment>
         </Label>
 
-        <Button Grid.Column="0" x:Name="btnSelesai" Width="180" Height="50" Content="Pesan Lagi" VerticalAlignment="Bottom" Margin="0,0,0,10" Click="btnSelesai_Click" FontSize="32"/>
+        <Button Grid.Column="0" x:Name="btnSelesai" Width="180" Height="50" Content="Pesan Lagi" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10" Click="btnSelesai_Click" FontSize="32"/>
     </Grid>
 </Window>
