@@ -20,13 +20,13 @@ namespace ELREORS
     /// </summary>
     public partial class NoMeja : Window
     {
-        OracleConnection conn;
+        OracleConnection conn; 
         public NoMeja()
         {
             InitializeComponent();
             App.openconn();
             conn = App.conn;
-            refresh();
+
             try
             {
                 //nambah gambar di Background (pake brush) / Image (pake ImageSource)
@@ -58,26 +58,7 @@ namespace ELREORS
                 MessageBox.Show(e.ToString());
             }
         }
-        int max;
-        void refresh()
-        {
-            try
-            {
-                OracleCommand cmd = new OracleCommand();
-                string qry = "select *  from jumlahmeja";
-                cmd = new OracleCommand(qry, conn);
-                OracleDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    max = Convert.ToInt32(dr[0]);
-                }
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
             int parsedValue;
