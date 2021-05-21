@@ -56,6 +56,68 @@ namespace ELREORS
             countH();
             lbSek.Content = sekarang;
             lbMax.Content = max;
+            bg();
+        }
+        void bg()
+        {
+            try
+            {
+                Uri uri = new Uri("Resource/background.png", UriKind.Relative);
+                BitmapImage img = new BitmapImage(uri);
+                ImageBrush b = new ImageBrush(img);
+
+                b.Opacity = 1;
+                b.TileMode = TileMode.Tile;
+                b.Stretch = Stretch.Fill;
+                win.Background = b;
+
+                uri = new Uri("Resource/button square wide.png", UriKind.Relative);
+                img = new BitmapImage(uri);
+                b = new ImageBrush(img);
+
+                b.Opacity = 1;
+                b.TileMode = TileMode.Tile;
+                b.Stretch = Stretch.Fill;
+                btnBersih.Background = b;
+                btnPesan.Background = b;
+                cbKategori.Background = b;
+
+                uri = new Uri("Resource/button square.png", UriKind.Relative);
+                img = new BitmapImage(uri);
+                b = new ImageBrush(img);
+
+                b.Opacity = 1;
+                b.TileMode = TileMode.Tile;
+                b.Stretch = Stretch.Fill;
+                btnPlus1.Background = b;
+                btnPlus2.Background = b;
+                btnPlus3.Background = b;
+                btnMin1.Background = b;
+                btnMin2.Background = b;
+                btnMin3.Background = b;
+
+                uri = new Uri("Resource/button square-bold-arrow-left.png", UriKind.Relative);
+                img = new BitmapImage(uri);
+                b = new ImageBrush(img);
+
+                b.Opacity = 1;
+                b.TileMode = TileMode.Tile;
+                b.Stretch = Stretch.Fill;
+                btnPrev.Background = b;
+
+                uri = new Uri("Resource/button square-bold-arrow-right.png", UriKind.Relative);
+                img = new BitmapImage(uri);
+                b = new ImageBrush(img);
+
+                b.Opacity = 1;
+                b.TileMode = TileMode.Tile;
+                b.Stretch = Stretch.Fill;
+                btnNext.Background = b;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            };
         }
         void awal()
         {

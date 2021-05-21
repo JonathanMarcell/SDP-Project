@@ -30,6 +30,31 @@ namespace ELREORS
             lbNama.Content = "Meja " + n;
             temp1 = n;
             conn = App.conn;
+            try
+            {
+                //nambah gambar di Background (pake brush) / Image (pake ImageSource)
+                Uri uri = new Uri("Resource/background.png", UriKind.Relative);
+                BitmapImage img = new BitmapImage(uri);
+                ImageBrush b = new ImageBrush(img);
+                
+                b.Opacity = 1; 
+                b.TileMode = TileMode.Tile; 
+                b.Stretch = Stretch.Fill; 
+                win.Background = b; 
+
+                uri = new Uri("Resource/button square wide.png", UriKind.Relative);
+                img = new BitmapImage(uri);
+                b = new ImageBrush(img);
+                
+                b.Opacity = 1; 
+                b.TileMode = TileMode.Tile; 
+                b.Stretch = Stretch.Fill; 
+                btnSelesai.Background = b; 
+            }
+            catch (ArgumentException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
         int time,timer;
         DispatcherTimer dt = new DispatcherTimer();
