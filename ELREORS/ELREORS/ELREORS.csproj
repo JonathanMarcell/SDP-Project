@@ -301,5 +301,11 @@
   <ItemGroup>
     <Resource Include="background.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="button square-bold-arrow-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="button square-bold-arrow-right.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

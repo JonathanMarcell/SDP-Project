@@ -27,16 +27,16 @@
         <Grid Grid.Column="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="367"/>
+                <ColumnDefinition Width="92*"/>
+                <ColumnDefinition Width="367*"/>
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Dari " Margin="10" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFF1DABF" />
-            <DatePicker x:Name="dp_filter1" Grid.Column="1" Margin="5,5,30,5" FontSize="18" VerticalAlignment="Center" SelectedDateChanged="DateChange" />
-            <TextBlock Text="hingga" Grid.Column="2" Margin="5" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF1DABF"/>
-            <DatePicker x:Name="dp_filter2" Grid.Column="3" Margin="5" FontSize="18" VerticalAlignment="Center" SelectedDateChanged="DateChange" />
-            <Button x:Name="btnRefresh" Content="Refresh" Grid.Column="4" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" Width="70" Height="32" FontSize="16" Click="btnRefresh_Click"/>
+            <TextBlock Text="Dari " Margin="0,24,10,22" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFF1DABF" />
+            <DatePicker x:Name="dp_filter1" Grid.Column="1" Margin="5,21,30,17" FontSize="18" VerticalAlignment="Center" SelectedDateChanged="DateChange" />
+            <TextBlock Text="hingga" Grid.Column="2" Margin="19,24,19,22" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF1DABF"/>
+            <DatePicker x:Name="dp_filter2" Grid.Column="3" Margin="5,21,5,17" FontSize="18" VerticalAlignment="Center" SelectedDateChanged="DateChange" />
+            <Button x:Name="btnRefresh" Content="Refresh" Grid.Column="4" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Width="70" Height="32" FontSize="16" Click="btnRefresh_Click"/>
 
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
@@ -47,8 +47,8 @@
             </DataGrid>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2">
-            <TextBlock x:Name="textTotal" Text="Total : Rp -" Margin="0,0,100,0" FontSize="18" HorizontalAlignment="Right"/>
-            <TextBlock x:Name="textJumlahNota" Text="Jumlah Nota : 0" Margin="10,0,350,10" FontSize="18" HorizontalAlignment="Right" />
+            <TextBlock x:Name="textTotal" Text="Total : Rp -" Margin="0,0,163,0" FontSize="22" HorizontalAlignment="Right"/>
+            <TextBlock x:Name="textJumlahNota" Text="Jumlah Nota : 0" Margin="10,0,350,10" FontSize="22" HorizontalAlignment="Right" />
             <Button x:Name="btnShowChart" Content="GRAFIK" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" FontSize="18" Width="125" Height="40" Click="btnShowChart_Click" Foreground="#FFF1DABF">
                 <Button.Background>
                     <ImageBrush ImageSource="button square wide.png"/>
