@@ -67,7 +67,7 @@ namespace ELREORS
 
         private void btn_Kategori_Click(object sender, RoutedEventArgs e)
         {
-
+            Main.Content = new Admin_Kategori();
         }
 
         private void btn_Pegawai_Click(object sender, RoutedEventArgs e)

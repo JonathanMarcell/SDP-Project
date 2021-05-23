@@ -100,6 +100,12 @@
     <Compile Include="Admin_History_Details_Update.xaml.cs">
       <DependentUpon>Admin_History_Details_Update.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Admin_Kategori.xaml.cs">
+      <DependentUpon>Admin_Kategori.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Kategori_InputBox.xaml.cs">
+      <DependentUpon>Admin_Kategori_InputBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Admin_Menu_Insert.xaml.cs">
       <DependentUpon>Admin_Menu_Insert.xaml</DependentUpon>
     </Compile>
@@ -150,6 +156,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Admin_History_Details_Update.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_Kategori.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_Kategori_InputBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
