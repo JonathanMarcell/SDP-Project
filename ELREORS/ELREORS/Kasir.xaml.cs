@@ -119,9 +119,14 @@ namespace ELREORS
 
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
-            if (dt.Rows.Count == 0)
+            if ( dt == null  )
             {
-                MessageBox.Show("Tidak Ada Pesanan Pada Meja "+nomeja);
+                MessageBox.Show("Pilih Meja Terlebih dahulu");
+            }
+            else if (dt.Rows.Count == 0)
+            {
+
+                MessageBox.Show("Tidak Ada Pesanan Pada Meja " + nomeja);
             }
             else
             {

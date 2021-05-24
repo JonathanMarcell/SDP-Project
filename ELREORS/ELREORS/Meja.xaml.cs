@@ -45,7 +45,7 @@ namespace ELREORS
             tampil();
             awal();
             OracleCommand cmd = new OracleCommand();
-            string qry = "select nama from kategori";
+            string qry = "select nama from kategori order by id";
             cmd = new OracleCommand(qry, conn);
             OracleDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
