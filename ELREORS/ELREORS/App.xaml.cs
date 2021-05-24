@@ -18,9 +18,9 @@ namespace ELREORS
 
         //kuubah supaya bisa diambil buat report
 
-        public static string userid = "bryant"; public static string password = "bryant";
+        //public static string userid = "bryant"; public static string password = "bryant";
 
-        //public static string userid = "sdp"; public static string password = "sdp";
+        public static string userid = "sdp"; public static string password = "sdp";
 
         //public static string userid = "coba"; public static string password = "1";
 
