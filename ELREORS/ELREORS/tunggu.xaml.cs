@@ -79,6 +79,7 @@ namespace ELREORS
                 if (item.getStatusM() == 1)
                 {
                     ctr++;
+                    MessageBox.Show("masuk");
                 }
             }
             if (ctr==max)
@@ -98,30 +99,8 @@ namespace ELREORS
         }
         private void dtTicker(object sender, EventArgs e)
         {
-            time++;
             timer++;
             selesai();
-            if (time>6)
-            {
-                meunggu.Content = "Terima kasih";
-                bayar.Visibility = Visibility.Hidden;
-            }
-            if (time>10)
-            {
-                string temp = lbNama.Content.ToString().Substring(5,1);
-                dt.Stop();
-                Meja a = new Meja(temp);
-                a.Show();
-                Close();
-            }
-            if (timer>3)
-            {
-                string temp = lbNama.Content.ToString().Substring(5, 1);
-                dt.Stop();
-                Meja a = new Meja(temp);
-                a.Show();
-                Close();
-            }
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

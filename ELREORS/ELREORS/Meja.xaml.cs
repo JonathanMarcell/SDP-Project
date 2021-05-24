@@ -198,15 +198,23 @@ namespace ELREORS
                 {
                     if ((iT * halaman) + i1 >= 0 && (iT * halaman) + i1 < mt.Count())
                     {
-                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[i1].getGambar()))
+                        if (mt[i1].getGambar() == null || mt[i1].getGambar().Equals("") )
                         {
-                            var imageSource = new BitmapImage();
-                            imageSource.BeginInit();
-                            imageSource.StreamSource = ms;
-                            imageSource.CacheOption = BitmapCacheOption.OnLoad;
-                            imageSource.EndInit();
+                            img1.Source = null;
+                            return;
+                        }
+                        else
+                        {
+                            using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[i1].getGambar()))
+                            {
+                                var imageSource = new BitmapImage();
+                                imageSource.BeginInit();
+                                imageSource.StreamSource = ms;
+                                imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                                imageSource.EndInit();
 
-                            img1.Source = imageSource;
+                                img1.Source = imageSource;
+                            }
                         }
                         lbN1.Content = mt[i1].getNama();
                         lbK1.Content = mt[i1].getKeterangan();
@@ -226,15 +234,23 @@ namespace ELREORS
 
                     if ((iT * halaman) + i2 >= 0 && (iT * halaman) + i2 < mt.Count())
                     {
-                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[i2].getGambar()))
+                        if (mt[i2].getGambar() == null || mt[i2].getGambar().Equals(""))
                         {
-                            var imageSource = new BitmapImage();
-                            imageSource.BeginInit();
-                            imageSource.StreamSource = ms;
-                            imageSource.CacheOption = BitmapCacheOption.OnLoad;
-                            imageSource.EndInit();
+                            img2.Source = null;
+                            return;
+                        }
+                        else
+                        {
+                            using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[i2].getGambar()))
+                            {
+                                var imageSource = new BitmapImage();
+                                imageSource.BeginInit();
+                                imageSource.StreamSource = ms;
+                                imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                                imageSource.EndInit();
 
-                            img2.Source = imageSource;
+                                img2.Source = imageSource;
+                            }
                         }
                         lbN2.Content = mt[i2].getNama();
                         lbK2.Content = mt[i2].getKeterangan();
@@ -254,15 +270,23 @@ namespace ELREORS
 
                     if ((iT * halaman) + i3 >= 0 && (iT * halaman) + i3 < mt.Count())
                     {
-                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[i3].getGambar()))
+                        if (mt[i3].getGambar() == null || mt[i3].getGambar().Equals(""))
                         {
-                            var imageSource = new BitmapImage();
-                            imageSource.BeginInit();
-                            imageSource.StreamSource = ms;
-                            imageSource.CacheOption = BitmapCacheOption.OnLoad;
-                            imageSource.EndInit();
+                            img3.Source = null;
+                            return;
+                        }
+                        else
+                        {
+                            using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[i3].getGambar()))
+                            {
+                                var imageSource = new BitmapImage();
+                                imageSource.BeginInit();
+                                imageSource.StreamSource = ms;
+                                imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                                imageSource.EndInit();
 
-                            img3.Source = imageSource;
+                                img3.Source = imageSource;
+                            }
                         }
                         lbN3.Content = mt[i3].getNama();
                         lbK3.Content = mt[i3].getKeterangan();
@@ -284,15 +308,23 @@ namespace ELREORS
                 {
                     if ((iT * halaman) + i1 >= 0 && (iT * halaman) + i1 < mt.Count())
                     {
-                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[(iT * halaman) + i1].getGambar()))
+                        if (mt[(iT * halaman) + i1].getGambar() == null || mt[(iT * halaman) + i1].getGambar().Equals(""))
                         {
-                            var imageSource = new BitmapImage();
-                            imageSource.BeginInit();
-                            imageSource.StreamSource = ms;
-                            imageSource.CacheOption = BitmapCacheOption.OnLoad;
-                            imageSource.EndInit();
+                            img1.Source = null;
+                            return;
+                        }
+                        else
+                        {
+                            using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[(iT * halaman) + i1].getGambar()))
+                            {
+                                var imageSource = new BitmapImage();
+                                imageSource.BeginInit();
+                                imageSource.StreamSource = ms;
+                                imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                                imageSource.EndInit();
 
-                            img1.Source = imageSource;
+                                img1.Source = imageSource;
+                            }
                         }
                         lbN1.Content = mt[(iT * halaman) + i1].getNama();
                         lbK1.Content = mt[(iT * halaman) + i1].getKeterangan();
@@ -312,15 +344,23 @@ namespace ELREORS
 
                     if ((iT * halaman) + i2 >= 0 && (iT * halaman) + i2 < mt.Count())
                     {
-                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[(iT * halaman) + i2].getGambar()))
+                        if (mt[(iT * halaman) + i2].getGambar() == null || mt[(iT * halaman) + i2].getGambar().Equals(""))
                         {
-                            var imageSource = new BitmapImage();
-                            imageSource.BeginInit();
-                            imageSource.StreamSource = ms;
-                            imageSource.CacheOption = BitmapCacheOption.OnLoad;
-                            imageSource.EndInit();
+                            img2.Source = null;
+                            return;
+                        }
+                        else
+                        {
+                            using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[(iT * halaman) + i2].getGambar()))
+                            {
+                                var imageSource = new BitmapImage();
+                                imageSource.BeginInit();
+                                imageSource.StreamSource = ms;
+                                imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                                imageSource.EndInit();
 
-                            img2.Source = imageSource;
+                                img2.Source = imageSource;
+                            }
                         }
                         lbN2.Content = mt[(iT * halaman) + i2].getNama();
                         lbK2.Content = mt[(iT * halaman) + i2].getKeterangan();
@@ -340,15 +380,23 @@ namespace ELREORS
 
                     if ((iT * halaman) + i3 >= 0 && (iT * halaman) + i3 < mt.Count())
                     {
-                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[(iT * halaman) + i3].getGambar()))
+                        if (mt[(iT * halaman) + i3].getGambar() == null || mt[(iT * halaman) + i3].getGambar().Equals(""))
                         {
-                            var imageSource = new BitmapImage();
-                            imageSource.BeginInit();
-                            imageSource.StreamSource = ms;
-                            imageSource.CacheOption = BitmapCacheOption.OnLoad;
-                            imageSource.EndInit();
+                            img3.Source = null;
+                            return;
+                        }
+                        else
+                        {
+                            using (System.IO.MemoryStream ms = new System.IO.MemoryStream(mt[(iT * halaman) + i3].getGambar()))
+                            {
+                                var imageSource = new BitmapImage();
+                                imageSource.BeginInit();
+                                imageSource.StreamSource = ms;
+                                imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                                imageSource.EndInit();
 
-                            img3.Source = imageSource;
+                                img3.Source = imageSource;
+                            }
                         }
                         lbN3.Content = mt[(iT * halaman) + i3].getNama();
                         lbK3.Content = mt[(iT * halaman) + i3].getKeterangan();
