@@ -93,7 +93,19 @@ namespace ELREORS
             cmd.Parameters.Add("HARGA", tbHarga.Text);
             cmd.Parameters.Add("JUMLAH", tbJumlah.Text);
             cmd.ExecuteNonQuery();
+
+            cmd = new OracleCommand($"select status from hjual where id={idhjual}", conn);
+            string result = cmd.ExecuteScalar().ToString();
+            if (result == "0" )//bila blm diconfrim => editted onprocess
+            {
+                updateStatusHjual(idhjual,2);
+            }
+            else if (result == "1")//bila sudah diconfrim => editted completed
+            {
+                updateStatusHjual(idhjual, 3);
+            }
             Close();
+
             Admin_History_Details w = new Admin_History_Details(kodenota, idhjual);
             w.ShowDialog();
         }
@@ -121,6 +133,11 @@ namespace ELREORS
             Admin_History_Details w = new Admin_History_Details(kodenota,idhjual);
             w.ShowDialog();
         }
-
+        public void updateStatusHjual(string id, int status)
+        {
+            string qry = $"update hjual set status={status} where id={id}";
+            OracleCommand cmd = new OracleCommand(qry, App.conn);
+            cmd.ExecuteNonQuery();
+        }
     }
 }

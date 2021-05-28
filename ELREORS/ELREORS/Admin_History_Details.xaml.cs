@@ -52,6 +52,10 @@ namespace ELREORS
             string qry = $"update hjual set total_harga={tot} where id={id}";
             OracleCommand cmd = new OracleCommand(qry, App.conn);
             cmd.ExecuteNonQuery();
+            if (tot==0)
+            {
+                updateStatusHjual(id,4);
+            }
             this.Close();
         }
 
@@ -76,5 +80,41 @@ namespace ELREORS
             dgdetail.Columns[1].Visibility = Visibility.Collapsed;
         }
 
+        public void updateStatusHjual(string id, int status)
+        {
+            string qry = $"update hjual set status={status} where id={id}";
+            OracleCommand cmd = new OracleCommand(qry, App.conn);
+            cmd.ExecuteNonQuery();
+        }
+
+        private void ButtonVoid_Click(object sender, RoutedEventArgs e)
+        {
+            OracleCommand cmd = new OracleCommand($"select status from hjual where id={id}", App.conn);
+            string result = cmd.ExecuteScalar().ToString();
+            if (result == "4")
+            {
+                updateStatusHjual(id, 3);//jadi editted completed
+                btnVoid.Content = "Void";
+            }
+            else
+            {
+                updateStatusHjual(id, 4);
+                btnVoid.Content = "Unvoid";
+            }
+        }
+
+        private void Button_Loaded(object sender, RoutedEventArgs e)
+        {
+            OracleCommand cmd = new OracleCommand($"select status from hjual where id={id}", App.conn);
+            string result = cmd.ExecuteScalar().ToString();
+            if (result=="4")
+            {
+                btnVoid.Content = "Unvoid";
+            }
+            else
+            {
+                btnVoid.Content = "Void";
+            }
+        }
     }
 }

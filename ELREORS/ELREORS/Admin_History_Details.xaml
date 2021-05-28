@@ -13,6 +13,7 @@
         <Label Content="KODE NOTA : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18" />
         <Label x:Name="kodenota" Content="kodenota" HorizontalAlignment="Left" Margin="135,10,0,0" VerticalAlignment="Top" Width="204" FontSize="18" />
         <Button Content="Close" HorizontalAlignment="Left" Margin="407,402,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="30" FontSize="18" />
+        <Button x:Name="btnVoid" Content="Void" HorizontalAlignment="Left" Margin="10,402,0,0" VerticalAlignment="Top" Width="75" Click="ButtonVoid_Click" Height="30" FontSize="18" Loaded="Button_Loaded" />
 
     </Grid>
 </Window>

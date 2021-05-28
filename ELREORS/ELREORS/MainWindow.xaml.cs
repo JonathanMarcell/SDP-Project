@@ -25,8 +25,6 @@ namespace ELREORS
         public MainWindow()
         {
             InitializeComponent();
-            //ngubah locale jd indo
-            System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo("id-ID");
             //fullscreen & no window control, nanti kasi ini ke semua wpf
             this.WindowState= WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
@@ -51,7 +49,7 @@ namespace ELREORS
             //cara ngakses objek dari suatu parent , harus diTypeCast
             //MessageBox.Show(    ((TextBlock)win.FindName("Title")).Text    );
         }
-
+        
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
             //var connectionString = "Data Source = orcl; User ID= coba; Password= 1"; //nando
@@ -121,6 +119,10 @@ namespace ELREORS
                 _p.Dispose();
                 _p = null;
             }
+        }
+        static void thread_test()
+        {
+            Console.WriteLine("Culture: {0}", System.Globalization.CultureInfo.CurrentCulture.DisplayName);
         }
 
     }

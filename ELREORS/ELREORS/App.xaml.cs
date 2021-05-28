@@ -6,6 +6,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Oracle.DataAccess.Client;
+using System.Globalization;
+using System.Threading;
+using System.Windows.Markup;
+
 namespace ELREORS
 {
     /// <summary>
@@ -18,13 +22,11 @@ namespace ELREORS
 
         //kuubah supaya bisa diambil buat report
 
-        public static string userid = "bryant"; public static string password = "bryant";
+        //public static string userid = "bryant"; public static string password = "bryant";
 
-        //public static string userid = "sdp"; public static string password = "sdp";
+        public static string userid = "sdp"; public static string password = "sdp";
 
         //public static string userid = "coba"; public static string password = "1";
-
-        //public static string userid = "jo2"; public static string password = "jo2";
 
         public static OracleConnection conn =
         new OracleConnection($"Data Source = {datasource} ; User Id = {userid} ; Password = {password}");
@@ -71,7 +73,23 @@ namespace ELREORS
             return "";
         }
 
+        //ngubah locale jd indo
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            var vCulture = new CultureInfo("id-ID");
 
+            Thread.CurrentThread.CurrentCulture = vCulture;
+            Thread.CurrentThread.CurrentUICulture = vCulture;
+            CultureInfo.DefaultThreadCurrentCulture = vCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = vCulture;
+
+            FrameworkElement.LanguageProperty.OverrideMetadata(
+            typeof(FrameworkElement),
+            new FrameworkPropertyMetadata(
+            XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+
+            base.OnStartup(e);
+        }
 
     }
 }

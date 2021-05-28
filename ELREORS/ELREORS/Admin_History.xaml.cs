@@ -36,21 +36,31 @@ namespace ELREORS
 
         public void loaddata()
         {
+            string query = "select h.ID , h.KODE_HJUAL as \"NO NOTA\", h.TANGGAL , h.NOMOR_MEJA as \"MEJA\", p.NAMA as PEGAWAI , h.TOTAL_HARGA as TOT , " +
+                    "case when h.status = 0 then 'OnProccess' " +
+                    "when h.status = 1 then 'Completed' " +
+                    "when h.status = 2 then 'Editted-OnProcess' " +
+                    "when h.status = 3 then 'Editted-Completed' " +
+                    "when h.status = 4 then 'Void' " +
+                    "else '-' end as \"STATUS\" " +
+                    "from hjual h " +
+                    "join pegawai p on p.id = h.id_pegawai where h.id is not null ";
+
+            if (cbShowVoid.IsChecked==false)
+            {
+                query += "and h.status <> 4 ";
+            }
+            if (cbShowOnProcess.IsChecked==false)
+            {
+                query += "and h.status <> 0 and h.status <>2 ";
+            }
+
+
             if (dp_filter1.SelectedDate == null || dp_filter2.SelectedDate == null)
             {
                 OracleDataAdapter da = new OracleDataAdapter(
-                    "select h.ID , h.KODE_HJUAL as \"NO NOTA\", h.TANGGAL , h.NOMOR_MEJA as \"MEJA\", p.NAMA as PEGAWAI , h.TOTAL_HARGA as TOT " +
-                    "from hjual h " +
-                    "join pegawai p on p.id = h.id_pegawai " +
-                    "where h.status=1 order by 1", conn);
-                /*
-                OracleDataAdapter da = new OracleDataAdapter(
-                    "select h.ID as ID, m.nama as NAMA, count(h.total_harga) as Jumlah ,sum(h.total_harga) as Total " +
-                    "from hjual h " +
-                    "join djual d on d.ID_header = h.ID " +
-                    "join menu m on d.id_menu = m.id " +
-                    "group by m.nama, h.id", conn);
-                */
+                    query+"order by 1", conn);
+
                 dt = new DataTable();
                 da.Fill(dt);
                 dataGrid.ItemsSource = dt.DefaultView;
@@ -60,20 +70,9 @@ namespace ELREORS
                 string tgl1 = dp_filter1.SelectedDate.ToString().Split(' ')[0];
                 string tgl2 = dp_filter2.SelectedDate.ToString().Split(' ')[0];
                 OracleDataAdapter da = new OracleDataAdapter(
-                    "select h.ID , h.KODE_HJUAL as \"NO NOTA\", h.TANGGAL , h.NOMOR_MEJA as \"MEJA\", p.NAMA as PEGAWAI , h.TOTAL_HARGA as TOT " +
-                    "from hjual h " +
-                    "join pegawai p on p.id = h.id_pegawai " +
-                    "where h.status=1 and " +
+                    query+ "and " +
                     $"to_date(to_char(h.tanggal,'dd/mm/yyyy'),'dd/mm/yyyy') <= to_date('{tgl2}','dd/mm/yyyy') and " +
                     $"to_date(to_char(h.tanggal,'dd/mm/yyyy'),'dd/mm/yyyy') >=to_date('{tgl1}','dd/mm/yyyy') order by 1" , conn);
-                /*
-                OracleDataAdapter da = new OracleDataAdapter("select h.ID as ID, m.nama as NAMA, count(h.total_harga) as Jumlah ,sum(h.total_harga) as Total " +
-                            "from hjual h " +
-                            "join djual d on d.ID_header = h.ID " +
-                            "join menu m on d.id_menu = m.id " +
-                            $"where h.tanggal <= to_date('{tgl2}','mm/dd/yyyy') and h.tanggal >=to_date('{tgl1}','mm/dd/yyyy') " +
-                            "group by m.nama, h.id ", conn);
-                */
                 dt = new DataTable();
                 da.Fill(dt);
                 dataGrid.ItemsSource = dt.DefaultView;
@@ -116,6 +115,7 @@ namespace ELREORS
             string id = dt.Rows[idx]["ID"].ToString();
             Admin_History_Details w = new Admin_History_Details(kodenota,id);
             w.ShowDialog();
+            loaddata();
         }
 
         private void dataGrid_Loaded(object sender, RoutedEventArgs e)
@@ -134,9 +134,30 @@ namespace ELREORS
             dataGrid.Columns[5].Width = new DataGridLength(2, DataGridLengthUnitType.Star);
             dataGrid.Columns[6].Width = new DataGridLength(2, DataGridLengthUnitType.Star);
             dataGrid.Columns[0].Width = new DataGridLength(2, DataGridLengthUnitType.Star);
+            dataGrid.Columns[7].Width = new DataGridLength(2, DataGridLengthUnitType.Star);
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            loaddata();
+        }
+
+        private void cbShowVoid_Unchecked(object sender, RoutedEventArgs e)
+        {
+            loaddata();
+        }
+
+        private void cbShowVoid_Checked(object sender, RoutedEventArgs e)
+        {
+            loaddata();
+        }
+
+        private void cbShowOnProcess_Checked(object sender, RoutedEventArgs e)
+        {
+            loaddata();
+        }
+
+        private void cbShowOnProcess_Unchecked(object sender, RoutedEventArgs e)
         {
             loaddata();
         }
