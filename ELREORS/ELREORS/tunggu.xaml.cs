@@ -79,7 +79,6 @@ namespace ELREORS
                 if (item.getStatusM() == 1)
                 {
                     ctr++;
-                    MessageBox.Show("masuk");
                 }
             }
             if (ctr==max)
