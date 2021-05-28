@@ -141,7 +141,14 @@ namespace ELREORS
                 m.Clear();
                 while (dr.Read())
                 {
-                    m.Add(new menu(Convert.ToInt32(dr[0]), dr[1].ToString(), Convert.ToInt32(dr[2]), Convert.ToInt32(dr[3]), Convert.ToInt32(dr[4]), dr[5].ToString(), (Byte[])(dr.GetOracleBlob(6)).Value) );
+                    if (dr.GetValue(6).ToString() !="")
+                    {
+                        m.Add(new menu(Convert.ToInt32(dr[0]), dr[1].ToString(), Convert.ToInt32(dr[2]), Convert.ToInt32(dr[3]), Convert.ToInt32(dr[4]), dr[5].ToString(), (Byte[])(dr.GetOracleBlob(6)).Value));
+                    }
+                    else
+                    {
+                        m.Add(new menu(Convert.ToInt32(dr[0]), dr[1].ToString(), Convert.ToInt32(dr[2]), Convert.ToInt32(dr[3]), Convert.ToInt32(dr[4]), dr[5].ToString(), null));
+                    }
                 }
                 mt.Clear();
                 foreach (var item in m)
@@ -201,7 +208,6 @@ namespace ELREORS
                         if (mt[i1].getGambar() == null || mt[i1].getGambar().Equals("") )
                         {
                             img1.Source = null;
-                            return;
                         }
                         else
                         {
@@ -237,7 +243,6 @@ namespace ELREORS
                         if (mt[i2].getGambar() == null || mt[i2].getGambar().Equals(""))
                         {
                             img2.Source = null;
-                            return;
                         }
                         else
                         {
@@ -273,7 +278,6 @@ namespace ELREORS
                         if (mt[i3].getGambar() == null || mt[i3].getGambar().Equals(""))
                         {
                             img3.Source = null;
-                            return;
                         }
                         else
                         {
@@ -311,7 +315,6 @@ namespace ELREORS
                         if (mt[(iT * halaman) + i1].getGambar() == null || mt[(iT * halaman) + i1].getGambar().Equals(""))
                         {
                             img1.Source = null;
-                            return;
                         }
                         else
                         {
@@ -347,7 +350,6 @@ namespace ELREORS
                         if (mt[(iT * halaman) + i2].getGambar() == null || mt[(iT * halaman) + i2].getGambar().Equals(""))
                         {
                             img2.Source = null;
-                            return;
                         }
                         else
                         {
@@ -383,7 +385,6 @@ namespace ELREORS
                         if (mt[(iT * halaman) + i3].getGambar() == null || mt[(iT * halaman) + i3].getGambar().Equals(""))
                         {
                             img3.Source = null;
-                            return;
                         }
                         else
                         {
