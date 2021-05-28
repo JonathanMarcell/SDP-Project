@@ -11,10 +11,10 @@
       Margin="0">
 
     <Grid>
-        <TextBlock Margin="642,24,674,685" FontSize="18" VerticalAlignment="Center" ><Run Text="Filter : "/></TextBlock>
+        <TextBlock Margin="642,24,674,685" FontSize="18" VerticalAlignment="Center" Foreground="#FFF1DABF" ><Run Text="Filter : "/></TextBlock>
         <Label Content="Menu Makanan" HorizontalAlignment="Left" Margin="40,10,0,0" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFF1DABF"/>
-        <TextBox x:Name="tb_search" FontSize="18" HorizontalAlignment="Left" Height="40" Width="430" Margin="719,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  VerticalContentAlignment="Center"/>
-        <Button x:Name="btn_search" Content="Search" HorizontalAlignment="Left" Margin="1172,16,0,0" VerticalAlignment="Top" Width="125" Height="40" FontSize="18" Click="btn_search_Click" Foreground="#FFF1DABF">
+        <TextBox x:Name="tb_search" FontSize="18" HorizontalAlignment="Left" Height="40" Width="430" Margin="699,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  VerticalContentAlignment="Center"/>
+        <Button x:Name="btn_search" Content="Search" HorizontalAlignment="Left" Margin="1182,18,0,0" VerticalAlignment="Top" Width="125" Height="40" FontSize="18" Click="btn_search_Click" Foreground="#FFF1DABF">
             <Button.Background>
                 <ImageBrush ImageSource="button square wide.png"/>
             </Button.Background>

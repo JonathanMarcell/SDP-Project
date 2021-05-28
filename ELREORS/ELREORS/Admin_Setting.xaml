@@ -26,8 +26,8 @@
                 <ImageBrush ImageSource="button square wide.png"/>
             </Button.Background>
         </Button>
-        <Label x:Name="lbDirectory" Content="" HorizontalAlignment="Left" FontSize="18" Margin="346,238,0,0" MaxWidth="300" Width="auto" VerticalAlignment="Top"/>
-        <Image x:Name="img" HorizontalAlignment="Left" Height="282" Margin="373,364,0,0" VerticalAlignment="Top" Width="282"/>
+        <Label x:Name="lbDirectory" Content="-" HorizontalAlignment="Left" FontSize="18" Margin="373,364,0,0" MaxWidth="300" Width="auto" VerticalAlignment="Top"/>
+        <Image x:Name="img" HorizontalAlignment="Left" Height="256" Margin="236,416,0,0" VerticalAlignment="Top" Width="256"/>
         <Label Content="About" HorizontalAlignment="Left" Margin="1272,84,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Alamat :" HorizontalAlignment="Left" Margin="131,238,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="No Telp. :" HorizontalAlignment="Left" Margin="122,300,0,0" VerticalAlignment="Top" FontSize="18"/>

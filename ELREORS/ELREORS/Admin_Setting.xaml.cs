@@ -29,6 +29,8 @@ namespace ELREORS
             InitializeComponent();
             tbJumlahMeja.Text = App.getJumlahMeja() + "";
             tbNamaResto.Text = App.getNamaResto() + "";
+            tbJAlamat.Text = App.getAlamat() + "";
+            tbNoTelp.Text = App.getTelepon() + "";
             loadimage();
         }
         private void loadimage()
@@ -62,19 +64,23 @@ namespace ELREORS
             {
                 if (imagepath=="" || imagepath==null)
                 {
-                    string qry = "update PROFIL set JUMLAH_MEJA=:jum, NAMA_RESTO=:nama";
+                    string qry = "update PROFIL set JUMLAH_MEJA=:jum, NAMA_RESTO=:nama, TELEPON=:telp, ALAMAT=:alamat";
                     OracleCommand cmd = new OracleCommand(qry, App.conn);
                     cmd.Parameters.Add("jum", tbJumlahMeja.Text);
                     cmd.Parameters.Add("nama", tbNamaResto.Text);
+                    cmd.Parameters.Add("telp", tbNoTelp.Text);
+                    cmd.Parameters.Add("alamat", tbJAlamat.Text);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Berhasil menyimpan");
                 }
                 else
                 {
-                    string qry = "update PROFIL set JUMLAH_MEJA=:jum, NAMA_RESTO=:nama , LOGO=:gambar";
+                    string qry = "update PROFIL set JUMLAH_MEJA=:jum, NAMA_RESTO=:nama, TELEPON=:telp, ALAMAT=:alamat, LOGO=:gambar";
                     OracleCommand cmd = new OracleCommand(qry, App.conn);
                     cmd.Parameters.Add("jum", tbJumlahMeja.Text);
                     cmd.Parameters.Add("nama", tbNamaResto.Text);
+                    cmd.Parameters.Add("telp", tbNoTelp.Text);
+                    cmd.Parameters.Add("alamat", tbJAlamat.Text);
 
                     FileStream fls;
                     fls = new FileStream(@imagepath, FileMode.Open, FileAccess.Read);

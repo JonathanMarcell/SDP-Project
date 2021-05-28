@@ -72,6 +72,33 @@ namespace ELREORS
             }
             return "";
         }
+        public static string getAlamat()
+        {
+            try
+            {
+                OracleCommand cmd = new OracleCommand("select ALAMAT from PROFIL", conn);
+                return cmd.ExecuteScalar().ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            return "";
+        }
+        public static string getTelepon()
+        {
+            try
+            {
+                OracleCommand cmd = new OracleCommand("select TELEPON from PROFIL", conn);
+                return cmd.ExecuteScalar().ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            return "";
+        }
+
 
         //ngubah locale jd indo
         protected override void OnStartup(StartupEventArgs e)
