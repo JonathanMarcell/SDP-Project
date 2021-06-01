@@ -173,5 +173,17 @@ namespace ELREORS
             dgKasir.Columns[5].ClipboardContentBinding.StringFormat = "C0";
             dgKasir.Columns[6].ClipboardContentBinding.StringFormat = "C0";
         }
+
+        private void dgKasir_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            int idx = dgKasir.SelectedIndex;
+            if (idx < 0)
+            {
+                return;
+            }
+            KasirEdit ke = new KasirEdit(nomeja);
+            ke.ShowDialog();
+            loadData();
+        }
     }
 }

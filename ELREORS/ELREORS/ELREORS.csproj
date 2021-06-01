@@ -121,6 +121,9 @@
     <Compile Include="Admin_Stock_Update.xaml.cs">
       <DependentUpon>Admin_Stock_Update.xaml</DependentUpon>
     </Compile>
+    <Compile Include="KasirEdit.xaml.cs">
+      <DependentUpon>KasirEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Kategori.cs" />
     <Compile Include="menu.cs" />
     <Compile Include="NoMeja.xaml.cs">
@@ -200,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Kasir.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KasirEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
