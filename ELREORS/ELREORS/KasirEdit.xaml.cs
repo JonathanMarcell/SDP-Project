@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,18 +20,43 @@ namespace ELREORS
     /// </summary>
     public partial class KasirEdit : Window
     {
-        private int nomeja;
-        public KasirEdit(int nomeja)
+        private int nomeja, jumlah, idmenu;
+        private string idhjual, menu;
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        public KasirEdit(int nomeja, string idhjual, string menu, int jumlah, int idmenu)
         {
             InitializeComponent();
             this.nomeja = nomeja;
+            this.idhjual = idhjual;
+            this.menu = menu;
+            this.jumlah = jumlah;
+            this.idmenu = idmenu;
 
             txtNoMeja.Text = nomeja.ToString();
+            txtId.Text = idhjual;
+            txtMenu.Text = menu;
+            txtJumlah.Text = jumlah.ToString();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string qry = $"update djual set jumlah={txtJumlah.Text} where id_menu={idmenu}";
+            OracleCommand cmd = new OracleCommand(qry, App.conn);
+            cmd.ExecuteNonQuery();
+            this.Close();
+        }
 
+        private void btnHapus_Click(object sender, RoutedEventArgs e)
+        {
+            string qry = $"delete from djual where id_menu={idmenu}";
+            OracleCommand cmd = new OracleCommand(qry, App.conn);
+            cmd.ExecuteNonQuery();
+            this.Close();
         }
     }
 }

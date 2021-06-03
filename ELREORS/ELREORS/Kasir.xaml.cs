@@ -45,6 +45,22 @@ namespace ELREORS
             dgKasir.ItemsSource = dt.DefaultView;
         }
 
+        void genNo()
+        {
+            int harga = 0;
+            double hrgpajak = 0;
+            for (int j = 0; j < dt.Rows.Count; j++)
+            {
+                dt.Rows[j]["No"] = j + 1;
+                hrgpajak = (Convert.ToInt32(dt.Rows[j]["Subtotal"]) * 0.1) + hrgpajak;
+                pajak.Content = hrgpajak + "";
+                pajak.HorizontalContentAlignment = HorizontalAlignment.Right;
+                harga = Convert.ToInt32(dt.Rows[j]["Subtotal"]) + harga;
+                totHarga.Content = harga + (int)hrgpajak + "";
+                totHarga.HorizontalContentAlignment = HorizontalAlignment.Right;
+            }
+        }
+
         void genButton()
         {
             Color color = (Color)ColorConverter.ConvertFromString("#FFDFD991");
@@ -65,12 +81,12 @@ namespace ELREORS
                 b.Stretch = Stretch.Fill; //default Fill
                 btn.Background = b;
                 btn.FontWeight = FontWeights.Bold;
+                int harga = 0;
+                double hrgpajak = 0;
                 btn.Click += (sender, e) => {
                     nomeja = Convert.ToInt32(btn.Content);
                     mejudul.Content = "MEJA " + nomeja.ToString();
                     loadData();
-                    int harga = 0;
-                    double hrgpajak = 0;
                     if (dt.Rows.Count < 1)
                     {
                         pajak.Content = "-";
@@ -181,9 +197,16 @@ namespace ELREORS
             {
                 return;
             }
-            KasirEdit ke = new KasirEdit(nomeja);
+            string idhjual = dt.Rows[idx]["Kode HJUAL"].ToString();
+            string menu = dt.Rows[idx]["Menu"].ToString();
+            int jumlah = Convert.ToInt32(dt.Rows[idx]["Jumlah"].ToString());
+            string qryid = "select id from menu where nama='"+menu+"'";
+            OracleCommand cmd = new OracleCommand(qryid, App.conn);
+            int idmenu = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+            KasirEdit ke = new KasirEdit(nomeja, idhjual, menu, jumlah, idmenu);
             ke.ShowDialog();
             loadData();
+            genNo();
         }
     }
 }
