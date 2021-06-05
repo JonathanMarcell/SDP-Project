@@ -28,6 +28,12 @@ namespace ELREORS
             //fullscreen & no window control, nanti kasi ini ke semua wpf
             this.WindowState= WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
+
+            //password
+            string AdminPass = "admin" ;
+            string ChefPass  = "list" ;
+            string TablePass = "meja" ;
+
             //misc
             try
             {
@@ -52,34 +58,33 @@ namespace ELREORS
         
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
-            //var connectionString = "Data Source = orcl; User ID= coba; Password= 1"; //nando
-            //var connectionString = "Data Source = orcl; User ID= ; Password= ";
-            //var connectionString = "Data Source = orcl; User ID= ; Password= ";
             //var connectionString = "Data Source = orcl; User ID= ; Password= ";
             //OracleConnection conn1 = new OracleConnection(connectionString);
+
+            //check login di pegawai, lihat dari username, status, isAdmin. tidak ada password (hardcode password)
             if (tb_username.Text=="admin")
             {
                 Admin a = new Admin();
-                a.Show();
-                Close();
+                a.ShowDialog();
+                //Close();
             }
             else if (tb_username.Text=="meja")
             {
                 NoMeja n = new NoMeja();
-                n.Show();
-                this.Close();
+                n.ShowDialog();
+                //Close();
             }
             else if (tb_username.Text == "kasir")
             {
                 Kasir mm = new Kasir();
                 mm.ShowDialog();
-                this.Close();
+                //Close();
             }
             else if (tb_username.Text=="list")
             {
                 ListPesanan a = new ListPesanan();
-                a.Show();
-                Close();
+                a.ShowDialog();
+                //Close();
             }
             else
             {

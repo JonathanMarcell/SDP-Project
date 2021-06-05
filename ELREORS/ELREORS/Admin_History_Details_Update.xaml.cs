@@ -96,13 +96,12 @@ namespace ELREORS
 
             cmd = new OracleCommand($"select status from hjual where id={idhjual}", conn);
             string result = cmd.ExecuteScalar().ToString();
-            if (result == "0" )//bila blm diconfrim => editted onprocess
+            //asumsi penggantian terjadi bila status = 2 atau completed,
+            //karena ketika confirmed (menunggu masak) belum tentu bisa
+            // tetapi di admin tetap diberi kontrol penuh agar lebih fleksibel.
+            if (result == "2" ) //dari completed ke editted
             {
-                updateStatusHjual(idhjual,2);
-            }
-            else if (result == "1")//bila sudah diconfrim => editted completed
-            {
-                updateStatusHjual(idhjual, 3);
+                updateStatusHjual(idhjual,3);
             }
             Close();
 

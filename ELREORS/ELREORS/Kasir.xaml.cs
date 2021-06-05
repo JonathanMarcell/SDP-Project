@@ -29,7 +29,23 @@ namespace ELREORS
             InitializeComponent();
             App.openconn();
             this.conn = App.conn;
+            try
+            {
+                //nambah gambar di Background (pake brush) / Image (pake ImageSource)
+                Uri uri = new Uri("Resource/background.png", UriKind.Relative);
+                BitmapImage img = new BitmapImage(uri);
+                ImageBrush b = new ImageBrush(img);
+                //mode 
+                b.Opacity = 1; //default 1
+                b.TileMode = TileMode.Tile; //default None
+                b.Stretch = Stretch.Fill; //default Fill
 
+                win.Background = b; // win ini x:Name nya Window
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
             labelTanggal.Content = "Tanggal : "+ DateTime.Now.ToShortDateString();
             genButton();
         }
@@ -52,13 +68,11 @@ namespace ELREORS
             for (int j = 0; j < dt.Rows.Count; j++)
             {
                 dt.Rows[j]["No"] = j + 1;
-                hrgpajak = (Convert.ToInt32(dt.Rows[j]["Subtotal"]) * 0.1) + hrgpajak;
-                pajak.Content = hrgpajak + "";
-                pajak.HorizontalContentAlignment = HorizontalAlignment.Right;
-                harga = Convert.ToInt32(dt.Rows[j]["Subtotal"]) + harga;
-                totHarga.Content = harga + (int)hrgpajak + "";
-                totHarga.HorizontalContentAlignment = HorizontalAlignment.Right;
+                hrgpajak += (Convert.ToInt32(dt.Rows[j]["Subtotal"]) * 0.1);
+                harga += Convert.ToInt32(dt.Rows[j]["Subtotal"]);
             }
+            pajak.Content = hrgpajak.ToString("C0");
+            totHarga.Content = (harga + (int)hrgpajak).ToString("C0");
         }
 
         void genButton()
@@ -81,31 +95,27 @@ namespace ELREORS
                 b.Stretch = Stretch.Fill; //default Fill
                 btn.Background = b;
                 btn.FontWeight = FontWeights.Bold;
-                int harga = 0;
-                double hrgpajak = 0;
                 btn.Click += (sender, e) => {
+                    int harga = 0;
+                    double hrgpajak = 0;
                     nomeja = Convert.ToInt32(btn.Content);
                     mejudul.Content = "MEJA " + nomeja.ToString();
                     loadData();
                     if (dt.Rows.Count < 1)
                     {
                         pajak.Content = "-";
-                        pajak.HorizontalContentAlignment = HorizontalAlignment.Right;
                         totHarga.Content = "-";
-                        totHarga.HorizontalContentAlignment = HorizontalAlignment.Right;
                     }
                     else
                     {
                         for (int j = 0; j < dt.Rows.Count; j++)
                         {
                             dt.Rows[j]["No"] = j + 1;
-                            hrgpajak = (Convert.ToInt32(dt.Rows[j]["Subtotal"]) * 0.1) + hrgpajak;
-                            pajak.Content = hrgpajak + "";
-                            pajak.HorizontalContentAlignment = HorizontalAlignment.Right;
-                            harga = Convert.ToInt32(dt.Rows[j]["Subtotal"]) + harga;
-                            totHarga.Content = harga + (int)hrgpajak + "";
-                            totHarga.HorizontalContentAlignment = HorizontalAlignment.Right;
+                            hrgpajak += (Convert.ToInt32(dt.Rows[j]["Subtotal"]) * 0.1);
+                            harga += Convert.ToInt32(dt.Rows[j]["Subtotal"]);
                         }
+                        pajak.Content = hrgpajak.ToString("C0");
+                        totHarga.Content = (harga + (int)hrgpajak).ToString("C0");
                     }
                 };
 

@@ -11,7 +11,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="lbNama" Grid.Column="0" Margin="10,0,0,0">
+        <Label x:Name="lbNama" Grid.Column="0" Margin="590,20,580,0" Foreground="#FFF1DABF">
             <Label.Content>Meja 1</Label.Content>
             <Label.FontSize>60</Label.FontSize>
             <Label.Width>auto</Label.Width>
@@ -36,6 +36,6 @@
             <Label.VerticalAlignment>top</Label.VerticalAlignment>
         </Label>
 
-        <Button Grid.Column="0" x:Name="btnSelesai" Width="180" Height="50" Content="Pesan Lagi" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10" Click="btnSelesai_Click" FontSize="32"/>
+        <Button Grid.Column="0" x:Name="btnSelesai" Width="180" Height="50" Content="Pesan Lagi" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="589,0,589,40" Click="btnSelesai_Click" FontSize="32" Foreground="#FFF1DABF"/>
     </Grid>
 </Window>

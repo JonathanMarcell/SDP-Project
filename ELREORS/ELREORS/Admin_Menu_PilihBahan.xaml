@@ -13,8 +13,8 @@
         <ComboBox x:Name="cbBahan" HorizontalAlignment="Left" Margin="140,53,0,0" VerticalAlignment="Top" Width="270" FontSize="18" SelectionChanged="cbBahan_SelectionChanged"/>
         <DataGrid x:Name="dgbahan" HorizontalAlignment="Left" ColumnWidth="*" FontSize="16" Height="202" Margin="10,131,0,0" VerticalAlignment="Top" Width="522"/>
         <Label Content="Bahan Terpilih :" HorizontalAlignment="Left" Margin="5,97,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Button x:Name="btnBersihkan" Content="BERSIHKAN" HorizontalAlignment="Left" Margin="301,354,0,0" VerticalAlignment="Top" Width="109" Height="34" FontSize="18" Click="btnBersihkan_Click"/>
-        <Button x:Name="btnSimpan" Content="SIMPAN" HorizontalAlignment="Left" Margin="429,354,0,0" VerticalAlignment="Top" Width="103" Height="34" FontSize="18" Click="btnSimpan_Click"/>
+        <Button x:Name="btnBersihkan" Content="CLEAR" HorizontalAlignment="Left" Margin="301,354,0,0" VerticalAlignment="Top" Width="109" Height="34" FontSize="18" Click="btnBersihkan_Click"/>
+        <Button x:Name="btnSimpan" Content="SAVE" HorizontalAlignment="Left" Margin="429,354,0,0" VerticalAlignment="Top" Width="103" Height="34" FontSize="18" Click="btnSimpan_Click"/>
         <Button x:Name="btnTambah" Content="Tambah" HorizontalAlignment="Left" Margin="429,53,0,0" VerticalAlignment="Top" Width="103" Height="30" FontSize="18" Click="btnTambah_Click"/>
 
     </Grid>

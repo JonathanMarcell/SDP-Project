@@ -28,11 +28,12 @@
         </Button>
         <Label x:Name="lbDirectory" Content="-" HorizontalAlignment="Left" FontSize="18" Margin="373,364,0,0" MaxWidth="300" Width="auto" VerticalAlignment="Top"/>
         <Image x:Name="img" HorizontalAlignment="Left" Height="256" Margin="236,416,0,0" VerticalAlignment="Top" Width="256"/>
-        <Label Content="About" HorizontalAlignment="Left" Margin="1272,84,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Alamat :" HorizontalAlignment="Left" Margin="131,238,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="No Telp. :" HorizontalAlignment="Left" Margin="122,300,0,0" VerticalAlignment="Top" FontSize="18"/>
         <TextBox x:Name="tbJAlamat" HorizontalAlignment="Left" Height="27" Margin="236,245,0,0" TextWrapping="Wrap" Text="null" VerticalAlignment="Top"  FontSize="18" Width="419"/>
         <TextBox x:Name="tbNoTelp" HorizontalAlignment="Left" Height="27" Margin="236,304,0,0" TextWrapping="Wrap" Text="null" VerticalAlignment="Top"  FontSize="18" Width="419"/>
+
+        <Label Content="About" Visibility="Hidden" HorizontalAlignment="Left" Margin="1272,84,0,0" VerticalAlignment="Top" FontSize="18"/>
 
     </Grid>
 </Page>

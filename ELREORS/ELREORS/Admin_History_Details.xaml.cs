@@ -49,6 +49,7 @@ namespace ELREORS
             {
                 tot+=Convert.ToInt32(item["Subtotal"]);
             }
+            tot += (tot / 10); // +perhitungan pajak
             string qry = $"update hjual set total_harga={tot} where id={id}";
             OracleCommand cmd = new OracleCommand(qry, App.conn);
             cmd.ExecuteNonQuery();
@@ -93,7 +94,7 @@ namespace ELREORS
             string result = cmd.ExecuteScalar().ToString();
             if (result == "4")
             {
-                updateStatusHjual(id, 3);//jadi editted completed
+                updateStatusHjual(id, 3);//jadi editted
                 btnVoid.Content = "Void";
             }
             else

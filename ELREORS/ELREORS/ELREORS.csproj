@@ -115,6 +115,9 @@
     <Compile Include="Admin_Menu_Update.xaml.cs">
       <DependentUpon>Admin_Menu_Update.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Admin_Pegawai.xaml.cs">
+      <DependentUpon>Admin_Pegawai.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Admin_Stock_Insert.xaml.cs">
       <DependentUpon>Admin_Stock_Insert.xaml</DependentUpon>
     </Compile>
@@ -183,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Admin_Menu_Update.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_Pegawai.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

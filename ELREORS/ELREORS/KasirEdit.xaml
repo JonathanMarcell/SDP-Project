@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ELREORS"
         mc:Ignorable="d"
-        Title="KasirEdit" Height="378" Width="448.81">
+        Title="KasirEdit" Height="378" Width="448.81"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="EDIT KASIR" HorizontalAlignment="Left" Margin="161,28,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
         <Label Content="ID HJUAL:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="52,130,0,0" FontSize="16"/>
@@ -16,9 +17,9 @@
         <Label Content="JUMLAH:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,187,0,0" FontSize="16"/>
         <Label Content="NO MEJA:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,103,0,0" FontSize="16"/>
         <TextBox x:Name="txtNoMeja" HorizontalAlignment="Left" Height="23" Margin="146,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" IsEnabled="False" TextAlignment="Center"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="238,253,0,0" Height="34" FontWeight="Bold" Click="Button_Click"/>
-        <Button x:Name="btnHapus" Content="Hapus" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="238,292,0,0" Height="34" FontWeight="Bold" Click="btnHapus_Click"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="127,270,0,0" Height="34" FontWeight="Bold" Click="btnCancel_Click"/>
+        <Button x:Name="btnUpdate"  FontSize="18" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="286,244,0,0" Height="34" Click="Button_Click"/>
+        <Button x:Name="btnHapus" FontSize="18" Content="Hapus" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="286,283,0,0" Height="34" Click="btnHapus_Click"/>
+        <Button x:Name="btnCancel" FontSize="18" Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="52,268,0,0" Height="34"  Click="btnCancel_Click"/>
 
     </Grid>
 </Window>
