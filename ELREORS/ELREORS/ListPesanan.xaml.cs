@@ -47,14 +47,10 @@ namespace ELREORS
             try
             {
                 int index = Int32.Parse(tempData.Rows[dgPesanan.SelectedIndex][0].ToString());
-                string qry = "";
-                if (tempData.Rows[dgPesanan.SelectedIndex][5].ToString() == "0") {
-                    qry = $"update djual set status=1 where id={index}";
-                }
-                else
-                {
-                    qry = $"update djual set status=0 where id={index}";
-                }
+                
+                string qry = $"update djual set status=2 where id={index}";
+                
+                
          
                 conn.Open();
                 OracleCommand cmd = new OracleCommand(qry, conn);
@@ -87,24 +83,15 @@ namespace ELREORS
                 dtPesanan.Columns.Add("Nomor Meja");
                 dtPesanan.Columns.Add("Jumlah");
                 dtPesanan.Columns.Add("Keterangan");
-                dtPesanan.Columns.Add("Status");
                 dtPesanan.Columns.Add("Action");
 
                 tempData = new DataTable();
-                daPesanan = new OracleDataAdapter("select d.id, m.nama, h.nomor_meja, d.jumlah, d.keterangan, d.status from menu m, djual d, hjual h where d.id_header=h.id and d.id_menu=m.id and h.status=0 order by d.status, h.nomor_meja", conn);
+                daPesanan = new OracleDataAdapter("select d.id, m.nama, h.nomor_meja, d.jumlah, d.keterangan, d.status from menu m, djual d, hjual h where d.id_header=h.id and d.id_menu=m.id and h.status=1 and d.status=1 order by d.status, h.nomor_meja", conn);
                 daPesanan.Fill(tempData);
                 foreach (DataRow d in tempData.Rows) 
                 {
-                    string tempString = "";
                     string ket = "";
-                    if (d["status"].ToString() == "0")
-                    {
-                        tempString = "IN PROCESS";
-                    }
-                    else
-                    {
-                        tempString = "DONE";
-                    }
+                 
                     if (d["keterangan"].ToString() == "")
                     {
                         ket = "-";
@@ -113,7 +100,7 @@ namespace ELREORS
                     {
                         ket = d["keterangan"].ToString();
                     }
-                    dtPesanan.Rows.Add(d["nama"],"Meja "+d["nomor_meja"],d["jumlah"],ket,tempString);
+                    dtPesanan.Rows.Add(d["nama"],"Meja "+d["nomor_meja"],d["jumlah"],ket,"-");
                 }
                 dgPesanan.ItemsSource = dtPesanan.DefaultView;
                 conn.Close();
