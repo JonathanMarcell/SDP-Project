@@ -34,8 +34,6 @@ namespace ELREORS
         {
             InitializeComponent();
             lbM.Content = n;
-            btnPrev.IsEnabled = false;
-            btnApp.IsEnabled = false;
             sekarang = 1;
             lbResto.Content = App.getNamaResto();
             //this.WindowState = WindowState.Maximized;
@@ -188,11 +186,6 @@ namespace ELREORS
             hasil = max % 3;
             if (hasil != 0) max = (max / 3) + 1;
             else max = max / 3;
-            if (sekarang==max)
-            {
-                btnNext.IsEnabled = false;
-                btnPrev.IsEnabled = false;
-            }
             lbMax.Content = max;
             lbSek.Content = 1;
         }
@@ -713,7 +706,7 @@ namespace ELREORS
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             gantiJ();
-            btnPrev.IsEnabled = true;
+            //btnPrev.IsEnabled = true;
             if (halaman < max - 1)
             {
                 sekarang = sekarang + 1;
@@ -722,17 +715,17 @@ namespace ELREORS
                 tampil();
                 cekJ();
             }
-            if (halaman == max - 1)
-            {
-                btnNext.IsEnabled = false;
-            }
+            //if (halaman == max - 1)
+            //{
+            //    btnNext.IsEnabled = false;
+            //}
             
             lbSek.Content = sekarang;
         }
         private void btnPrev_Click(object sender, RoutedEventArgs e)
         {
             gantiJ();
-            btnNext.IsEnabled = true;
+            //btnNext.IsEnabled = true;
             if (halaman > 0)
             {
                 tampilLb();
@@ -741,10 +734,10 @@ namespace ELREORS
                 tampil();
                 cekJ();
             }
-            if (halaman == 0)
-            {
-                btnPrev.IsEnabled = false;
-            }
+            //if (halaman == 0)
+            //{
+            //    btnPrev.IsEnabled = false;
+            //}
             lbSek.Content = sekarang;
         }
         private void btnMin1_Click(object sender, RoutedEventArgs e)
@@ -892,5 +885,6 @@ namespace ELREORS
             tampil();
             cekJ();
         }
+         
     }
 }
