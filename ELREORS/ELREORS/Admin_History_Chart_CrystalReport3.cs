@@ -16,14 +16,14 @@ namespace ELREORS {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Admin_History_Chart_CrystalReport : ReportClass {
+    public class Admin_History_Chart_CrystalReport3 : ReportClass {
         
-        public Admin_History_Chart_CrystalReport() {
+        public Admin_History_Chart_CrystalReport3() {
         }
         
         public override string ResourceName {
             get {
-                return "Admin_History_Chart_CrystalReport.rpt";
+                return "Admin_History_Chart_CrystalReport3.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ELREORS {
         
         public override string FullResourceName {
             get {
-                return "ELREORS.Admin_History_Chart_CrystalReport.rpt";
+                return "ELREORS.Admin_History_Chart_CrystalReport3.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace ELREORS {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_StartYear {
+        public CrystalDecisions.Shared.IParameterField Parameter_startdate {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,7 +98,7 @@ namespace ELREORS {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_EndYear {
+        public CrystalDecisions.Shared.IParameterField Parameter_enddate {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -106,9 +106,9 @@ namespace ELREORS {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedAdmin_History_Chart_CrystalReport : Component, ICachedReport {
+    public class CachedAdmin_History_Chart_CrystalReport3 : Component, ICachedReport {
         
-        public CachedAdmin_History_Chart_CrystalReport() {
+        public CachedAdmin_History_Chart_CrystalReport3() {
         }
         
         [Browsable(false)]
@@ -145,7 +145,7 @@ namespace ELREORS {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Admin_History_Chart_CrystalReport rpt = new Admin_History_Chart_CrystalReport();
+            Admin_History_Chart_CrystalReport3 rpt = new Admin_History_Chart_CrystalReport3();
             rpt.Site = this.Site;
             return rpt;
         }
