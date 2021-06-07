@@ -85,6 +85,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Admin_History_Report.xaml.cs">
+      <DependentUpon>Admin_History_Report.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Admin_History_Chart.xaml.cs">
       <DependentUpon>Admin_History_Chart.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,12 @@
     </Compile>
     <Compile Include="Admin_History_Details_Update.xaml.cs">
       <DependentUpon>Admin_History_Details_Update.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_History_Report_CR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Admin_History_Report_CR.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Admin_Kategori.xaml.cs">
       <DependentUpon>Admin_Kategori.xaml</DependentUpon>
@@ -170,6 +179,10 @@
     <Page Include="Admin_History.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_History_Report.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Admin_History_Chart.xaml">
       <SubType>Designer</SubType>
@@ -321,6 +334,10 @@
     <EmbeddedResource Include="Admin_History_Chart_CrystalReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Admin_History_Chart_CrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_History_Report_CR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Admin_History_Report_CR.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Nota.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

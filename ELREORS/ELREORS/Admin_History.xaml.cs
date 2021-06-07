@@ -90,7 +90,8 @@ namespace ELREORS
 
         private void btn_report_Click(object sender, RoutedEventArgs e)
         {
-
+            Admin_History_Report w = new Admin_History_Report();
+            w.ShowDialog();
         }
 
         private void DateChange(object sender, SelectionChangedEventArgs e)
