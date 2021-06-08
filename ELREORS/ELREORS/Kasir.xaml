@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:ELREORS"
         mc:Ignorable="d"
         Title="Kasir" Height="768" Width="1366"
-        x:Name="win"
-        WindowState="Maximized">
+        x:Name="win">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
