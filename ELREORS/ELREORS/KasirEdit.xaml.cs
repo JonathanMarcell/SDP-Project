@@ -31,6 +31,23 @@ namespace ELREORS
         public KasirEdit(int nomeja, string idhjual, string menu, int jumlah, int idmenu)
         {
             InitializeComponent();
+            try
+            {
+                //nambah gambar di Background (pake brush) / Image (pake ImageSource)
+                Uri uri = new Uri("Resource/background.png", UriKind.Relative);
+                BitmapImage img = new BitmapImage(uri);
+                ImageBrush b = new ImageBrush(img);
+                //mode 
+                b.Opacity = 1; //default 1
+                b.TileMode = TileMode.Tile; //default None
+                b.Stretch = Stretch.Fill; //default Fill
+
+                winKE.Background = b; // win ini x:Name nya Window
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
             this.nomeja = nomeja;
             this.idhjual = idhjual;
             this.menu = menu;
