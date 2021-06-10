@@ -156,16 +156,34 @@ namespace ELREORS
             }
             else
             {
-                int updatedstat = 1;
+                int updatedstathj = 2, updatedstatdj = 1;
                 string confirm = "UPDATE HJUAL set STATUS = :stat WHERE NOMOR_MEJA = :nomeja";
                 OracleCommand cmd = new OracleCommand(confirm, conn);
                 try
                 {
-                    cmd.Parameters.Add(":NAMA", updatedstat);
+                    cmd.Parameters.Add(":stat", updatedstathj);
                     cmd.Parameters.Add(":nomeja", nomeja);
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Konfirmasi Berhasil");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                string qryidhj = "select id from hjual where NOMOR_MEJA= "+nomeja+"";
+                OracleCommand cmd3 = new OracleCommand(qryidhj, conn);
+                int idhj = Convert.ToInt32(cmd3.ExecuteScalar().ToString());
+
+                string djualstat = "UPDATE DJUAL set STATUS = :stat WHERE ID_HEADER = :idHJ";
+                OracleCommand cmd2 = new OracleCommand(djualstat, conn);
+                try
+                {
+                    cmd2.Parameters.Add(":stat", updatedstatdj);
+                    cmd2.Parameters.Add(":idHJ", idhj);
+
+                    cmd2.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
