@@ -67,7 +67,7 @@ namespace ELREORS
                 b.Opacity = 1;
                 b.TileMode = TileMode.Tile;
                 b.Stretch = Stretch.Fill;
-                win.Background = b;
+                MenuMeja.Background = b;
 
                 uri = new Uri("Resource/button square wide.png", UriKind.Relative);
                 img = new BitmapImage(uri);
@@ -79,6 +79,7 @@ namespace ELREORS
                 btnBersih.Background = b;
                 btnPesan.Background = b;
                 cbKategori.Background = b;
+                btnEdit.Background = b;
 
                 uri = new Uri("Resource/button square.png", UriKind.Relative);
                 img = new BitmapImage(uri);
@@ -914,8 +915,8 @@ namespace ELREORS
         }
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            //Edit_Pesan eP = new Edit_Pesan();
-            //eP.Show();
+            Edit_Pesanan eP = new Edit_Pesanan();
+            eP.Show();
         }
     }
 }

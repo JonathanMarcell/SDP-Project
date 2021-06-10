@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ELREORS"
         mc:Ignorable="d"
-        x:Name="win"
+        x:Name="MenuMeja"
         Title="Meja" Height="768" Width="1366">
     <Window.Resources>
         <Style x:Key="FocusVisual">
@@ -359,6 +359,41 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
+
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="btnEditStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
                                 
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
@@ -395,7 +430,7 @@
                 <DataGridTextColumn Visibility="Hidden" x:Name="columntotal" Binding="{Binding Path=Harga , StringFormat=C ,ConverterCulture=id-ID }" Header="Harga"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Total Harga: Rp." FontSize="20" Height="auto" Width="auto" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,184,35.6"/>
+        <Label Content="Total Harga: " FontSize="20" Height="auto" Width="auto" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,184,35.6"/>
         <Label x:Name="lbTH" Content="" FontSize="20" Height="auto" Width="auto" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,178,35.6"/>
         <Label x:Name="lbResto" Content="ELREORS" HorizontalContentAlignment="Right" FontSize="36" Height="auto" Width="398" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="271,38,10,0" Foreground="#FFF1DABF"/>
 
@@ -410,7 +445,7 @@
         </Label>
         <Button Name="btnBersih" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="18" Margin="25,0,0,29.6" Content="Bersihkan" Click="btnBersih_Click" Foreground="#FFF1DABF" Style="{DynamicResource btnBersihStyle}"/>
         <Button Name="btnPesan" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="18" Margin="155,0,0,29.6" Content="Pesan" Click="btnPesan_Click" Foreground="#FFF1DABF" Style="{DynamicResource btnPesanStyle}"/>
-        <Button x:Name="btnEdit" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="18" Margin="289,0,0,29.6" Content="Edit Pesanan" Click="btnEdit_Click"/>
+        <Button x:Name="btnEdit" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="18" Margin="289,0,0,29.6" Content="Edit Pesanan" Click="btnEdit_Click" Style="{DynamicResource btnEditStyle}"/>
 
 
         <Button x:Name="btnApp" Width="200" Height="50" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Appetizer" FontSize="32" Margin="10,55,0,0" Click="btnApp_Click" Visibility="Hidden"/>

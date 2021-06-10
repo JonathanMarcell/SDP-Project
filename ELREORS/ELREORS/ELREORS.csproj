@@ -151,6 +151,9 @@
     <Compile Include="Admin_Stock_Update.xaml.cs">
       <DependentUpon>Admin_Stock_Update.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Edit_Pesanan.xaml.cs">
+      <DependentUpon>Edit_Pesanan.xaml</DependentUpon>
+    </Compile>
     <Compile Include="KasirEdit.xaml.cs">
       <DependentUpon>KasirEdit.xaml</DependentUpon>
     </Compile>
@@ -237,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Admin_Stock_Update.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Edit_Pesanan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
