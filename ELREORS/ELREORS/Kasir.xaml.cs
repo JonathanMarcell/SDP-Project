@@ -24,11 +24,16 @@ namespace ELREORS
         private OracleConnection conn;
         DataTable dt;
         int nomeja;
-        public Kasir()
+        string kodekasir;
+        string namakasir;
+        public Kasir(string kode)
         {
             InitializeComponent();
             App.openconn();
             this.conn = App.conn;
+            kodekasir = kode;
+            namakasir = getNamaPegawai(kode);
+            lb_username.Content += namakasir;
             try
             {
                 //nambah gambar di Background (pake brush) / Image (pake ImageSource)
@@ -157,12 +162,13 @@ namespace ELREORS
             else
             {
                 int updatedstathj = 2, updatedstatdj = 1;
-                string confirm = "UPDATE HJUAL set STATUS = :stat WHERE NOMOR_MEJA = :nomeja";
+                string confirm = "UPDATE HJUAL set STATUS = :stat , ID_PEGAWAI = :idpeg  WHERE NOMOR_MEJA = :nomeja";
                 OracleCommand cmd = new OracleCommand(confirm, conn);
                 try
                 {
                     cmd.Parameters.Add(":stat", updatedstathj);
                     cmd.Parameters.Add(":nomeja", nomeja);
+                    cmd.Parameters.Add(":idpeg", getIDPegawai(kodekasir));
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Konfirmasi Berhasil");
@@ -192,7 +198,7 @@ namespace ELREORS
 
                 try
                 {
-                    ShowNota sn = new ShowNota(nomeja);
+                    ShowNota sn = new ShowNota(nomeja,getIDPegawai(kodekasir));
                     sn.ShowDialog();
                 }
                 catch (Exception ex)
@@ -235,6 +241,17 @@ namespace ELREORS
             ke.ShowDialog();
             loadData();
             genNo();
+        }
+
+        private string getNamaPegawai(string kode)
+        {
+            OracleCommand cmd = new OracleCommand($"select nama from pegawai where kode_pegawai='{kode}'",conn);
+            return cmd.ExecuteScalar().ToString();
+        }
+        private string getIDPegawai(string kode)
+        {
+            OracleCommand cmd = new OracleCommand($"select id from pegawai where kode_pegawai='{kode}'", conn);
+            return cmd.ExecuteScalar().ToString();
         }
     }
 }

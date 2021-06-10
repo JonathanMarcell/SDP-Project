@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ELREORS"
         mc:Ignorable="d"
         Title="Kasir" Height="768" Width="1366"
-        x:Name="win">
+        x:Name="win" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -15,7 +15,7 @@
             <ColumnDefinition Width="269*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
-        
+
         <Label Content="NO MEJA" HorizontalAlignment="Left" Margin="24,47,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Grid.Column="1" Height="39" Width="108" Foreground="#FFF1DABF"/>
 
         <Label x:Name="labelTanggal"  Content="Tanggal: dd/mm/yyyy" Grid.Column="3" HorizontalAlignment="Right" Margin="0,44,30,0" VerticalAlignment="Top" FontSize="18" Height="34" Width="181" Foreground="#FFF1DABF"/>
@@ -37,6 +37,7 @@
         <StackPanel x:Name="stackpanel2" Grid.Column="2" HorizontalAlignment="Left" Height="609" Margin="2,110,0,0" VerticalAlignment="Top" Width="105"/>
         <Label x:Name="totHarga" Content="0" Grid.Column="3" HorizontalAlignment="Left" Margin="870,0,0,59" VerticalAlignment="Bottom" FontWeight="Bold" MinWidth="110" FontSize="18" Height="34"/>
         <Label x:Name="pajak" Content="0" Grid.Column="3" HorizontalAlignment="left" Margin="870,0,0,98" VerticalAlignment="Bottom" MinWidth="110" FontSize="18" Height="34"/>
+        <Label Content="User :" x:Name="lb_username" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" Margin="22,678,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

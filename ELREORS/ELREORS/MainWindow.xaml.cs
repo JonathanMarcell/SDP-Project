@@ -1,6 +1,7 @@
 ﻿using Oracle.DataAccess.Client;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -22,17 +23,17 @@ namespace ELREORS
     /// </summary>
     public partial class MainWindow : Window
     {
+        //password
+        string AdminPass = "admin";
+        string ChefPass = "list";
+        string TablePass = "meja";
+        string CashierPass = "kasir";
         public MainWindow()
         {
             InitializeComponent();
             //fullscreen & no window control, nanti kasi ini ke semua wpf
             this.WindowState= WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
-
-            //password
-            string AdminPass = "admin" ;
-            string ChefPass  = "list" ;
-            string TablePass = "meja" ;
 
             //misc
             try
@@ -55,42 +56,82 @@ namespace ELREORS
             //cara ngakses objek dari suatu parent , harus diTypeCast
             //MessageBox.Show(    ((TextBlock)win.FindName("Title")).Text    );
         }
-        
+
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
-            //var connectionString = "Data Source = orcl; User ID= ; Password= ";
-            //OracleConnection conn1 = new OracleConnection(connectionString);
-
+            string pass = pb_password.Password;
+            string uname = tb_username.Text;
+            bool found = false; 
+            string CurrentUser = "";
+            string isadmin = "";
             //check login di pegawai, lihat dari username, status, isAdmin. tidak ada password (hardcode password)
-            if (tb_username.Text=="admin")
+            if (uname=="" || pass=="")
             {
-                Admin a = new Admin();
-                a.ShowDialog();
-                //Close();
+                System.Windows.Forms.MessageBox.Show("Harap isi semua field");
+                return;
             }
-            else if (tb_username.Text=="meja")
+            try
             {
-                NoMeja n = new NoMeja();
-                n.ShowDialog();
-                //Close();
+                DataTable tempData = new DataTable();
+                OracleDataAdapter da = new OracleDataAdapter("select id,kode_pegawai,nama,isadmin,status from pegawai", App.conn);
+                da.Fill(tempData);
+                foreach (DataRow d in tempData.Rows)
+                {
+                    if (d["kode_pegawai"].ToString() == uname) //login pake kode pegawai
+                    {
+                        if (d["status"].ToString() == "1")
+                        {
+                            found = true;
+                            CurrentUser = d["kode_pegawai"].ToString();
+                            isadmin = d["isadmin"].ToString();
+                        }
+                    }
+                }
             }
-            else if (tb_username.Text == "kasir")
+            catch (Exception)
             {
-                Kasir mm = new Kasir();
-                mm.ShowDialog();
-                //Close();
+                System.Windows.Forms.MessageBox.Show("Gagal mencari user!");
+                return;
             }
-            else if (tb_username.Text=="list")
+
+            if (found)
             {
-                ListPesanan a = new ListPesanan();
-                a.ShowDialog();
-                //Close();
+                if (CurrentUser=="")
+                {
+                    System.Windows.Forms.MessageBox.Show("Username diblokir!");
+                }
+                else
+                {
+                    if (pass == AdminPass && isadmin.Trim()=="1")
+                    {
+                        Admin a = new Admin();
+                        a.ShowDialog();
+                    }
+                    else if (pass == ChefPass)
+                    {
+                        ListPesanan a = new ListPesanan();
+                        a.ShowDialog();
+                    }
+                    else if (pass == TablePass)
+                    {
+                        NoMeja n = new NoMeja();
+                        n.ShowDialog();
+                    }
+                    else if (pass == CashierPass)
+                    {
+                        Kasir mm = new Kasir(CurrentUser);
+                        mm.ShowDialog();
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("Password Salah!");
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("Failed to Login");
+                System.Windows.Forms.MessageBox.Show("Username tidak ditemukan!");
             }
-            
         }
 
         //nyoba bisa manggil keyboard tp masi ga bisa

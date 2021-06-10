@@ -48,7 +48,7 @@
             <TextBlock Text="Password : " FontSize="25" HorizontalAlignment="Right"/>
         </StackPanel>
         <StackPanel Grid.Row="6" Grid.Column="2">
-            <TextBox x:Name="tb_password" FontSize="25" Margin="2" Width="250" HorizontalAlignment="Left"  GotFocus="cmdToggle_Click"/>
+            <PasswordBox x:Name="pb_password" FontSize="25" Margin="2" Width="250" HorizontalAlignment="Left"  GotFocus="cmdToggle_Click"/>
         </StackPanel>
 
         <Button Grid.Column="1" Grid.Row="8" Width="150" Grid.ColumnSpan="2"
