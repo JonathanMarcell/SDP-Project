@@ -52,7 +52,6 @@ namespace ELREORS
             {
                 foreach (Window item in Application.Current.Windows)
                 {
-                    MessageBox.Show(item.Name.ToString());
                     if (item.Name == "MenuMeja")
                     {
                         ((Meja)item).daO.Rows[Convert.ToInt32(tbNo.Text) - 1]["Keterangan"] = tbKet.Text;

@@ -135,7 +135,7 @@
 
     <Grid>
 
-        <Button x:Name="btnEditL" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Edit Lagi" Click="btnEditL_Click" Margin="190,275,0,0" Style="{DynamicResource btnEditLStyle}"/>
+        <Button x:Name="btnEditL" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Apply dan Edit Lagi" Click="btnEditL_Click" Margin="190,275,0,0" Style="{DynamicResource btnEditLStyle}"/>
         <Button x:Name="btnBersihkan" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Bershikan" Click="btnBersihkan_Click" Margin="50,275,0,0" Style="{DynamicResource btnBersihkanStyle}"/>
         <Button x:Name="btnSelesai" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Selesai" Click="btnSelesai_Click" Margin="330,275,0,0" Style="{DynamicResource btnSelesaiStyle}"/>
         <Label Content="Nomor Pesanan:" FontSize="32" x:Name="lbNo" Width="auto" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,125,0,0"/>
