@@ -35,7 +35,6 @@ namespace ELREORS
         {
             InitializeComponent();
             pL = pesanL;
-            MessageBox.Show(pesanL+"");
             lbM.Content = n;
             sekarang = 1;
             lbResto.Content = App.getNamaResto();
@@ -700,7 +699,7 @@ namespace ELREORS
                     string qry = "";
                     if (!pL)
                     {
-                        qry = "insert into hjual values(null,null,null," + Convert.ToInt32(lbTH.Content.ToString().Replace("Rp.", "").Replace(".", "")) + "," + Convert.ToInt32(lbM.Content) + ",1,0) ";
+                        qry = "insert into hjual values(null,null,null," + Convert.ToInt32(lbTH.Content.ToString().Replace("Rp", "").Replace(".", "")) + "," + Convert.ToInt32(lbM.Content) + ",1,0) ";
                     }
                     else
                     {
@@ -713,7 +712,7 @@ namespace ELREORS
                             th = Convert.ToInt32(dr[0]);
                             MessageBox.Show(th+"");
                         }
-                        th = Convert.ToInt32(th) + Convert.ToInt32(lbTH.Content.ToString().Replace("Rp.", "").Replace(".", ""));
+                        th = Convert.ToInt32(th) + Convert.ToInt32(lbTH.Content.ToString().Replace("Rp", "").Replace(".", ""));
                         MessageBox.Show(th+"");
                         qry = "update hjual set total_harga="+th +"where status=0 and nomor_meja ='"+Convert.ToInt32(lbM.Content)+"'";
                     }
@@ -731,7 +730,6 @@ namespace ELREORS
                                 cmd = new OracleCommand(qry, conn);
                                 cmd.ExecuteNonQuery();
                             }
-                            
                         }
                     }
                     trans.Commit();
