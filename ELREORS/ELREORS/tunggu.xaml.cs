@@ -28,6 +28,7 @@ namespace ELREORS
             //this.WindowState = WindowState.Maximized;
             //this.WindowStyle = WindowStyle.None;
             lbNama.Content = "Meja " + n;
+            pesanL = false;
             temp1 = n;
             conn = App.conn;
             try
@@ -60,6 +61,7 @@ namespace ELREORS
         DispatcherTimer dt = new DispatcherTimer();
         string temp1;
         List<status> s = new List<status>();
+        bool pesanL = false;
         void selesai()
         {
             OracleCommand cmd = new OracleCommand();
@@ -85,22 +87,33 @@ namespace ELREORS
             {
                 string temp = lbNama.Content.ToString().Substring(5, 1);
                 dt.Stop();
-                Meja a = new Meja(temp);
+                Meja a = new Meja(temp,pesanL);
                 a.Show();
                 Close();
             }
         }
         private void btnSelesai_Click(object sender, RoutedEventArgs e)
         {
+            pesanL = true;
             meunggu.Content =  "Terima kasih";
             bayar.Visibility = Visibility.Hidden;
             timer = 0;
-            dt.Stop();
         }
         private void dtTicker(object sender, EventArgs e)
         {
             timer++;
             selesai();
+            if (pesanL)
+            {
+                if (timer>=3)
+                {
+                    string temp = lbNama.Content.ToString().Substring(5, 1);
+                    dt.Stop();
+                    Meja a = new Meja(temp,pesanL);
+                    a.Show();
+                    Close();
+                }
+            }
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

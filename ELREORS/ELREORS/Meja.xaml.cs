@@ -30,9 +30,12 @@ namespace ELREORS
         public DataTable daO;
         int indexing = 0;
         int sekarang = 0;
-        public Meja(string n)
+        bool pL = false;
+        public Meja(string n,bool pesanL)
         {
             InitializeComponent();
+            pL = pesanL;
+            MessageBox.Show(pesanL+"");
             lbM.Content = n;
             sekarang = 1;
             lbResto.Content = App.getNamaResto();
@@ -689,11 +692,31 @@ namespace ELREORS
             else
             {
                 int ctr = 0;
+                int th = 0;
                 OracleTransaction trans;
                 trans = conn.BeginTransaction();
                 try
                 {
-                    string qry = "insert into hjual values(null,null,null," + Convert.ToInt32(lbTH.Content.ToString().Replace("Rp.","").Replace(".","")) + "," + Convert.ToInt32(lbM.Content) + ",1,0) ";
+                    string qry = "";
+                    if (!pL)
+                    {
+                        qry = "insert into hjual values(null,null,null," + Convert.ToInt32(lbTH.Content.ToString().Replace("Rp.", "").Replace(".", "")) + "," + Convert.ToInt32(lbM.Content) + ",1,0) ";
+                    }
+                    else
+                    {
+                        qry = "select total_harga as \"th\" from hjual where status = 0 and nomor_meja=" + Convert.ToInt32(lbM.Content);
+                        OracleCommand comd = new OracleCommand(qry, conn);
+                        comd.ExecuteReader();
+                        OracleDataReader dr = comd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            th = Convert.ToInt32(dr[0]);
+                            MessageBox.Show(th+"");
+                        }
+                        th = Convert.ToInt32(th) + Convert.ToInt32(lbTH.Content.ToString().Replace("Rp.", "").Replace(".", ""));
+                        MessageBox.Show(th+"");
+                        qry = "update hjual set total_harga="+th +"where status=0 and nomor_meja ='"+Convert.ToInt32(lbM.Content)+"'";
+                    }
                     OracleCommand cmd = new OracleCommand(qry, conn);
                     cmd.ExecuteNonQuery();
                     int id = 0;
@@ -721,10 +744,8 @@ namespace ELREORS
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                    trans.Rollback();
-                    
+                    trans.Rollback();   
                 }
-
             }
         }
         private void btnNext_Click(object sender, RoutedEventArgs e)
