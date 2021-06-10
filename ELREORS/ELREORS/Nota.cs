@@ -90,7 +90,7 @@ namespace ELREORS {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_noMeja {
+        public CrystalDecisions.Shared.IParameterField Parameter_idHjual {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }

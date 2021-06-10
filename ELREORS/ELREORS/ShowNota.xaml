@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ELREORS"
         xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer" x:Class="ELREORS.ShowNota"
         mc:Ignorable="d"
-        Title="ShowNota" Height="768" Width="1366" Loaded="Window_Loaded">
+        Title="ShowNota" Height="768" Width="1366" Loaded="Window_Loaded" WindowState="Maximized"> 
     <Grid>
 
         <Viewer:CrystalReportsViewer x:Name="NotaViewer" HorizontalAlignment="Left" Height="737" VerticalAlignment="Top" Width="1358"/>

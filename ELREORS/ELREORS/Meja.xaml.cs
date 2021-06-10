@@ -575,7 +575,7 @@ namespace ELREORS
             for (int i = 0; i < daO.Rows.Count; i++)
             {
                 harga = Convert.ToInt32(daO.Rows[i]["Harga"]) + harga;
-                lbTH.Content = harga + "";
+                lbTH.Content = harga.ToString("C0");
             }
 
         }

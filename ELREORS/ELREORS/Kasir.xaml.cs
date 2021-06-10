@@ -150,6 +150,7 @@ namespace ELREORS
 
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
+
             if ( dt == null  )
             {
                 MessageBox.Show("Pilih Meja Terlebih dahulu");
@@ -162,12 +163,16 @@ namespace ELREORS
             else
             {
                 int updatedstathj = 2, updatedstatdj = 1;
-                string confirm = "UPDATE HJUAL set STATUS = :stat , ID_PEGAWAI = :idpeg  WHERE NOMOR_MEJA = :nomeja";
+
+                string qryidhj = "select id from hjual where NOMOR_MEJA= " + nomeja + " and status = 0";
+                OracleCommand cmd3 = new OracleCommand(qryidhj, conn);
+                int idhj = Convert.ToInt32(cmd3.ExecuteScalar().ToString());
+
+                string confirm = $"UPDATE HJUAL set STATUS = :stat , ID_PEGAWAI = :idpeg WHERE id ={idhj}";
                 OracleCommand cmd = new OracleCommand(confirm, conn);
                 try
                 {
                     cmd.Parameters.Add(":stat", updatedstathj);
-                    cmd.Parameters.Add(":nomeja", nomeja);
                     cmd.Parameters.Add(":idpeg", getIDPegawai(kodekasir));
 
                     cmd.ExecuteNonQuery();
@@ -175,12 +180,9 @@ namespace ELREORS
                 }
                 catch (Exception ex)
                 {
+                    throw;
                     MessageBox.Show(ex.Message);
                 }
-
-                string qryidhj = "select id from hjual where NOMOR_MEJA= "+nomeja+"";
-                OracleCommand cmd3 = new OracleCommand(qryidhj, conn);
-                int idhj = Convert.ToInt32(cmd3.ExecuteScalar().ToString());
 
                 string djualstat = "UPDATE DJUAL set STATUS = :stat WHERE ID_HEADER = :idHJ";
                 OracleCommand cmd2 = new OracleCommand(djualstat, conn);
@@ -193,16 +195,18 @@ namespace ELREORS
                 }
                 catch (Exception ex)
                 {
+                    throw;
                     MessageBox.Show(ex.Message);
                 }
 
                 try
                 {
-                    ShowNota sn = new ShowNota(nomeja,getIDPegawai(kodekasir));
+                    ShowNota sn = new ShowNota(idhj,getIDPegawai(kodekasir));
                     sn.ShowDialog();
                 }
                 catch (Exception ex)
                 {
+                    throw;
                     MessageBox.Show(ex.Message);
                 }
 

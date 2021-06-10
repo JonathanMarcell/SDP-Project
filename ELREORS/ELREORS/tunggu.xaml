@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ELREORS"
         mc:Ignorable="d"
         x:Name="win"
-        Title="tunggu" Height="768" Width="1366" Loaded="Window_Loaded">
+        Title="tunggu" Height="768" Width="1366" Loaded="Window_Loaded" WindowState="Maximized" >
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

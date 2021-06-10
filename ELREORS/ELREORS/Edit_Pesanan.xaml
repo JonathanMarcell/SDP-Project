@@ -116,10 +116,10 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
-                                
+
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                
+
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
@@ -135,12 +135,13 @@
 
     <Grid>
 
-        <Button x:Name="btnEditL" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Apply dan Edit Lagi" Click="btnEditL_Click" Margin="190,275,0,0" Style="{DynamicResource btnEditLStyle}"/>
-        <Button x:Name="btnBersihkan" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Bershikan" Click="btnBersihkan_Click" Margin="50,275,0,0" Style="{DynamicResource btnBersihkanStyle}"/>
-        <Button x:Name="btnSelesai" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Selesai" Click="btnSelesai_Click" Margin="330,275,0,0" Style="{DynamicResource btnSelesaiStyle}"/>
+        <Button x:Name="btnEditL" FontSize="16" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Apply dan &#xD;&#xA;Edit Lagi" Click="btnEditL_Click" Margin="355,315,0,0" Style="{DynamicResource btnEditLStyle}" Foreground="#FFF1DABF"/>
+        <Button x:Name="btnBersihkan" FontSize="16" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Bershikan" Click="btnBersihkan_Click" Margin="215,315,0,0" Style="{DynamicResource btnBersihkanStyle}" Foreground="#FFF1DABF"/>
+        <Button x:Name="btnSelesai" FontSize="16" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Selesai" Click="btnSelesai_Click" Margin="495,315,0,0" Style="{DynamicResource btnSelesaiStyle}" Foreground="#FFF1DABF"/>
         <Label Content="Nomor Pesanan:" FontSize="32" x:Name="lbNo" Width="auto" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,125,0,0"/>
         <Label Content="Detail Pesanan:" FontSize="32" x:Name="lbDe" Width="auto" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="65,195,0,0"/>
         <TextBox x:Name="tbNo" Width="200" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="310,125,0,0" FontSize="32"/>
         <TextBox x:Name="tbKet" Width="450" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="310,195,0,0" FontSize="32"/>
+        <Label Content="Tambah Keterangan:" FontSize="28" x:Name="lbNo_Copy" Width="334" Height="64" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="259,10,0,0" Foreground="#FFF1DABF"/>
     </Grid>
 </Window>

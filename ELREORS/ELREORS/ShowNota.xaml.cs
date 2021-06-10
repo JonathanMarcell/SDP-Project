@@ -21,13 +21,13 @@ namespace ELREORS
     public partial class ShowNota : Window
     {
         public static OracleConnection conn;
-        private int nomeja, idpegawai;
-        public ShowNota(int nomeja, string idpegawai)
+        private int idhj, idpegawai;
+        public ShowNota(int idhj, string idpegawai)
         {
             InitializeComponent();
             App.openconn();
             conn = App.conn;
-            this.nomeja = nomeja;
+            this.idhj = idhj;
             this.idpegawai = Convert.ToInt32(idpegawai);
         }
 
@@ -36,7 +36,7 @@ namespace ELREORS
             NotaViewer.Owner = Window.GetWindow(this);
             Nota nota = new Nota();
             nota.SetDatabaseLogon(App.userid, App.password, App.datasource, "");
-            nota.SetParameterValue("noMeja", nomeja);
+            nota.SetParameterValue("idHjual", idhj);
             nota.SetParameterValue("idPegawai", idpegawai);
             nota.SetParameterValue("tglNow", DateTime.Now.ToShortDateString());
             NotaViewer.ViewerCore.ReportSource = nota;

@@ -39,7 +39,7 @@ namespace ELREORS
             string query = "select h.ID , h.KODE_HJUAL as \"NO NOTA\", h.TANGGAL , h.NOMOR_MEJA as \"MEJA\", p.NAMA as PEGAWAI , h.TOTAL_HARGA as TOT , " +
                     "case when h.status = 0 then 'InProcess' " +
                     "when h.status = 1 then 'Confirmed' " +
-                    "when h.status = 2 then 'Complteted' " +
+                    "when h.status = 2 then 'Completed' " +
                     "when h.status = 3 then 'Editted' " +
                     "when h.status = 4 then 'Void' " +
                     "else '-' end as \"STATUS\" " +
