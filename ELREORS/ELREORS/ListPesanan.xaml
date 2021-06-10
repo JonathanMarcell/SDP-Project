@@ -22,7 +22,12 @@
             <ImageBrush ImageSource="background.png"/>
         </Grid.Background>
         <Grid Grid.Row="1" Grid.Column="1">
-            <DataGrid x:Name="dgPesanan" Margin="0,0,0,0" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" VerticalScrollBarVisibility="Visible" ColumnWidth="*" FontSize="30" MouseDoubleClick="dgPesanan_MouseDoubleClick" IsReadOnly="True"/>
+            <DataGrid x:Name="dgPesanan" Margin="0,0,0,86" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" VerticalScrollBarVisibility="Visible" ColumnWidth="*" FontSize="30" IsReadOnly="True" MouseDown="dgPesanan_MouseDown"/>
+            <Button x:Name="btnSelesai" Content="Selesaikan Order" HorizontalAlignment="Left" Margin="512,496,0,0" VerticalAlignment="Top" Width="288" Height="71" FontSize="30" Click="btnSelesai_Click" Foreground="#FFF1DABF">
+                <Button.Background>
+                    <ImageBrush ImageSource="button square wide.png" Stretch="None"/>
+                </Button.Background>
+            </Button>
         </Grid>
         <Label Content="Pesanan" HorizontalAlignment="Left" Margin="62,43,0,0" VerticalAlignment="Top" FontSize="32" Height="53" Width="126" Foreground="#FFF1DABF" Grid.ColumnSpan="3"/>
 
