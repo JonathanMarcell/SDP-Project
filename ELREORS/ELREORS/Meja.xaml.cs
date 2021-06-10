@@ -27,7 +27,7 @@ namespace ELREORS
         int max = 0;
         int halaman = 0;
         int jumlah = 3;
-        DataTable daO;
+        public DataTable daO;
         int indexing = 0;
         int sekarang = 0;
         public Meja(string n)
@@ -120,6 +120,7 @@ namespace ELREORS
         void awal()
         {
             daO = new DataTable();
+            daO.Columns.Add("Nomor");
             daO.Columns.Add("Nama");
             daO.Columns.Add("Jumlah");
             daO.Columns.Add("Harga",typeof(Int32));
@@ -490,11 +491,14 @@ namespace ELREORS
                 else gak = false;
                 if (!gak)
                 {
+                    int x = 0;
+                    x = daO.Rows.Count;
                     lbJ1.Content = Convert.ToInt32(lbJ1.Content) + 1;
                     DataRow dr = daO.NewRow();
-                    dr[0] = lbN1.Content;
-                    dr[1] = lbJ1.Content;
-                    dr[2] = Convert.ToInt32(lbH1.Content) * Convert.ToInt32(lbJ1.Content);
+                    dr[0] = x+1;
+                    dr[1] = lbN1.Content;
+                    dr[2] = lbJ1.Content;
+                    dr[3] = Convert.ToInt32(lbH1.Content) * Convert.ToInt32(lbJ1.Content);
                     daO.Rows.Add(dr);
                 }
                 dataOrder.ItemsSource = daO.DefaultView;
@@ -521,11 +525,14 @@ namespace ELREORS
                 else gak = false;
                 if (!gak)
                 {
+                    int x = 0;
+                    x = daO.Rows.Count;
                     lbJ2.Content = Convert.ToInt32(lbJ2.Content) + 1;
                     DataRow dr = daO.NewRow();
-                    dr[0] = lbN2.Content;
-                    dr[1] = lbJ2.Content;
-                    dr[2] = Convert.ToInt32(lbH2.Content) * Convert.ToInt32(lbJ2.Content);
+                    dr[0] = x + 1;
+                    dr[1] = lbN2.Content;
+                    dr[2] = lbJ2.Content;
+                    dr[3] = Convert.ToInt32(lbH2.Content) * Convert.ToInt32(lbJ2.Content);
                     daO.Rows.Add(dr);
                 }
                 dataOrder.ItemsSource = daO.DefaultView;
@@ -551,11 +558,14 @@ namespace ELREORS
                 else gak = false;
                 if (!gak)
                 {
+                    int x = 0;
+                    x = daO.Rows.Count;
                     lbJ3.Content = Convert.ToInt32(lbJ3.Content) + 1;
                     DataRow dr = daO.NewRow();
-                    dr[0] = lbN3.Content;
-                    dr[1] = lbJ3.Content;
-                    dr[2] = Convert.ToInt32(lbH3.Content) * Convert.ToInt32(lbJ3.Content);
+                    dr[0] = x + 1;
+                    dr[1] = lbN3.Content;
+                    dr[2] = lbJ3.Content;
+                    dr[3] = Convert.ToInt32(lbH3.Content) * Convert.ToInt32(lbJ3.Content);
                     daO.Rows.Add(dr);
                 }
                 dataOrder.ItemsSource = daO.DefaultView;
@@ -587,6 +597,10 @@ namespace ELREORS
                             if (Convert.ToInt32(daO.Rows[i]["Jumlah"]) == 0)
                             {
                                 daO.Rows.RemoveAt(i);
+                                for (int j = 0; j < daO.Rows.Count; j++)
+                                {
+                                    daO.Rows[j]["Nomor"] = j + 1;
+                                }
                             }
                         }
                     }
@@ -609,6 +623,10 @@ namespace ELREORS
                             if (Convert.ToInt32(daO.Rows[i]["Jumlah"]) == 0)
                             {
                                 daO.Rows.RemoveAt(i);
+                                for (int j = 0; j < daO.Rows.Count; j++)
+                                {
+                                    daO.Rows[j]["Nomor"] = j + 1;
+                                }
                             }
                         }
                     }
@@ -631,6 +649,10 @@ namespace ELREORS
                             if (Convert.ToInt32(daO.Rows[i]["Jumlah"]) == 0)
                             {
                                 daO.Rows.RemoveAt(i);
+                                for (int j = 0; j < daO.Rows.Count; j++)
+                                {
+                                    daO.Rows[j]["Nomor"] = j + 1;
+                                }
                             }
                         }
                     }
@@ -670,7 +692,7 @@ namespace ELREORS
                 trans = conn.BeginTransaction();
                 try
                 {
-                    string qry = "insert into hjual values(null,null,null," + Convert.ToInt32(lbTH.Content) + "," + Convert.ToInt32(lbM.Content) + ",1,0) ";
+                    string qry = "insert into hjual values(null,null,null," + Convert.ToInt32(lbTH.Content.ToString().Replace("Rp.","").Replace(".","")) + "," + Convert.ToInt32(lbM.Content) + ",1,0) ";
                     OracleCommand cmd = new OracleCommand(qry, conn);
                     cmd.ExecuteNonQuery();
                     int id = 0;
@@ -681,10 +703,11 @@ namespace ELREORS
                             if (daO.Rows[i]["Nama"] == m[j].getNama())
                             {
                                 id = m[j].getId();
-                                qry = "insert into djual values(null,null," + id + "," + Convert.ToInt32(lbM.Content) + ",'" + daO.Rows[i]["Harga"] + "','" + daO.Rows[i]["Jumlah"] + "','" + daO.Rows[i]["Keterangan"].ToString() + "',0)";
+                                qry = "insert into djual values(null,null," + id + "," + Convert.ToInt32(lbM.Content) + ",'" + daO.Rows[i]["Harga"].ToString().Replace("Rp.","").Replace(".","") + "','" + daO.Rows[i]["Jumlah"] + "','" + daO.Rows[i]["Keterangan"].ToString() + "',0)";
                                 cmd = new OracleCommand(qry, conn);
                                 cmd.ExecuteNonQuery();
                             }
+                            
                         }
                     }
                     trans.Commit();
@@ -885,12 +908,14 @@ namespace ELREORS
             tampil();
             cekJ();
         }
-
         private void dataOrder_AutoGeneratedColumns(object sender, EventArgs e)
         {
-            dataOrder.Columns[3].ClipboardContentBinding.StringFormat = "C0";
+            dataOrder.Columns[4].ClipboardContentBinding.StringFormat = "C0";
         }
-
-        
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            //Edit_Pesan eP = new Edit_Pesan();
+            //eP.Show();
+        }
     }
 }

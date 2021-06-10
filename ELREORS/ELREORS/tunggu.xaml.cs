@@ -95,6 +95,7 @@ namespace ELREORS
             meunggu.Content =  "Terima kasih";
             bayar.Visibility = Visibility.Hidden;
             timer = 0;
+            dt.Stop();
         }
         private void dtTicker(object sender, EventArgs e)
         {
