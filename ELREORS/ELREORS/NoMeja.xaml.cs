@@ -77,7 +77,7 @@ namespace ELREORS
             }
             else
             {
-                Meja m = new Meja(tbNo.Text);
+                Meja m = new Meja(tbNo.Text, false); 
                 m.Show();
                 this.Close();
             }
