@@ -32,7 +32,8 @@
         </Button>
         <Button x:Name="btn_print" Visibility="Hidden" Content="PRINT" HorizontalAlignment="Left" Margin="1134,596,0,0" VerticalAlignment="Top" Width="125" Height="40" FontSize="18"/>
 
-        <Image x:Name="img" HorizontalAlignment="Left" Height="232" Margin="1067,192,0,0" VerticalAlignment="Top" Width="230"/>
+        <Image x:Name="img" HorizontalAlignment="Left" Height="232" Margin="1067,-50,0,0" VerticalAlignment="Center" Width="230">
+        </Image>
         <Label Content="Preview Image :" FontSize="18" HorizontalAlignment="Left" Margin="1067,153,0,0" VerticalAlignment="Top"/>
 
     </Grid>
