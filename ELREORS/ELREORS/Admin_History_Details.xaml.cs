@@ -37,7 +37,7 @@ namespace ELREORS
                 "select d.id, m.id , m.nama as Nama,  d.harga as Harga, d.JUMLAH as Jumlah , d.harga*d.jumlah as Subtotal " +
                 "from djual d " +
                 "left join menu m on d.id_menu = m.id " +
-                $"where d.ID_HEADER={id} ", App.conn);
+                $"where d.ID_HEADER={id} order by d.id", App.conn);
             da.Fill(dt);
             dgdetail.ItemsSource = dt.DefaultView;
         }
@@ -79,6 +79,9 @@ namespace ELREORS
         {
             dgdetail.Columns[0].Visibility = Visibility.Collapsed;
             dgdetail.Columns[1].Visibility = Visibility.Collapsed;
+
+            dgdetail.Columns[3].ClipboardContentBinding.StringFormat = "C0";
+            dgdetail.Columns[5].ClipboardContentBinding.StringFormat = "C0";
         }
 
         public void updateStatusHjual(string id, int status)

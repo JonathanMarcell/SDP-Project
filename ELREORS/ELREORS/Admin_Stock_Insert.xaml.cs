@@ -27,15 +27,23 @@ namespace ELREORS
 
         private void btn_insert_Click(object sender, RoutedEventArgs e)
         {
+            int stok;
+            bool isNumeric = int.TryParse(tb_stok.Text.Trim(), out stok);
+
+            if (tb_nama.Text == "" || tb_satuan.Text == "" || !isNumeric || tb_stok.Text == "")
+            {
+                System.Windows.Forms.MessageBox.Show("Isi Kosong atau salah");
+                return;
+            }
             try
             {
-                string qry = $"INSERT INTO BAHAN VALUES " +
-                    $"(-1 , null , :NAMA , :STOK , :SATUAN ,default)";
+                string qry = $"INSERT INTO BAHAN(ID, KODE_BAHAN, NAMA, STOK, SATUAN, STATUS) VALUES" +
+                    $"(null , null , :NAMA , :STOK , :SATUAN , 1)";
 
                 OracleCommand cmd = new OracleCommand(qry, App.conn); //tetap lakukan oracle command.
                 cmd.Parameters.Add("NAMA", tb_nama.Text);
-                cmd.Parameters.Add("SATUAN", tb_satuan.Text);
-                cmd.Parameters.Add("STOK", tb_stok.Text );
+                cmd.Parameters.Add("STOK", OracleDbType.Int32).Value = stok;
+                cmd.Parameters.Add("SATUAN", OracleDbType.Varchar2).Value= tb_satuan.Text;
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Insert Berhasil");
                 clear();
@@ -43,9 +51,8 @@ namespace ELREORS
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                throw;
+                //throw;
             }
-
         }
         private void clear()
         {
