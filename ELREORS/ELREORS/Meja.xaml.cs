@@ -136,7 +136,8 @@ namespace ELREORS
                 float hasil = 0; 
                 max = 0;
                 OracleCommand cmd = new OracleCommand();
-                string qry = "select id as \"id\",nama as \"nama\", harga as \"harga\", id_kategori as \"kategori\",status as \"status\", keterangan as \"keterangan\", gambar as\"gambar\" from menu where status = 1";
+                string qry = "select m.id as \"id\",m.nama as \"nama\", m.harga as \"harga\", m.id_kategori as \"kategori\",m.status as \"status\", m.keterangan as \"keterangan\", m.gambar as\"gambar\" " +
+                    "from menu m, menu_bahan mb where m.id = mb.id_menu and status = 1 and mb.jumlah >0";
                 cmd = new OracleCommand(qry, conn);
                 cmd.ExecuteReader();
                 OracleDataReader dr = cmd.ExecuteReader();
@@ -710,15 +711,14 @@ namespace ELREORS
                         while (dr.Read())
                         {
                             th = Convert.ToInt32(dr[0]);
-                            MessageBox.Show(th+"");
                         }
                         th = Convert.ToInt32(th) + Convert.ToInt32(lbTH.Content.ToString().Replace("Rp", "").Replace(".", ""));
-                        MessageBox.Show(th+"");
                         qry = "update hjual set total_harga="+th +"where status=0 and nomor_meja ='"+Convert.ToInt32(lbM.Content)+"'";
                     }
                     OracleCommand cmd = new OracleCommand(qry, conn);
                     cmd.ExecuteNonQuery();
                     int id = 0;
+                    int jum = 0;
                     for (int i = 0; i < daO.Rows.Count; i++)
                     {
                         for (int j = 0; j < m.Count; j++)
@@ -727,6 +727,18 @@ namespace ELREORS
                             {
                                 id = m[j].getId();
                                 qry = "insert into djual values(null,null," + id + "," + Convert.ToInt32(lbM.Content) + ",'" + daO.Rows[i]["Harga"].ToString().Replace("Rp.","").Replace(".","") + "','" + daO.Rows[i]["Jumlah"] + "','" + daO.Rows[i]["Keterangan"].ToString() + "',0)";
+                                cmd = new OracleCommand(qry, conn);
+                                cmd.ExecuteNonQuery();
+                                qry = "select jumlah as \"jum\" from menu_bahan where id_menu =" + id;
+                                cmd = new OracleCommand(qry, conn);
+                                cmd.ExecuteNonQuery();
+                                OracleDataReader dr = cmd.ExecuteReader();
+                                while (dr.Read())
+                                {
+                                    jum = Convert.ToInt32(dr[0]);
+                                }
+                                jum = jum - Convert.ToInt32(daO.Rows[i]["Jumlah"]);
+                                qry = "update menu_bahan set jumlah =" + jum + "where id_menu =" + id;
                                 cmd = new OracleCommand(qry, conn);
                                 cmd.ExecuteNonQuery();
                             }
