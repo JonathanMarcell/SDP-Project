@@ -24,7 +24,7 @@ namespace ELREORS
         DataTable dtPesanan, tempData;
         OracleDataAdapter daPesanan;
         OracleConnection conn;
-        //int savedId = -1;
+        int savedId = -1;
         
         public ListPesanan()
         {
@@ -79,6 +79,7 @@ namespace ELREORS
                     OracleCommand cmd = new OracleCommand(qry, conn);
                     cmd.ExecuteNonQuery();
                     hapusData();
+                    savedId = -1;
                     loadData();
                 }
                 catch (Exception ex)
@@ -89,7 +90,9 @@ namespace ELREORS
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
+            savedId = dgPesanan.SelectedIndex;
             loadData();
+            dgPesanan.SelectedIndex = savedId;
             //int tempInd = 0;
             //if (savedId != -1)
             //{
