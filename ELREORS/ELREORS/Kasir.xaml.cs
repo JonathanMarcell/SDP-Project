@@ -70,14 +70,22 @@ namespace ELREORS
         {
             int harga = 0;
             double hrgpajak = 0;
-            for (int j = 0; j < dt.Rows.Count; j++)
+            if(dt.Rows.Count < 1)
             {
-                dt.Rows[j]["No"] = j + 1;
-                hrgpajak += (Convert.ToInt32(dt.Rows[j]["Subtotal"]) * 0.1);
-                harga += Convert.ToInt32(dt.Rows[j]["Subtotal"]);
+                pajak.Content = "-";
+                totHarga.Content = "-";
             }
-            pajak.Content = hrgpajak.ToString("C0");
-            totHarga.Content = (harga + (int)hrgpajak).ToString("C0");
+            else
+            {
+                for (int j = 0; j < dt.Rows.Count; j++)
+                {
+                    dt.Rows[j]["No"] = j + 1;
+                    hrgpajak += (Convert.ToInt32(dt.Rows[j]["Subtotal"]) * 0.1);
+                    harga += Convert.ToInt32(dt.Rows[j]["Subtotal"]);
+                }
+                pajak.Content = hrgpajak.ToString("C0");
+                totHarga.Content = (harga + (int)hrgpajak).ToString("C0");
+            }
         }
 
         void genButton()
@@ -138,8 +146,6 @@ namespace ELREORS
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             mejudul.Content = "MEJA";
-            MainWindow mainwin = new MainWindow();
-            mainwin.Show();
             this.Close();
         }
 
@@ -211,6 +217,7 @@ namespace ELREORS
                 }
 
                 loadData();
+                genNo();
             }
         }
 
