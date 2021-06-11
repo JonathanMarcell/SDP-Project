@@ -24,7 +24,7 @@ namespace ELREORS
         DataTable dtPesanan, tempData;
         OracleDataAdapter daPesanan;
         OracleConnection conn;
-        //int savedId = -1;
+        int savedId = -1;
         
         public ListPesanan()
         {
@@ -61,28 +61,38 @@ namespace ELREORS
 
         private void btnSelesai_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (dgPesanan.SelectedIndex < 0)
             {
-                int index = Int32.Parse(tempData.Rows[dgPesanan.SelectedIndex][0].ToString());
 
-                string qry = $"update djual set status=2 where id={index}";
-
-                //savedId = -1;
-                conn.Open();
-                OracleCommand cmd = new OracleCommand(qry, conn);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                hapusData();
-                loadData();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message.ToString());
+                try
+                {
+                    int index = Int32.Parse(tempData.Rows[dgPesanan.SelectedIndex][0].ToString());
+
+                    string qry = $"update djual set status=2 where id={index}";
+                    if(conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+                    OracleCommand cmd = new OracleCommand(qry, conn);
+                    cmd.ExecuteNonQuery();
+                    hapusData();
+                    savedId = -1;
+                    loadData();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
+            savedId = dgPesanan.SelectedIndex;
             loadData();
+            dgPesanan.SelectedIndex = savedId;
             //int tempInd = 0;
             //if (savedId != -1)
             //{
@@ -108,7 +118,6 @@ namespace ELREORS
             try
             {
                 dgPesanan.Columns.Clear();
-                conn.Open();
 
                 dtPesanan = new DataTable();
                 dtPesanan.Columns.Add("Nama Pesanan");
@@ -135,7 +144,6 @@ namespace ELREORS
                     dtPesanan.Rows.Add(d["nama"],"Meja "+d["nomor_meja"],d["jumlah"],ket,"In Process");
                 }
                 dgPesanan.ItemsSource = dtPesanan.DefaultView;
-                conn.Close();
                 //for (int i = 0; i < dgPesanan.Items.Count; i++)
                 //{
                 //    if (dgPesanan.Columns[4].GetCellContent(i).ToString() == "DONE")
