@@ -29,7 +29,7 @@
             <DataGrid x:Name="dgPesanan" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" VerticalScrollBarVisibility="Visible" ColumnWidth="*" FontSize="30" IsReadOnly="True" MouseDown="dgPesanan_MouseDown" Height="496" VerticalAlignment="Top"/>
             <Button x:Name="btnSelesai" Content="Selesaikan Order" HorizontalAlignment="Left" Margin="512,502,0,0" VerticalAlignment="Top" Width="288" Height="71" FontSize="30" Click="btnSelesai_Click" Foreground="#FFF1DABF">
                 <Button.Background>
-                    <ImageBrush ImageSource="button square wide.png" Stretch="None"/>
+                    <ImageBrush ImageSource="button square wide.png"/>
                 </Button.Background>
             </Button>
         </Grid>
