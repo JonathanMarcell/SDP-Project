@@ -31,6 +31,8 @@ namespace ELREORS
             pesanL = false;
             temp1 = n;
             conn = App.conn;
+            conn.Close();
+            conn.Open();
             try
             {
                 //nambah gambar di Background (pake brush) / Image (pake ImageSource)
@@ -56,6 +58,7 @@ namespace ELREORS
             {
                 MessageBox.Show(e.ToString());
             }
+            conn.Close();
         }
         int time,timer;
         DispatcherTimer dt = new DispatcherTimer();
@@ -64,6 +67,7 @@ namespace ELREORS
         bool pesanL = false;
         void selesai()
         {
+            conn.Open();
             OracleCommand cmd = new OracleCommand();
             string qry = "select status as \"status\" from djual where nomor_meja = "+temp1 ;
             cmd = new OracleCommand(qry, conn);
@@ -91,6 +95,7 @@ namespace ELREORS
                 a.Show();
                 Close();
             }
+            conn.Close();
         }
         private void btnSelesai_Click(object sender, RoutedEventArgs e)
         {
