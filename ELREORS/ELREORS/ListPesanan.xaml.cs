@@ -24,7 +24,7 @@ namespace ELREORS
         DataTable dtPesanan, tempData;
         OracleDataAdapter daPesanan;
         OracleConnection conn;
-        int savedId = -1;
+        //int savedId = -1;
         
         public ListPesanan()
         {
@@ -67,7 +67,7 @@ namespace ELREORS
 
                 string qry = $"update djual set status=2 where id={index}";
 
-                savedId = -1;
+                //savedId = -1;
                 conn.Open();
                 OracleCommand cmd = new OracleCommand(qry, conn);
                 cmd.ExecuteNonQuery();
@@ -83,24 +83,24 @@ namespace ELREORS
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             loadData();
-            int tempInd = 0;
-            if (savedId != -1)
-            {
-                foreach (DataRow dr in tempData.Rows)
-                {
-                    if (dr[0].ToString() == savedId.ToString())
-                    {
-                        dgPesanan.SelectedIndex = tempInd;
-                    }
-                    tempInd++;
-                }
-            }
+            //int tempInd = 0;
+            //if (savedId != -1)
+            //{
+            //    foreach (DataRow dr in tempData.Rows)
+            //    {
+            //        if (dr[0].ToString() == savedId.ToString())
+            //        {
+            //            dgPesanan.SelectedIndex = tempInd;
+            //        }
+            //        tempInd++;
+            //    }
+            //}
             
         }
 
         private void dgPesanan_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            savedId = Int32.Parse(tempData.Rows[dgPesanan.SelectedIndex][0].ToString());
+            //savedId = Int32.Parse(tempData.Rows[dgPesanan.SelectedIndex][0].ToString());
         }
 
         public void loadData()

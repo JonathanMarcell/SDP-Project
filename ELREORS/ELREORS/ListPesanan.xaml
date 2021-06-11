@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ELREORS"
         mc:Ignorable="d"
-        Title="ListPesanan" Height="768" Width="1366" WindowState="Maximized" WindowStartupLocation="CenterScreen"> 
+        Title="ListPesanan" Height="768" Width="1366" WindowState="Maximized" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="130"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="26"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30"/>
@@ -22,14 +22,18 @@
             <ImageBrush ImageSource="background.png"/>
         </Grid.Background>
         <Grid Grid.Row="1" Grid.Column="1">
-            <DataGrid x:Name="dgPesanan" Margin="0,0,0,86" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" VerticalScrollBarVisibility="Visible" ColumnWidth="*" FontSize="30" IsReadOnly="True" MouseDown="dgPesanan_MouseDown"/>
-            <Button x:Name="btnSelesai" Content="Selesaikan Order" HorizontalAlignment="Left" Margin="512,496,0,0" VerticalAlignment="Top" Width="288" Height="71" FontSize="30" Click="btnSelesai_Click" Foreground="#FFF1DABF">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0*"/>
+            </Grid.RowDefinitions>
+            <DataGrid x:Name="dgPesanan" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" VerticalScrollBarVisibility="Visible" ColumnWidth="*" FontSize="30" IsReadOnly="True" MouseDown="dgPesanan_MouseDown" Height="496" VerticalAlignment="Top"/>
+            <Button x:Name="btnSelesai" Content="Selesaikan Order" HorizontalAlignment="Left" Margin="512,502,0,0" VerticalAlignment="Top" Width="288" Height="71" FontSize="30" Click="btnSelesai_Click" Foreground="#FFF1DABF">
                 <Button.Background>
                     <ImageBrush ImageSource="button square wide.png" Stretch="None"/>
                 </Button.Background>
             </Button>
         </Grid>
-        <Label Content="Pesanan" HorizontalAlignment="Left" Margin="62,43,0,0" VerticalAlignment="Top" FontSize="32" Height="53" Width="126" Foreground="#FFF1DABF" Grid.ColumnSpan="3"/>
+        <Label Content="Pesanan" HorizontalAlignment="Left" Margin="32,43,0,0" VerticalAlignment="Top" FontSize="32" Height="53" Width="126" Foreground="#FFF1DABF" Grid.Column="1"/>
 
     </Grid>
 </Window>
