@@ -136,8 +136,7 @@ namespace ELREORS
                 float hasil = 0; 
                 max = 0;
                 OracleCommand cmd = new OracleCommand();
-                string qry = "select m.id as \"id\",m.nama as \"nama\", m.harga as \"harga\", m.id_kategori as \"kategori\",m.status as \"status\", m.keterangan as \"keterangan\", m.gambar as\"gambar\" " +
-                    "from menu m, menu_bahan mb where m.id = mb.id_menu and status = 1 and mb.jumlah >0";
+                string qry = "select id as \"id\",nama as \"nama\", harga as \"harga\", id_kategori as \"kategori\",status as \"status\", keterangan as \"keterangan\", gambar as\"gambar\" from menu where status = 1";
                 cmd = new OracleCommand(qry, conn);
                 cmd.ExecuteReader();
                 OracleDataReader dr = cmd.ExecuteReader();
