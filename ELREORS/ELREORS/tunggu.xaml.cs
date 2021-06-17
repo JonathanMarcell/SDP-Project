@@ -58,7 +58,7 @@ namespace ELREORS
             {
                 MessageBox.Show(e.ToString());
             }
-            conn.Close();
+            //conn.Close();
         }
         int time,timer;
         DispatcherTimer dt = new DispatcherTimer();
@@ -67,7 +67,7 @@ namespace ELREORS
         bool pesanL = false;
         void selesai()
         {
-            conn.Open();
+            App.openconn();
             OracleCommand cmd = new OracleCommand();
             string qry = "select status as \"status\" from djual where nomor_meja = "+temp1 ;
             cmd = new OracleCommand(qry, conn);
@@ -96,13 +96,17 @@ namespace ELREORS
                 Close();
             }
             conn.Close();
+            conn.Open();
         }
         private void btnSelesai_Click(object sender, RoutedEventArgs e)
         {
+            if (!pesanL)
+            {
+                timer = 1;
+            }
             pesanL = true;
             meunggu.Content =  "Terima kasih";
             bayar.Visibility = Visibility.Hidden;
-            timer = 0;
         }
         private void dtTicker(object sender, EventArgs e)
         {

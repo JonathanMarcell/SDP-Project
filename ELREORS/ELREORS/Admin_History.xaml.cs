@@ -59,7 +59,7 @@ namespace ELREORS
             if (dp_filter1.SelectedDate == null || dp_filter2.SelectedDate == null)
             {
                 OracleDataAdapter da = new OracleDataAdapter(
-                    query+"order by 1", conn);
+                    query+"order by 1 desc", conn);
 
                 dt = new DataTable();
                 da.Fill(dt);
@@ -72,7 +72,7 @@ namespace ELREORS
                 OracleDataAdapter da = new OracleDataAdapter(
                     query+ "and " +
                     $"to_date(to_char(h.tanggal,'dd/mm/yyyy'),'dd/mm/yyyy') <= to_date('{tgl2}','dd/mm/yyyy') and " +
-                    $"to_date(to_char(h.tanggal,'dd/mm/yyyy'),'dd/mm/yyyy') >=to_date('{tgl1}','dd/mm/yyyy') order by 1" , conn);
+                    $"to_date(to_char(h.tanggal,'dd/mm/yyyy'),'dd/mm/yyyy') >=to_date('{tgl1}','dd/mm/yyyy') order by 1 desc" , conn);
                 dt = new DataTable();
                 da.Fill(dt);
                 dataGrid.ItemsSource = dt.DefaultView;

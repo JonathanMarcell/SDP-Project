@@ -37,6 +37,7 @@ namespace ELREORS
             datepicker1.SelectedDate = DateTime.Now;
             datepicker2.SelectedDate = DateTime.Now;
             Calendar2.SelectedDates.Add( DateTime.Now);
+            month = DateTime.Now.Month;
             tb_tahun.Text = DateTime.Now.Year + "";
             tb_tahun2.Text = DateTime.Now.Year + "";
         }

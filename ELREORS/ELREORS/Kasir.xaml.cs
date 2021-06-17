@@ -57,7 +57,7 @@ namespace ELREORS
 
         void loadData()
         {
-            string query = "select distinct hj.KODE_HJUAL as \"Kode HJUAL\", to_char(hj.TANGGAL, 'dd/MM/yyyy') as \"Tanggal\", mn.NAMA as \"Menu\", dj.JUMLAH as \"Jumlah\", dj.HARGA as \"Harga\", dj.JUMLAH * dj.HARGA as \"Subtotal\" from HJUAL hj, DJUAL dj, MENU mn where hj.ID = dj.ID_HEADER and mn.ID = dj.ID_MENU and hj.status = 0 and hj.nomor_meja = " + nomeja;
+            string query = $"select distinct hj.KODE_HJUAL as \"Kode HJUAL\", to_char(hj.TANGGAL, 'dd/MM/yyyy') as \"Tanggal\", mn.NAMA as \"Menu\", dj.JUMLAH as \"Jumlah\", dj.HARGA as \"Harga\", dj.JUMLAH * dj.HARGA as \"Subtotal\" from HJUAL hj, DJUAL dj, MENU mn where hj.ID = dj.ID_HEADER and mn.ID = dj.ID_MENU and hj.status = 0 and hj.nomor_meja = {nomeja} order by \"Kode HJUAL\" ";
             OracleDataAdapter da = new OracleDataAdapter(query, conn);
             dt = new DataTable();
             dt.Columns.Add("No");
@@ -186,7 +186,6 @@ namespace ELREORS
                 }
                 catch (Exception ex)
                 {
-                    throw;
                     MessageBox.Show(ex.Message);
                 }
 
@@ -201,7 +200,6 @@ namespace ELREORS
                 }
                 catch (Exception ex)
                 {
-                    throw;
                     MessageBox.Show(ex.Message);
                 }
 
@@ -212,7 +210,6 @@ namespace ELREORS
                 }
                 catch (Exception ex)
                 {
-                    throw;
                     MessageBox.Show(ex.Message);
                 }
 

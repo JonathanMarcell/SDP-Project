@@ -66,6 +66,6 @@
     <Grid>
         <Label Content="Nomor Meja:" Margin="210,150,0,0" Width="200" Height="50" FontSize="32" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <TextBox x:Name="tbNo" Text="" Width="100" Height="40" FontSize="32" Margin="410,160,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Button x:Name="btnSubmit" Width="120" Height="60" Content="Submit" FontSize="32" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="390,220,0,0" Click="btnSubmit_Click" Style="{DynamicResource btnSubmit}"/>
+        <Button x:Name="btnSubmit" Width="120" Height="60" Content="Submit" FontSize="32" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="390,220,0,0" Click="btnSubmit_Click" Style="{DynamicResource btnSubmit}" Foreground="#FFF1DABF"/>
     </Grid>
 </Window>
