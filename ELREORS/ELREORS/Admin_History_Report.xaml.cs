@@ -31,7 +31,6 @@ namespace ELREORS
 
         private void loadCR()
         {
-            System.Windows.Forms.MessageBox.Show(new DateTime().Date.ToString());
             if (cb_pembatas.IsChecked == true )
             {
                 Admin_History_Report_CR rpt = new Admin_History_Report_CR();
