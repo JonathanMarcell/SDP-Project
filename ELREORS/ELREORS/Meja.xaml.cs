@@ -745,7 +745,7 @@ namespace ELREORS
                     }
                     trans.Commit();
                     string temp = lbM.Content.ToString();
-                    tunggu t = new tunggu(temp);
+                    tunggu t = new tunggu(temp); 
                     t.Show();
                     this.Close();
                     

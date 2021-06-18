@@ -41,10 +41,22 @@ namespace ELREORS
             btnBersihkan.Background = b;
             btnEditL.Background = b;
             btnSelesai.Background = b;
+
+            cbNama.Items.Clear();
+            foreach (Window item in Application.Current.Windows)
+            {
+                if (item.Name == "MenuMeja")
+                {
+                    for (int i = 0; i < ((Meja)item).daO.Rows.Count; i++)
+                    {
+                        cbNama.Items.Add(((Meja)item).daO.Rows[i]["Nama"].ToString());
+                    }
+                }
+            }
         }
         private void btnEditL_Click(object sender, RoutedEventArgs e)
         {
-            if (tbNo.Text==""|| tbKet.Text=="")
+            if (cbNama.SelectedItem.ToString()==""|| tbKet.Text=="")
             {
                 MessageBox.Show("Harap isi semua field");
             }
@@ -54,9 +66,8 @@ namespace ELREORS
                 {
                     if (item.Name == "MenuMeja")
                     {
-                        ((Meja)item).daO.Rows[Convert.ToInt32(tbNo.Text) - 1]["Keterangan"] = tbKet.Text;
+                        ((Meja)item).daO.Rows[Convert.ToInt32(cbNama.SelectedIndex)]["Keterangan"] = tbKet.Text;
                         ((Meja)item).dataOrder.ItemsSource = ((Meja)item).daO.DefaultView;
-                        tbNo.Text = "";
                         tbKet.Text = "";
                     }
                 }
@@ -64,7 +75,6 @@ namespace ELREORS
         }
         private void btnBersihkan_Click(object sender, RoutedEventArgs e)
         {
-            tbNo.Text = "";
             tbKet.Text = "";
         }
         private void btnSelesai_Click(object sender, RoutedEventArgs e)
